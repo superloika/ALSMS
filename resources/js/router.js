@@ -1,10 +1,5 @@
 import Vue from "vue";
-
 import VueRouter from "vue-router";
-
-// OTHER PAGES
-import DashboardPage from "./pages/DashboardPage";
-// import AboutPage from "./pages/AboutPage";
 
 // ACCOUNT
 import AccountPage from "./pages/AccountPage";
@@ -14,29 +9,41 @@ import AccountsAdd from "./pages/ManageAccounts/AccountsAdd.vue";
 // ERROR PAGES
 import ErrorPage404 from "./pages/ErrorPages/ErrorPage404";
 
-
 Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: "history",
     routes: [
 
-        // OTHER PAGES ===============================================
+        // STUDENT ===========================================================================
         {
-            path: "/dashboard",
-            component: DashboardPage,
-            meta: {
-                name: "Dashboard"
-            }
+            path: "/student",
+            name: "student",
+            component: { render: h => h('router-view') },
+            children: [
+                {
+                    path: "dashboard",
+                    name: "student.dashboard",
+                    component: ()=>import("./pages/Student/Dashboard.vue"),
+                },
+            ]
         },
-        // {
-        //     path: "/about",
-        //     component: AboutPage,
-        //     meta: {
-        //         name: "AboutPage"
-        //     }
-        // },
+        // /STUDENT ===========================================================================
 
+        // ADMIN ==============================================================================
+        {
+            path: "/admin",
+            name: "admin",
+            component: { render: h => h('router-view') },
+            children: [
+                {
+                    path: "dashboard",
+                    name: "admin.dashboard",
+                    component: ()=>import("./pages/Admin/Dashboard.vue"),
+                },
+            ]
+        },
+        // /ADMIN ==============================================================================
 
         // ACCOUNT =============================================
         {
@@ -72,8 +79,15 @@ const router = new VueRouter({
 
 
 router.beforeEach((to, from, next) => {
+    const name = to.matched[0].name;
+
+    // if name = either 'student', 'admin', or '' then it needs checking
+    if(name !== undefined) {
+        if(name !== window.AuthUser.user_type) {
+            return false;
+        }
+    }
     next();
-    // window.cancelTokenSource.cancel();
 });
 
 export default router;

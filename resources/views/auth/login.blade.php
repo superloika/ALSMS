@@ -39,8 +39,8 @@
 <body>
     <div id="app">
         <v-app>
-            <v-main class="yellow">
-                <v-container fluid class="fluid fill-height">
+            <v-main>
+                <v-container fluid class="fill-height primary">
                     <v-layout align-center justify-center>
                             @php
                                 $error_username = '';

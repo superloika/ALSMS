@@ -20,7 +20,6 @@
                 class="mr-3"
                 style="max-width:200px;"
                 flat
-                rounded
                 solo-inverted
                 v-model="ManageAccounts.state.searchKey"
             ></v-text-field>
@@ -38,8 +37,6 @@
             </v-btn> -->
             <v-btn
                 dense
-                iconx
-                rounded
                 color="primary"
                 to="/account/add"
                 title="Add Account"
@@ -76,7 +73,7 @@
                     <v-icon>mdi-delete-forever</v-icon>
                 </v-btn>
             </template>
-            <template v-slot:[`item.user_type`]="{ item }">
+            <!-- <template v-slot:[`item.user_type`]="{ item }">
                 <v-chip v-if="item.user_type=='student'" small color="default">
                     {{ item.user_type }}
                 </v-chip>
@@ -86,7 +83,7 @@
                 <v-chip v-else-if="item.user_type=='super_admin'" small color="info">
                     {{ item.user_type }}
                 </v-chip>
-            </template>
+            </template> -->
         </v-data-table>
 
         <!-- Dialogs (Modals)-->

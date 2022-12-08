@@ -1,5 +1,5 @@
 <template>
-    <v-sheet>
+    <div>
         <div class="d-flex py-4 justify-center px-16">
             <a href="/">
                 <v-img
@@ -11,11 +11,7 @@
                 ></v-img>
             </a>
         </div>
-        <v-card max-width="400" min-width="300" elevation="1" tile class="elevation-0">
-            <!-- <v-card-title>
-                <v-icon class="mr-2">mdi-login</v-icon>
-                <span class="text-subtitle-1">Login</span>
-            </v-card-title> -->
+        <v-card max-width="400" min-width="300" elevation="1" tile class="elevation-1">
 
             <v-card-text>
                 <v-alert dense type="error" dismissible transition="scale-transition"
@@ -31,9 +27,10 @@
                                 placeholder="Username"
                                 name="username"
                                 type="text"
+                                class="mb-3"
                                 :value="old_username"
-                                solo
-                                rounded
+                                filled
+                                hide-details
                             ></v-text-field>
 
                             <v-text-field
@@ -44,8 +41,9 @@
                                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                                 @click:append="showPassword = !showPassword"
                                 autocomplete="false"
-                                solo
-                                rounded
+                                class="mb-3"
+                                filled
+                                hide-details
                             ></v-text-field>
                             <div class="float-right">
                                 <v-btn @click.stop="isLogging=true" color="primary"
@@ -60,8 +58,7 @@
                 <a href="/register">Register an Account</a>
             </v-card-actions>
         </v-card>
-
-    </v-sheet>
+    </div>
 </template>
 
 <script>

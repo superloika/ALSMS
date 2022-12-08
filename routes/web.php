@@ -24,7 +24,7 @@ Auth::routes();
 // HOME
 Route::get('/', 'HomeController@index')->name('home');
 // programs
-Route::get('/programs', 'ProgramController@index')->name('programs');
+// Route::get('/programs', 'ProgramController@index')->name('programs');
 Route::get('/programs/{slug}', 'ProgramController@view')->name('programs.view');
 // announcements
 Route::get('/announcements', 'AnnouncementController@index')->name('announcements');
@@ -32,15 +32,11 @@ Route::get('/announcements/{slug}', 'AnnouncementController@view')->name('announ
 // about
 Route::get('/about', 'AboutController@index')->name('about');
 
-// DASHBOARD
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-
 // logout using get http method
 Route::get('/logout', 'Auth\LogoutController@logout')->name('logout2');
 
 // Flush current session
 Route::get('/flush-session', 'Auth\LogoutController@flushSession')->name('flushSession');
-
 
 // ACCOUNTS
 // Route::prefix('accounts')->group(function() {
@@ -53,6 +49,16 @@ Route::group(['prefix' => 'accounts'], function() {
     Route::match(['delete'], '/delete', 'AccountsController@delete');
 });
 
+
+// ADMIN
+Route::group(['prefix'=>'admin','middleware'=>'user_admin'], function(){
+    Route::get('/admin/dashboard','DashboardController@admin');
+});
+
+// STUDENT
+Route::group(['prefix'=>'student','middleware'=>'user_student'], function(){
+    Route::get('/student/dashboard','DashboardController@student');
+});
 
 
 /**

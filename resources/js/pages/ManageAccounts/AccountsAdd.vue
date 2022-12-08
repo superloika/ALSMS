@@ -41,12 +41,10 @@
                     <v-row class="pa-0">
                         <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
                             <v-text-field
-                                solo
-                                densex
-                                rounded
-                                text
-                                label="Name *"
+                                hide-detailsx
+                                filled
                                 required
+                                label="Name *"
                                 v-model="newAccount.name"
                                 :rules="newAccount.rules.name"
                             ></v-text-field>
@@ -54,10 +52,8 @@
 
                         <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
                             <v-text-field
-                                solo
-                                densex
-                                rounded
-                                text
+                                hide-detailsx
+                                filled
                                 label="Username *"
                                 required
                                 v-model="newAccount.username"
@@ -67,11 +63,9 @@
 
                         <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
                             <v-select
+                                hide-detailsx
+                                filled
                                 :items="ManageAccounts.state.userTypes"
-                                solo
-                                densex
-                                rounded
-                                text
                                 label="User Type *"
                                 required
                                 v-model="newAccount.user_type"
@@ -82,10 +76,8 @@
 
                         <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
                             <v-text-field
-                                solo
-                                densex
-                                rounded
-                                text
+                                hide-detailsx
+                                filled
                                 label="Password *"
                                 autocomplete="false"
                                 required
@@ -97,10 +89,8 @@
 
                         <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
                             <v-text-field
-                                solo
-                                densex
-                                rounded
-                                text
+                                hide-detailsx
+                                filled
                                 label="Confirm Password *"
                                 autocomplete="false"
                                 required
@@ -115,15 +105,9 @@
                         <v-col>
                             <div class="float-right">
                                 <v-btn
-                                    class=""
                                     color="primary"
-                                    densex
-                                    rounded
-                                    smallx
-                                    outlinedx
                                     @click="saveNewUser()"
                                     :loading="savingNewUser"
-                                    roundedx
                                 >
                                     Save New Account
                                 </v-btn>

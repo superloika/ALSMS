@@ -63,7 +63,6 @@
                         block
                         text
                         outlined
-                        rounded
                         @click.stop="logout()"
                         :loading="isLoggingOut"
                     >

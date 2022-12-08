@@ -26,10 +26,10 @@
 <body>
 
     <v-app id="app">
-        <v-main class="yellow">
-            <v-container fluid class="fluid fill-height">
+        <v-main>
+            <v-container fluid class="fill-height primary">
                 <v-layout align-center justify-center>
-                    <v-sheet>
+                    <div>
                         <div class="d-flex py-4 justify-center px-16">
                             <a href="/">
                                 <v-img
@@ -41,7 +41,7 @@
                                 ></v-img>
                             </a>
                         </div>
-                        <v-card max-width="400" min-width="300" elevation="1" tile class="elevation-0">
+                        <v-card max-width="400" min-width="300" elevation="1" tile class="elevation-1">
                             {{-- <v-card-title>
                                 <span class="text-subtitle-1">Register</span>
                             </v-card-title> --}}
@@ -58,13 +58,13 @@
                                         </span>
                                     @enderror
                                     <v-text-field id="name" type="text"
-                                        class="@error('name') error--text @enderror"
+                                        class="@error('name') error--text @enderror mb-6"
                                         name="name" value="{{ old('name') }}"
                                         required autocomplete="name"
                                         label="Name"
                                         placeholder="Name"
-                                        solo
-                                        rounded
+                                        filled
+                                        hide-details
                                     ></v-text-field>
 
 
@@ -74,12 +74,12 @@
                                         </span>
                                     @enderror
                                     <v-text-field id="username" type="text"
-                                        class="@error('username') error--text @enderror"
+                                        class="@error('username') error--text @enderror mb-6"
                                         name="username" value="{{ old('username') }}" required autocomplete="username"
-                                        solo
-                                        rounded
+                                        filled
                                         label="Username"
                                         placeholder="Username"
+                                        hide-details
                                     ></v-text-field>
 
 
@@ -89,12 +89,12 @@
                                         </span>
                                     @enderror
                                     <v-text-field id="email" type="email"
-                                        class="@error('email') error--text @enderror"
+                                        class="@error('email') error--text @enderror mb-6"
                                         name="email" value="{{ old('email') }}" autocomplete="email"
                                         label="Email"
                                         placeholder="Email"
-                                        solo
-                                        rounded
+                                        filled
+                                        hide-details
                                     ></v-text-field>
 
 
@@ -104,40 +104,39 @@
                                         </span>
                                     @enderror
                                     <v-text-field id="password" type="password"
-                                        class="@error('password') error--text @enderror"
-                                        name="password" required autocomplete="new-password" solo
+                                        class="@error('password') error--text @enderror mb-6"
+                                        name="password" required autocomplete="new-password"
                                         label="Password"
                                         placeholder="Password"
-                                        rounded
+                                        filled
+                                        hide-details
                                     >
                                     </v-text-field>
 
 
                                     <v-text-field id="password-confirm" type="password"
-                                        class="form-control" name="password_confirmation"
+                                        class="form-control mb-6" name="password_confirmation"
                                         required autocomplete="new-password"
-                                        solo
                                         label="Confirm password"
                                         placeholder="Confirm password"
-                                        rounded
+                                        filled
+                                        hide-details
                                     >
                                     </v-text-field>
 
                                     {{-- <br> --}}
-                                    <v-sheet class="float-right mb-6">
-                                        <v-btn type="submit" color="primary" class=""
-                                            rounded
-                                        >
+                                    <div class="float-right mb-6">
+                                        <v-btn type="submit" color="primary" class="">
                                             Register
                                         </v-btn>
-                                    </v-sheet>
+                                    </div>
                                 </form>
                             </v-card-text>
                             <v-card-actions class="d-flex justify-center mt-12">
                                 <a href="/login">Login to an Existing Account</a>
                             </v-card-actions>
                         </v-card>
-                    </v-sheet>
+                    </div>
                 </v-layout>
             </v-container>
         </v-main>

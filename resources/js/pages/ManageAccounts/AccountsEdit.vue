@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <!-- <v-card-title class="grey lighten-5"> -->
-        <v-card-title>
+        <v-card-title color="primary">
             <span>{{ ManageAccounts.state.toEdit.name }} ({{
                     ManageAccounts.state.toEdit.username
                 }})

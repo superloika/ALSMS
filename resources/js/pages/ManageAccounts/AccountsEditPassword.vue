@@ -24,10 +24,7 @@
             <v-row>
                 <v-col cols="12" md="4" sm="6">
                     <v-text-field
-                        solo
-                        rounded
-                        densex
-                        text
+                        filled
                         label="Old Password *"
                         placeholder="Old Password"
                         title="Old Password"
@@ -42,10 +39,7 @@
 
                 <v-col cols="12" md="4" sm="6">
                     <v-text-field
-                        solo
-                        rounded
-                        densex
-                        text
+                        filled
                         label="New Password *"
                         placeholder="New Password"
                         title="New Password"
@@ -60,10 +54,7 @@
 
                 <v-col cols="12" md="4" sm="6">
                     <v-text-field
-                        solo
-                        rounded
-                        densex
-                        text
+                        filled
                         label="Confirm Password *"
                         placeholder="Confirm Password"
                         title="Confirm Password"
@@ -83,7 +74,6 @@
                         @click="updatePassword()"
                         :loading="updatingPassword"
                         class="float-lg-right float-md-right float-sm-right"
-                        rounded
                     >
                         Update Password
                     </v-btn>

@@ -24,10 +24,7 @@
             <v-row>
                 <v-col cols="12" md="4" sm="6">
                     <v-text-field
-                        solo
-                        densex
-                        text
-                        rounded
+                        filled
                         label="Full name"
                         placeholder="Full name"
                         title="Full name"
@@ -41,10 +38,7 @@
 
                 <v-col cols="12" md="4" sm="6">
                     <v-text-field
-                        solo
-                        densex
-                        text
-                        rounded
+                        filled
                         label="Username *"
                         placeholder="Username"
                         title="Username"
@@ -60,11 +54,8 @@
 
                 <v-col cols="12" md="4" sm="6">
                     <v-select
+                        filled
                         :items="ManageAccounts.state.userTypes"
-                        solo
-                        densex
-                        text
-                        rounded
                         label="User Type"
                         placeholder="User Type"
                         title="User Type"
@@ -86,7 +77,6 @@
                         @click="updateProfile()"
                         :loading="updatingProfile"
                         class="float-lg-right float-md-right float-sm-right"
-                        rounded
                     >
                         Update Profile
                     </v-btn>

@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // test
-        return view('home');
+        $programs = DB::table('programs')->get();
+        return view('home', ['programs'=>$programs]);
     }
 
 }

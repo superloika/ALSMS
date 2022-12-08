@@ -1,5 +1,5 @@
 <template>
     <div>
-        Advisers
+        Student Dashboard
     </div>
 </template>

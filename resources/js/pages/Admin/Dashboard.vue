@@ -1,5 +1,5 @@
 <template>
     <div>
-        Students
+        Admin Dashboard
     </div>
 </template>

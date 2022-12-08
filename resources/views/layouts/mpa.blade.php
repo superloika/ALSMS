@@ -46,7 +46,7 @@
 <body>
     <div id="app">
         <v-app>
-            <v-app-bar color="yellow" light class="elevation-0" densex app>
+            <v-app-bar class="elevation-0" app color="primary">
                 {{-- <v-toolbar-title>{{ config('app.name') }}</v-toolbar-title> --}}
                 <a href="/">
                     <v-img
@@ -63,42 +63,39 @@
                         href="/"
                         class="text-subtitle-1 font-weight-bold blue--text"
                     >Home</v-btn> --}}
-                    <v-btn color="transparent" depressed dense rounded
-                        href="/programs"
-                        class="text-subtitle-2 font-weight-bold blue--text"
-                    >Programs</v-btn>
-                    <v-btn color="transparent" depressed dense rounded
+                    <v-btn color="transparent" depressed dark
+                        href="/"
+                        class="text-subtitle-2 font-weight-bold"
+                    >Home</v-btn>
+                    <v-btn color="transparent" depressed dark
                         href="/announcements"
-                        class="text-subtitle-2 font-weight-bold blue--text"
+                        class="text-subtitle-2 font-weight-bold"
                     >Announcements</v-btn>
-                    <v-btn color="transparent" depressed dense rounded
+                    <v-btn color="transparent" depressed dark
                         href="/about"
-                        class="text-subtitle-2 font-weight-bold blue--text"
+                        class="text-subtitle-2 font-weight-bold"
                     >About</v-btn>
                 </div>
 
+                <div class="mr-4">
                     @auth
-                        <h5 class="mr-2">
-                            Welcome {{ Auth::user()->name }}!
-                        </h5>
-                        <v-btn class="ml-2" color="primary" small depressed rounded href="/dashboard"
+                        <v-btn class="ml-2" color="primary lighten-1" small depressed
+                            href="/{{ Auth::user()->user_type }}/dashboard"
                             title="Go to Dashboard"
                         >
-                            Dashboard
-                        </v-btn>
-                        <v-btn class="ml-2" color="error" small depressed rounded href="/logout">
-                            Logout
+                            {{ Auth::user()->name }}
                         </v-btn>
                     @endauth
 
                     @guest()
-                        <v-btn class="ml-2" small depressed rounded color="primary" href="/login">
+                        <v-btn class="ml-2" small depressed color="primary lighten-1" href="/login">
                             Login
                         </v-btn>
-                        <v-btn class="ml-2" small depressed rounded color="primary" href="/register">
+                        <v-btn class="ml-2" small depressed color="primary lighten-1" href="/register">
                             Register
                         </v-btn>
                     @endguest
+                </div>
 
                 {{-- <template v-slot:extension>
                     <v-tabs align-center>
@@ -111,7 +108,19 @@
                 </template> --}}
             </v-app-bar>
 
-            @yield('content')
+            <v-main>
+                <v-container fluid class="pa-0">
+                    @yield('content')
+                </v-container>
+
+                <v-footer color="primary" class="py-12" paddless dark>
+                    <v-row justify="center" no-gutters>
+                        <v-col class="text-center py-4">
+                            Copyright (C) 2022
+                        </v-col>
+                    </v-row>
+                </v-footer>
+            </v-main>
         </v-app>
     </div>
 </body>
