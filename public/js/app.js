@@ -2354,11 +2354,11 @@ __webpack_require__.r(__webpack_exports__);
     userTypeComponent: function userTypeComponent() {
       if (this.AppStore.isAdmin()) {
         return function () {
-          return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../pages/Admin/Base.vue */ "./resources/js/pages/Admin/Base.vue"));
+          return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../pages/Admin/Base.vue */ "./resources/js/pages/Admin/Base.vue"));
         };
       } else if (this.AppStore.isStudent()) {
         return function () {
-          return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../pages/Student/Base.vue */ "./resources/js/pages/Student/Base.vue"));
+          return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../pages/Student/Base.vue */ "./resources/js/pages/Student/Base.vue"));
         };
       }
     }
@@ -68744,7 +68744,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: "dashboard",
       name: "admin.dashboard",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./pages/Admin/Dashboard.vue */ "./resources/js/pages/Admin/Dashboard.vue"));
+        return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ./pages/Admin/Dashboard.vue */ "./resources/js/pages/Admin/Dashboard.vue"));
       }
     }]
   }, // /ADMIN ==============================================================================

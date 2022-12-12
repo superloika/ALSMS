@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-app-bar app class="elevation-0">
+        <v-app-bar app class="elevation-0" dark color="primary">
             <v-toolbar-title class="ml-1 pr-12">
                 <div class="d-flex">
                     <!-- <a href="/">
@@ -23,7 +23,10 @@
                     Dashboard
                 </v-tab>
                 <v-tab to="/student/about" class="font-weight-bold">
-                    Test
+                    Test 1
+                </v-tab>
+                <v-tab to="/student/about2" class="font-weight-bold">
+                    Test 2
                 </v-tab>
             </v-tabs>
 
@@ -32,8 +35,9 @@
                 </span> -->
 
             <UserMenu class="hidden-sm-and-down"></UserMenu>
+
             <v-btn icon dense @click="navDrawerState=true" class="hidden-md-and-up">
-                <span class="font-weight-bold">&equiv;</span>
+                <span class="text-h4">&equiv;</span>
             </v-btn>
         </v-app-bar>
 
@@ -61,7 +65,7 @@
             </v-list>
 
             <template v-slot:append>
-                <v-container>
+                <v-container class="grey lighten-4">
                     <UserMenu></UserMenu>
                 </v-container>
             </template>
