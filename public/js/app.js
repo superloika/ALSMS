@@ -3244,7 +3244,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.search-field {\r\n    border: 1px solid #f1f1f1;\n}\r\n\r\n/* .v-data-table__wrapper table tbody tr{\r\n\r\n    } */\n.v-data-table__wrapper table tbody tr td.text-start {\r\n    /* color: #222222; */\r\n    /* font-size: 12px; */\n}\n.theme--dark.v-data-table\r\n    > .v-data-table__wrapper\r\n    > table\r\n    > tbody\r\n    > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {\r\n    background-color: #000000;\n}\ndiv.v-tab {\r\n    padding: 0px 5px;\n}\r\n", ""]);
+exports.push([module.i, "\n.search-field {\n    border: 1px solid #f1f1f1;\n}\n\n/* .v-data-table__wrapper table tbody tr{\n\n    } */\n.v-data-table__wrapper table tbody tr td.text-start {\n    /* color: #222222; */\n    /* font-size: 12px; */\n}\n.theme--dark.v-data-table\n    > .v-data-table__wrapper\n    > table\n    > tbody\n    > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {\n    background-color: #000000;\n}\ndiv.v-tab {\n    padding: 0px 5px;\n}\n", ""]);
 
 // exports
 
