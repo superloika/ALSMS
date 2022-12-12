@@ -3,7 +3,7 @@
         <v-app-bar app class="elevation-0">
             <v-toolbar-title class="ml-1 pr-12">
                 <div class="d-flex">
-                    <a href="/">
+                    <!-- <a href="/">
                         <v-img
                             contain
                             max-width="150"
@@ -11,13 +11,14 @@
                             src="/img/alsms_banner_sm.png"
                             class="mr-2"
                         ></v-img>
-                    </a>
+                    </a> -->
+                    <span>Laravel + Vuetify</span>
                 </div>
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
 
-            <v-tabs>
+            <v-tabs centered hide-slider class="hidden-sm-and-down">
                 <v-tab to="/student/dashboard" class="font-weight-bold">
                     Dashboard
                 </v-tab>
@@ -30,36 +31,41 @@
                     {{ AuthUser.name }}
                 </span> -->
 
-            <UserMenu></UserMenu>
+            <UserMenu class="hidden-sm-and-down"></UserMenu>
+            <v-btn icon dense @click="navDrawerState=true" class="hidden-md-and-up">
+                <span class="font-weight-bold">&equiv;</span>
+            </v-btn>
         </v-app-bar>
 
         <!-- SIDE NAV -->
-        <!-- <v-navigation-drawer v-model="navDrawerState" app>
-                <v-list>
-                    <v-list-item>
-                        <v-list-item-content >
-                            <v-list-item-title class="text-h6">
-                                DSG
-                            </v-list-item-title>
-                            <v-list-item-subtitle>
-                                Middleware App
-                            </v-list-item-subtitle>
+        <v-navigation-drawer v-model="navDrawerState" absolute temporary>
+            <v-list>
+                <v-list-item-group color="primary">
+                    <v-list-item link to="/student/dashboard">
+                        <v-list-item-icon class="mr-2">
+                            <v-icon>mdi-file-outline</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Dashboard</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
-                </v-list>
+                    <v-list-item link to="/student/test">
+                        <v-list-item-icon class="mr-2">
+                            <v-icon>mdi-file-outline</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Test</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
 
-                <NavSide></NavSide>
-
-                <template v-slot:append>
-                    <v-footer>
-                        <v-col class="text-center pa-0">
-                            <div class="text-caption" >
-                                &copy; 2021-{{ new Date().getFullYear() }}
-                            </div>
-                        </v-col>
-                    </v-footer>
-                </template>
-            </v-navigation-drawer> -->
+            <template v-slot:append>
+                <v-container>
+                    <UserMenu></UserMenu>
+                </v-container>
+            </template>
+        </v-navigation-drawer>
 
         <!-- MAIN -->
         <v-main>
@@ -69,3 +75,13 @@
         </v-main>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            navDrawerState: null,
+        }
+    }
+}
+</script>

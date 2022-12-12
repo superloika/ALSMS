@@ -1,5 +1,5 @@
 <template>
     <div>
-        Student Dashboard
+        Dashboard
     </div>
 </template>

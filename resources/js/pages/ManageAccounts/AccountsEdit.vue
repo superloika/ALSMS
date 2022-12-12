@@ -2,10 +2,7 @@
     <v-card>
         <!-- <v-card-title class="grey lighten-5"> -->
         <v-card-title color="primary">
-            <span>{{ ManageAccounts.state.toEdit.name }} ({{
-                    ManageAccounts.state.toEdit.username
-                }})
-            </span>
+            Account
             <v-spacer></v-spacer>
             <!-- <v-btn icon @click="ManageAccounts.state.modalEditIsOpen = false">
                 <v-icon>mdi-close-box-outline</v-icon>
@@ -14,7 +11,7 @@
 
         <v-tabs v-model="tab">
             <v-tab>
-                Profile
+                Account
             </v-tab>
             <v-tab>
                 Password

@@ -25,9 +25,9 @@
                 <v-col cols="12" md="4" sm="6">
                     <v-text-field
                         filled
-                        label="Full name"
-                        placeholder="Full name"
-                        title="Full name"
+                        label="Name"
+                        placeholder="Name"
+                        title="Name"
                         required
                         v-model="account.name"
                         :rules="account.rules.name"
