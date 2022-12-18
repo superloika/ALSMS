@@ -1,8 +1,8 @@
 <template>
     <v-card>
         <!-- <v-card-title class="grey lighten-5"> -->
-        <v-card-title color="primary">
-            Account
+        <v-card-title class="primary white--text">
+            <v-icon color="white">mdi-account</v-icon> Account
             <v-spacer></v-spacer>
             <!-- <v-btn icon @click="ManageAccounts.state.modalEditIsOpen = false">
                 <v-icon>mdi-close-box-outline</v-icon>

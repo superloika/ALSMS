@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-toolbar elevation="0">
-            <!-- <v-toolbar-title>Add New Account</v-toolbar-title> -->
+            <v-toolbar-title>Add Account</v-toolbar-title>
 
             <v-spacer></v-spacer>
 

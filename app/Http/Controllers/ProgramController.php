@@ -35,4 +35,11 @@ class ProgramController extends Controller
         return view('program_view', ['program' => $program]);
     }
 
+    public function getPrograms()
+    {
+        $programs = DB::table('programs')->get();
+        // dd($programs);
+        return response()->json($programs);
+    }
+
 }

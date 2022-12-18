@@ -67,10 +67,10 @@
                         href="/"
                         class="text-subtitle-2 font-weight-bold"
                     >Home</v-btn>
-                    <v-btn color="transparent" depressed dark
+                    {{-- <v-btn color="transparent" depressed dark
                         href="/announcements"
                         class="text-subtitle-2 font-weight-bold"
-                    >Announcements</v-btn>
+                    >Announcements</v-btn> --}}
                     <v-btn color="transparent" depressed dark
                         href="/about"
                         class="text-subtitle-2 font-weight-bold"

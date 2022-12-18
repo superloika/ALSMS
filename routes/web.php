@@ -52,12 +52,19 @@ Route::group(['prefix' => 'accounts'], function() {
 
 // ADMIN
 Route::group(['prefix'=>'admin','middleware'=>'user_admin'], function(){
-    Route::get('/admin/dashboard','DashboardController@admin');
+    // Route::get('/admin/dashboard','DashboardController@admin');
 });
 
 // STUDENT
 Route::group(['prefix'=>'student','middleware'=>'user_student'], function(){
-    Route::get('/student/dashboard','DashboardController@student');
+    // Route::get('/student/dashboard','DashboardController@student');
+    Route::group(['prefix'=>'programs'], function(){
+        Route::get('/getPrograms','ProgramController@getPrograms');
+    });
+    Route::group(['prefix'=>'profile'], function(){
+        Route::post('/updateProfile','ProfileController@updateProfile');
+        Route::get('/getProfile','ProfileController@getProfile');
+    });
 });
 
 

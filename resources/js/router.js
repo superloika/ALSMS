@@ -26,6 +26,21 @@ const router = new VueRouter({
                     name: "student.dashboard",
                     component: ()=>import("./pages/Student/Dashboard.vue"),
                 },
+                {
+                    path: "programs",
+                    name: "student.programs",
+                    component: ()=>import("./pages/Student/Programs"),
+                },
+                {
+                    path: "announcements",
+                    name: "student.announcements",
+                    component: ()=>import("./pages/Student/Announcements"),
+                },
+                {
+                    path: "profile",
+                    name: "student.profile",
+                    component: ()=>import("./pages/Student/Profile"),
+                },
             ]
         },
         // /STUDENT ===========================================================================

@@ -9,7 +9,7 @@
             v-model="AppStore.state.snackBar.show"
             :timeout="AppStore.state.snackBar.timeout"
             bottom
-            left
+            center
             :color="AppStore.state.snackBar.color"
         >
             {{ AppStore.state.snackBar.text }}

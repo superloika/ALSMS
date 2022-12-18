@@ -3,7 +3,7 @@
         <v-menu v-model="menu" :close-on-content-click="true" offset-y>
             <template v-slot:activator="{ on, attrs }">
                 <v-btn iconx rounded v-bind="attrs" v-on="on" text>
-                    <v-avatar color="primary" size="20" class="mr-2">
+                    <v-avatar color="primary darken-1" size="20" class="mr-2">
                         <span class="white--text">
                             {{ userInitial }}
                         </span>
@@ -53,6 +53,9 @@
                             to="/user-accounts"
                         >
                             User Accounts
+                        </v-list-item>
+                        <v-list-item link to="/student/profile" v-if="AppStore.isStudent()">
+                            Student Profile
                         </v-list-item>
                     </v-list-item-group>
                 </v-list>

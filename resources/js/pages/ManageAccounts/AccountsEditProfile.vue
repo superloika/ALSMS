@@ -78,7 +78,7 @@
                         :loading="updatingProfile"
                         class="float-lg-right float-md-right float-sm-right"
                     >
-                        Update Profile
+                        Update
                     </v-btn>
                 </v-col>
             </v-row>

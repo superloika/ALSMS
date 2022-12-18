@@ -4,6 +4,15 @@
 <v-container class="d-flex justify-center py-16 primary" fluid>
     <p class="text-h4 white--text">About ALS Management System</p>
 </v-container>
+<v-container class="py-12">
+    <v-row>
+        <v-col cols="12">
+            <p>
+                This technology makes it easier and faster to access the data or information of ALS students while also improving the security and quality of the data. It is designed to handle the flow of data online and to generate accurate reports. The researchers believe that the system is one of the conducive ways to access the data online and to secure the information of the students of ALS.
+            </p>
+        </v-col>
+    </v-row>
+</v-container>
 <v-container class="py-6">
     <p class="text-h6">Developers</p>
     <v-row>
