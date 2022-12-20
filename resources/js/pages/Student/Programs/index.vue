@@ -1,21 +1,21 @@
 <template>
-    <div>
-        <div>
+    <v-card>
+        <v-card-title>
             <span class="text-h5 primary--text">Learning Programs</span>
-        </div>
-        <div>
+        </v-card-title>
+        <v-card-subtitle>
             Listed below are the available learning programs you can enroll
-        </div>
-        <div class="pt-4">
-            <v-data-table :headers="tableHeaders" :items="StudentProgramsStore.state.programs">
+        </v-card-subtitle>
+        <v-card-text>
+            <v-data-table :headers="tableHeaders" :items="ProgramsStore.state.programs">
                 <template v-slot:[`item.actions`]="{item}">
                     <v-btn dense color="primary" small>
                         Enroll
                     </v-btn>
                 </template>
             </v-data-table>
-        </div>
-    </div>
+        </v-card-text>
+    </v-card>
 </template>
 
 <script>
@@ -26,12 +26,12 @@ export default {
                 {text:"Title", value:"title"},
                 {text:"Description", value:"description_short"},
                 {text:"Actions", value:"actions"},
-            ]
+            ],
         }
     },
 
     created() {
-        this.StudentProgramsStore.getPrograms();
+        this.ProgramsStore.getPrograms();
     }
 }
 </script>

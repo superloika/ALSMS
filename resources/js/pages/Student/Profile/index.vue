@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <div class="mb-6">
-            <div class="text-h5 primary--text">Student Profile</div>
-        </div>
-        <div>
+    <v-card>
+        <v-card-title class="primary">
+            <div class="text-h5 white--text">Student Profile</div>
+        </v-card-title>
+        <v-card-text class="pt-4">
             <v-row>
                 <v-col cols="12" md="3">
                     <v-text-field
@@ -108,11 +108,11 @@
                     ></v-text-field>
                 </v-col>
             </v-row>
-        </div>
-        <div class="mt-4">
+        </v-card-text>
+        <v-card-actions class="d-flex justify-end">
             <v-btn color="primary" @click="updateProfile()">Update Profile</v-btn>
-        </div>
-    </div>
+        </v-card-actions>
+    </v-card>
 </template>
 
 <script>

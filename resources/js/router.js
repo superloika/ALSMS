@@ -56,6 +56,11 @@ const router = new VueRouter({
                     name: "admin.dashboard",
                     component: ()=>import("./pages/Admin/Dashboard.vue"),
                 },
+                {
+                    path: "maintenance",
+                    name: "admin.maintenance",
+                    component: ()=>import("./pages/Admin/Maintenance"),
+                },
             ]
         },
         // /ADMIN ==============================================================================

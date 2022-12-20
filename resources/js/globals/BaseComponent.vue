@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-container class="primaryx" fluid>
+        <v-container class="" fluid>
             <component v-bind:is="userTypeComponent"></component>
         </v-container>
 
@@ -75,5 +75,21 @@ export default {
 
 div.v-tab {
     padding: 0px 5px;
+}
+
+.theme--light.v-text-field--filled > .v-input__control > .v-input__slot {
+    background: #f7f7f7;
+    /* border: 1px solid rgba(0, 0, 0, 0.38); */
+    /* border-bottom-left-radius: 4px; */
+    /* border-bottom-right-radius: 4px; */
+
+    &:before {
+        display: none;
+    }
+}
+
+.v-input--is-focused .v-input__slot {
+    /* border: 2px solid #00cca0 !important; */
+    /* border-bottom-color: rgba(0, 0, 0, 0.38) !important; */
 }
 </style>

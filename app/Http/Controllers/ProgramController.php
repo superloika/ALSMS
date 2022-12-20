@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ProgramController extends Controller
 {
@@ -37,9 +39,41 @@ class ProgramController extends Controller
 
     public function getPrograms()
     {
-        $programs = DB::table('programs')->get();
-        // dd($programs);
+        $programs = DB::table('programs')->latest()->get();
         return response()->json($programs);
+    }
+
+    public function saveProgram()
+    {
+        try {
+            $data = request()->data;
+            extract($data);
+            // $slug = Str::snake($value)::snake($title);
+            $slug = Str::slug($title);
+
+            DB::table('programs')->insert([
+                'title'=>$title,
+                'slug'=>$slug,
+                'description_short'=>$description_short,
+                'description_long'=>$description_long,
+                'created_by'=>Auth::user()->id
+            ]);
+            return response()->json('Success', 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 500);
+        }
+    }
+
+
+    public function deleteProgram()
+    {
+        try {
+            $id = request()->id;
+            DB::table('programs')->where('id', $id)->delete();
+            return response()->json('Done', 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 500);
+        }
     }
 
 }

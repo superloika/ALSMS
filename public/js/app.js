@@ -2298,10 +2298,10 @@ module.exports = {
 /*!*****************************************!*\
   !*** ./node_modules/axios/package.json ***!
   \*****************************************/
-/*! exports provided: name, version, description, main, scripts, repository, keywords, author, license, bugs, homepage, devDependencies, browser, jsdelivr, unpkg, typings, dependencies, bundlesize, default */
+/*! exports provided: _args, _development, _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _spec, _where, author, browser, bugs, bundlesize, dependencies, description, devDependencies, homepage, jsdelivr, keywords, license, main, name, repository, scripts, typings, unpkg, version, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"axios\",\"version\":\"0.21.4\",\"description\":\"Promise based HTTP client for the browser and node.js\",\"main\":\"index.js\",\"scripts\":{\"test\":\"grunt test\",\"start\":\"node ./sandbox/server.js\",\"build\":\"NODE_ENV=production grunt build\",\"preversion\":\"npm test\",\"version\":\"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json\",\"postversion\":\"git push && git push --tags\",\"examples\":\"node ./examples/server.js\",\"coveralls\":\"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js\",\"fix\":\"eslint --fix lib/**/*.js\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/axios/axios.git\"},\"keywords\":[\"xhr\",\"http\",\"ajax\",\"promise\",\"node\"],\"author\":\"Matt Zabriskie\",\"license\":\"MIT\",\"bugs\":{\"url\":\"https://github.com/axios/axios/issues\"},\"homepage\":\"https://axios-http.com\",\"devDependencies\":{\"coveralls\":\"^3.0.0\",\"es6-promise\":\"^4.2.4\",\"grunt\":\"^1.3.0\",\"grunt-banner\":\"^0.6.0\",\"grunt-cli\":\"^1.2.0\",\"grunt-contrib-clean\":\"^1.1.0\",\"grunt-contrib-watch\":\"^1.0.0\",\"grunt-eslint\":\"^23.0.0\",\"grunt-karma\":\"^4.0.0\",\"grunt-mocha-test\":\"^0.13.3\",\"grunt-ts\":\"^6.0.0-beta.19\",\"grunt-webpack\":\"^4.0.2\",\"istanbul-instrumenter-loader\":\"^1.0.0\",\"jasmine-core\":\"^2.4.1\",\"karma\":\"^6.3.2\",\"karma-chrome-launcher\":\"^3.1.0\",\"karma-firefox-launcher\":\"^2.1.0\",\"karma-jasmine\":\"^1.1.1\",\"karma-jasmine-ajax\":\"^0.1.13\",\"karma-safari-launcher\":\"^1.0.0\",\"karma-sauce-launcher\":\"^4.3.6\",\"karma-sinon\":\"^1.0.5\",\"karma-sourcemap-loader\":\"^0.3.8\",\"karma-webpack\":\"^4.0.2\",\"load-grunt-tasks\":\"^3.5.2\",\"minimist\":\"^1.2.0\",\"mocha\":\"^8.2.1\",\"sinon\":\"^4.5.0\",\"terser-webpack-plugin\":\"^4.2.3\",\"typescript\":\"^4.0.5\",\"url-search-params\":\"^0.10.0\",\"webpack\":\"^4.44.2\",\"webpack-dev-server\":\"^3.11.0\"},\"browser\":{\"./lib/adapters/http.js\":\"./lib/adapters/xhr.js\"},\"jsdelivr\":\"dist/axios.min.js\",\"unpkg\":\"dist/axios.min.js\",\"typings\":\"./index.d.ts\",\"dependencies\":{\"follow-redirects\":\"^1.14.0\"},\"bundlesize\":[{\"path\":\"./dist/axios.min.js\",\"threshold\":\"5kB\"}]}");
+module.exports = JSON.parse("{\"_args\":[[\"axios@0.21.4\",\"C:\\\\Users\\\\sysdev\\\\Documents\\\\KALOY\\\\SIDE\\\\ALSMS\\\\ALSMS\"]],\"_development\":true,\"_from\":\"axios@0.21.4\",\"_id\":\"axios@0.21.4\",\"_inBundle\":false,\"_integrity\":\"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==\",\"_location\":\"/axios\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"axios@0.21.4\",\"name\":\"axios\",\"escapedName\":\"axios\",\"rawSpec\":\"0.21.4\",\"saveSpec\":null,\"fetchSpec\":\"0.21.4\"},\"_requiredBy\":[\"#DEV:/\"],\"_resolved\":\"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz\",\"_spec\":\"0.21.4\",\"_where\":\"C:\\\\Users\\\\sysdev\\\\Documents\\\\KALOY\\\\SIDE\\\\ALSMS\\\\ALSMS\",\"author\":{\"name\":\"Matt Zabriskie\"},\"browser\":{\"./lib/adapters/http.js\":\"./lib/adapters/xhr.js\"},\"bugs\":{\"url\":\"https://github.com/axios/axios/issues\"},\"bundlesize\":[{\"path\":\"./dist/axios.min.js\",\"threshold\":\"5kB\"}],\"dependencies\":{\"follow-redirects\":\"^1.14.0\"},\"description\":\"Promise based HTTP client for the browser and node.js\",\"devDependencies\":{\"coveralls\":\"^3.0.0\",\"es6-promise\":\"^4.2.4\",\"grunt\":\"^1.3.0\",\"grunt-banner\":\"^0.6.0\",\"grunt-cli\":\"^1.2.0\",\"grunt-contrib-clean\":\"^1.1.0\",\"grunt-contrib-watch\":\"^1.0.0\",\"grunt-eslint\":\"^23.0.0\",\"grunt-karma\":\"^4.0.0\",\"grunt-mocha-test\":\"^0.13.3\",\"grunt-ts\":\"^6.0.0-beta.19\",\"grunt-webpack\":\"^4.0.2\",\"istanbul-instrumenter-loader\":\"^1.0.0\",\"jasmine-core\":\"^2.4.1\",\"karma\":\"^6.3.2\",\"karma-chrome-launcher\":\"^3.1.0\",\"karma-firefox-launcher\":\"^2.1.0\",\"karma-jasmine\":\"^1.1.1\",\"karma-jasmine-ajax\":\"^0.1.13\",\"karma-safari-launcher\":\"^1.0.0\",\"karma-sauce-launcher\":\"^4.3.6\",\"karma-sinon\":\"^1.0.5\",\"karma-sourcemap-loader\":\"^0.3.8\",\"karma-webpack\":\"^4.0.2\",\"load-grunt-tasks\":\"^3.5.2\",\"minimist\":\"^1.2.0\",\"mocha\":\"^8.2.1\",\"sinon\":\"^4.5.0\",\"terser-webpack-plugin\":\"^4.2.3\",\"typescript\":\"^4.0.5\",\"url-search-params\":\"^0.10.0\",\"webpack\":\"^4.44.2\",\"webpack-dev-server\":\"^3.11.0\"},\"homepage\":\"https://axios-http.com\",\"jsdelivr\":\"dist/axios.min.js\",\"keywords\":[\"xhr\",\"http\",\"ajax\",\"promise\",\"node\"],\"license\":\"MIT\",\"main\":\"index.js\",\"name\":\"axios\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/axios/axios.git\"},\"scripts\":{\"build\":\"NODE_ENV=production grunt build\",\"coveralls\":\"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js\",\"examples\":\"node ./examples/server.js\",\"fix\":\"eslint --fix lib/**/*.js\",\"postversion\":\"git push && git push --tags\",\"preversion\":\"npm test\",\"start\":\"node ./sandbox/server.js\",\"test\":\"grunt test\",\"version\":\"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json\"},\"typings\":\"./index.d.ts\",\"unpkg\":\"dist/axios.min.js\",\"version\":\"0.21.4\"}");
 
 /***/ }),
 
@@ -2354,11 +2354,11 @@ __webpack_require__.r(__webpack_exports__);
     userTypeComponent: function userTypeComponent() {
       if (this.AppStore.isAdmin()) {
         return function () {
-          return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../pages/Admin/Base.vue */ "./resources/js/pages/Admin/Base.vue"));
+          return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../pages/Admin/Base.vue */ "./resources/js/pages/Admin/Base.vue"));
         };
       } else if (this.AppStore.isStudent()) {
         return function () {
-          return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../pages/Student/Base.vue */ "./resources/js/pages/Student/Base.vue"));
+          return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../pages/Student/Base.vue */ "./resources/js/pages/Student/Base.vue"));
         };
       }
     }
@@ -2379,7 +2379,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -2904,7 +2903,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Nav: function Nav() {
+      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ./Nav.vue */ "./resources/js/pages/ManageAccounts/Nav.vue"));
+    }
+  },
   data: function data() {
     var _this = this;
 
@@ -3158,10 +3172,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     AccountsAdd: function AccountsAdd() {
@@ -3169,6 +3179,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     AccountsEdit: function AccountsEdit() {
       return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./AccountsEdit.vue */ "./resources/js/pages/ManageAccounts/AccountsEdit.vue"));
+    },
+    Nav: function Nav() {
+      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ./Nav.vue */ "./resources/js/pages/ManageAccounts/Nav.vue"));
     }
   },
   data: function data() {
@@ -3247,7 +3260,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.search-field {\n    border: 1px solid #f1f1f1;\n}\n\n/* .v-data-table__wrapper table tbody tr{\n\n    } */\n.v-data-table__wrapper table tbody tr td.text-start {\n    /* color: #222222; */\n    /* font-size: 12px; */\n}\n.theme--dark.v-data-table\n    > .v-data-table__wrapper\n    > table\n    > tbody\n    > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {\n    background-color: #000000;\n}\ndiv.v-tab {\n    padding: 0px 5px;\n}\n", ""]);
+exports.push([module.i, "\n.search-field {\n    border: 1px solid #f1f1f1;\n}\n\n/* .v-data-table__wrapper table tbody tr{\n\n    } */\n.v-data-table__wrapper table tbody tr td.text-start {\n    /* color: #222222; */\n    /* font-size: 12px; */\n}\n.theme--dark.v-data-table\n    > .v-data-table__wrapper\n    > table\n    > tbody\n    > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {\n    background-color: #000000;\n}\ndiv.v-tab {\n    padding: 0px 5px;\n}\n.theme--light.v-text-field--filled > .v-input__control > .v-input__slot {\n    background: #f7f7f7;\n    /* border: 1px solid rgba(0, 0, 0, 0.38); */\n    /* border-bottom-left-radius: 4px; */\n    /* border-bottom-right-radius: 4px; */\n&:before {\n        display: none;\n}\n}\n.v-input--is-focused .v-input__slot {\n    /* border: 2px solid #00cca0 !important; */\n    /* border-bottom-color: rgba(0, 0, 0, 0.38) !important; */\n}\n", ""]);
 
 // exports
 
@@ -5133,7 +5146,7 @@ var render = function() {
     [
       _c(
         "v-container",
-        { staticClass: "primaryx", attrs: { fluid: "" } },
+        { attrs: { fluid: "" } },
         [_c(_vm.userTypeComponent, { tag: "component" })],
         1
       ),
@@ -5240,13 +5253,8 @@ var render = function() {
       _c(
         "v-card",
         {
-          staticClass: "elevation-1",
-          attrs: {
-            "max-width": "400",
-            "min-width": "300",
-            elevation: "1",
-            tile: ""
-          }
+          staticClass: "elevation-0",
+          attrs: { "max-width": "400", "min-width": "300" }
         },
         [
           _c(
@@ -5748,7 +5756,7 @@ var render = function() {
     { staticClass: "ma-6" },
     [
       _c("v-chip", { attrs: { color: "error", label: "", "x-large": "" } }, [
-        _vm._v("\n        404: Not Found\n    ")
+        _vm._v("\r\n        404: Not Found\r\n    ")
       ])
     ],
     1
@@ -5777,271 +5785,294 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
+    "div",
     [
       _c(
-        "v-toolbar",
-        { attrs: { elevation: "0" } },
+        "v-row",
         [
-          _c("v-toolbar-title", [_vm._v("Add Account")]),
-          _vm._v(" "),
-          _c("v-spacer"),
+          _c("v-col", { attrs: { cols: "12", md: "3" } }, [_c("Nav")], 1),
           _vm._v(" "),
           _c(
-            "v-btn",
-            {
-              staticClass: "mr-2",
-              attrs: {
-                dense: "",
-                icon: "",
-                rounded: "",
-                to: "/user-accounts",
-                title: "Back to User Accounts"
-              }
-            },
-            [
-              _c("v-icon", [
-                _vm._v("\n                mdi-keyboard-backspace\n            ")
-              ])
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-card-text",
-        [
-          _c(
-            "v-container",
-            { attrs: { "grid-list-xs": "" } },
+            "v-col",
+            { attrs: { cols: "12", md: "9" } },
             [
               _c(
-                "v-alert",
-                {
-                  attrs: {
-                    densex: "",
-                    rounded: "",
-                    text: "",
-                    type: "error",
-                    dismissible: "",
-                    transition: "scale-transition"
-                  },
-                  model: {
-                    value: _vm.errMsgsShown,
-                    callback: function($$v) {
-                      _vm.errMsgsShown = $$v
-                    },
-                    expression: "errMsgsShown"
-                  }
-                },
-                _vm._l(_vm.errMsgs, function(errMsg, index) {
-                  return _c("p", { key: index, staticClass: "ma-0 pa-0" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(errMsg) +
-                        "\n                "
-                    )
-                  ])
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "v-form",
-                {
-                  ref: "frm_add",
-                  model: {
-                    value: _vm.frm_add,
-                    callback: function($$v) {
-                      _vm.frm_add = $$v
-                    },
-                    expression: "frm_add"
-                  }
-                },
+                "v-card",
                 [
                   _c(
-                    "v-row",
-                    { staticClass: "pa-0" },
+                    "v-toolbar",
+                    { attrs: { elevation: "0" } },
                     [
-                      _c(
-                        "v-col",
-                        {
-                          staticClass: "pt-1 pb-1",
-                          attrs: { cols: "12", md: "4", sm: "6" }
-                        },
-                        [
-                          _c("v-text-field", {
-                            attrs: {
-                              "hide-detailsx": "",
-                              filled: "",
-                              required: "",
-                              label: "Name *",
-                              rules: _vm.newAccount.rules.name
-                            },
-                            model: {
-                              value: _vm.newAccount.name,
-                              callback: function($$v) {
-                                _vm.$set(_vm.newAccount, "name", $$v)
-                              },
-                              expression: "newAccount.name"
-                            }
-                          })
-                        ],
-                        1
-                      ),
+                      _c("v-toolbar-title", [_vm._v("New Account")]),
+                      _vm._v(" "),
+                      _c("v-spacer"),
                       _vm._v(" "),
                       _c(
-                        "v-col",
+                        "v-btn",
                         {
-                          staticClass: "pt-1 pb-1",
-                          attrs: { cols: "12", md: "4", sm: "6" }
+                          attrs: {
+                            color: "primary",
+                            loading: _vm.savingNewUser
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.saveNewUser()
+                            }
+                          }
                         },
                         [
-                          _c("v-text-field", {
-                            attrs: {
-                              "hide-detailsx": "",
-                              filled: "",
-                              label: "Username *",
-                              required: "",
-                              rules: _vm.newAccount.rules.username
-                            },
-                            model: {
-                              value: _vm.newAccount.username,
-                              callback: function($$v) {
-                                _vm.$set(_vm.newAccount, "username", $$v)
-                              },
-                              expression: "newAccount.username"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        {
-                          staticClass: "pt-1 pb-1",
-                          attrs: { cols: "12", md: "4", sm: "6" }
-                        },
-                        [
-                          _c("v-select", {
-                            attrs: {
-                              "hide-detailsx": "",
-                              filled: "",
-                              items: _vm.ManageAccounts.state.userTypes,
-                              label: "User Type *",
-                              required: "",
-                              rules: _vm.newAccount.rules.user_type
-                            },
-                            model: {
-                              value: _vm.newAccount.user_type,
-                              callback: function($$v) {
-                                _vm.$set(_vm.newAccount, "user_type", $$v)
-                              },
-                              expression: "newAccount.user_type"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        {
-                          staticClass: "pt-1 pb-1",
-                          attrs: { cols: "12", md: "4", sm: "6" }
-                        },
-                        [
-                          _c("v-text-field", {
-                            attrs: {
-                              "hide-detailsx": "",
-                              filled: "",
-                              label: "Password *",
-                              autocomplete: "false",
-                              required: "",
-                              type: "password",
-                              rules: _vm.newAccount.rules.password
-                            },
-                            model: {
-                              value: _vm.newAccount.password,
-                              callback: function($$v) {
-                                _vm.$set(_vm.newAccount, "password", $$v)
-                              },
-                              expression: "newAccount.password"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        {
-                          staticClass: "pt-1 pb-1",
-                          attrs: { cols: "12", md: "4", sm: "6" }
-                        },
-                        [
-                          _c("v-text-field", {
-                            attrs: {
-                              "hide-detailsx": "",
-                              filled: "",
-                              label: "Confirm Password *",
-                              autocomplete: "false",
-                              required: "",
-                              type: "password",
-                              rules: _vm.newAccount.rules.passwordConfirm
-                            },
-                            model: {
-                              value: _vm.newAccount.passwordConfirm,
-                              callback: function($$v) {
-                                _vm.$set(_vm.newAccount, "passwordConfirm", $$v)
-                              },
-                              expression: "newAccount.passwordConfirm"
-                            }
-                          })
-                        ],
-                        1
+                          _vm._v(
+                            "\n                        Save New Account\n                    "
+                          )
+                        ]
                       )
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
-                    "v-row",
-                    { staticClass: "pa-0" },
+                    "v-card-text",
                     [
-                      _c("v-col", [
-                        _c(
-                          "div",
-                          { staticClass: "float-right" },
-                          [
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: {
-                                  color: "primary",
-                                  loading: _vm.savingNewUser
-                                },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.saveNewUser()
-                                  }
-                                }
+                      _c(
+                        "v-container",
+                        { attrs: { "grid-list-xs": "" } },
+                        [
+                          _c(
+                            "v-alert",
+                            {
+                              attrs: {
+                                densex: "",
+                                rounded: "",
+                                text: "",
+                                type: "error",
+                                dismissible: "",
+                                transition: "scale-transition"
                               },
-                              [
-                                _vm._v(
-                                  "\n                                Save New Account\n                            "
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      ])
+                              model: {
+                                value: _vm.errMsgsShown,
+                                callback: function($$v) {
+                                  _vm.errMsgsShown = $$v
+                                },
+                                expression: "errMsgsShown"
+                              }
+                            },
+                            _vm._l(_vm.errMsgs, function(errMsg, index) {
+                              return _c(
+                                "p",
+                                { key: index, staticClass: "ma-0 pa-0" },
+                                [
+                                  _vm._v(
+                                    "\n                                " +
+                                      _vm._s(errMsg) +
+                                      "\n                            "
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          ),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c(
+                            "v-form",
+                            {
+                              ref: "frm_add",
+                              model: {
+                                value: _vm.frm_add,
+                                callback: function($$v) {
+                                  _vm.frm_add = $$v
+                                },
+                                expression: "frm_add"
+                              }
+                            },
+                            [
+                              _c(
+                                "v-row",
+                                { staticClass: "pa-0" },
+                                [
+                                  _c(
+                                    "v-col",
+                                    {
+                                      staticClass: "pt-1 pb-1",
+                                      attrs: { cols: "12", md: "4", sm: "6" }
+                                    },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          "hide-detailsx": "",
+                                          filled: "",
+                                          required: "",
+                                          label: "Name *",
+                                          rules: _vm.newAccount.rules.name
+                                        },
+                                        model: {
+                                          value: _vm.newAccount.name,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.newAccount,
+                                              "name",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "newAccount.name"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    {
+                                      staticClass: "pt-1 pb-1",
+                                      attrs: { cols: "12", md: "4", sm: "6" }
+                                    },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          "hide-detailsx": "",
+                                          filled: "",
+                                          label: "Username *",
+                                          required: "",
+                                          rules: _vm.newAccount.rules.username
+                                        },
+                                        model: {
+                                          value: _vm.newAccount.username,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.newAccount,
+                                              "username",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "newAccount.username"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    {
+                                      staticClass: "pt-1 pb-1",
+                                      attrs: { cols: "12", md: "4", sm: "6" }
+                                    },
+                                    [
+                                      _c("v-select", {
+                                        attrs: {
+                                          "hide-detailsx": "",
+                                          filled: "",
+                                          items:
+                                            _vm.ManageAccounts.state.userTypes,
+                                          label: "User Type *",
+                                          required: "",
+                                          rules: _vm.newAccount.rules.user_type
+                                        },
+                                        model: {
+                                          value: _vm.newAccount.user_type,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.newAccount,
+                                              "user_type",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "newAccount.user_type"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    {
+                                      staticClass: "pt-1 pb-1",
+                                      attrs: { cols: "12", md: "4", sm: "6" }
+                                    },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          "hide-detailsx": "",
+                                          filled: "",
+                                          label: "Password *",
+                                          autocomplete: "false",
+                                          required: "",
+                                          type: "password",
+                                          rules: _vm.newAccount.rules.password
+                                        },
+                                        model: {
+                                          value: _vm.newAccount.password,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.newAccount,
+                                              "password",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "newAccount.password"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    {
+                                      staticClass: "pt-1 pb-1",
+                                      attrs: { cols: "12", md: "4", sm: "6" }
+                                    },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          "hide-detailsx": "",
+                                          filled: "",
+                                          label: "Confirm Password *",
+                                          autocomplete: "false",
+                                          required: "",
+                                          type: "password",
+                                          rules:
+                                            _vm.newAccount.rules.passwordConfirm
+                                        },
+                                        model: {
+                                          value: _vm.newAccount.passwordConfirm,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.newAccount,
+                                              "passwordConfirm",
+                                              $$v
+                                            )
+                                          },
+                                          expression:
+                                            "newAccount.passwordConfirm"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-row",
+                                { staticClass: "pa-0" },
+                                [
+                                  _c("v-col", [
+                                    _c("div", { staticClass: "float-right" })
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -6080,167 +6111,196 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      this.AppStore.isSuperAdmin() == false && this.AppStore.isAdmin() == false
-        ? _c("div", { staticClass: "pa-4 error--text" }, [
-            _vm._v(
-              "\n        " +
-                _vm._s(_vm.AppStore.state.guardMsgs.accessDenied) +
-                "\n    "
-            )
-          ])
-        : _c(
-            "v-card",
-            [
-              _c(
-                "v-toolbar",
-                { attrs: { elevation: "0" } },
-                [
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    staticClass: "mr-3",
-                    staticStyle: { "max-width": "200px" },
-                    attrs: {
-                      label: "Search",
-                      clearable: "",
-                      "hide-details": "",
-                      dense: "",
-                      flat: "",
-                      "solo-inverted": ""
-                    },
-                    model: {
-                      value: _vm.ManageAccounts.state.searchKey,
-                      callback: function($$v) {
-                        _vm.$set(_vm.ManageAccounts.state, "searchKey", $$v)
-                      },
-                      expression: "ManageAccounts.state.searchKey"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: {
-                        dense: "",
-                        color: "primary",
-                        to: "/account/add",
-                        title: "Add Account"
-                      }
-                    },
-                    [
-                      _c("v-icon", { staticClass: "mr-1" }, [
-                        _vm._v("mdi-account-plus")
-                      ]),
-                      _vm._v("\n                New Account\n            ")
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-data-table", {
-                attrs: {
-                  loading: _vm.ManageAccounts.state.usersLoading,
-                  items: _vm.filteredUsers,
-                  headers: _vm.tblUsersHeader,
-                  search: _vm.ManageAccounts.state.searchKey,
-                  "checkbox-color": "primary"
-                },
-                scopedSlots: _vm._u(
-                  [
-                    {
-                      key: "item.actions",
-                      fn: function(ref) {
-                        var item = ref.item
-                        return [
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { dense: "", icon: "", title: "Edit" },
-                              on: {
-                                click: function($event) {
-                                  $event.stopPropagation()
-                                  return _vm.ManageAccounts.editAccount(item)
-                                }
-                              }
-                            },
-                            [_c("v-icon", [_vm._v("mdi-account-edit")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { dense: "", icon: "", title: "Delete" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.ManageAccounts.confirmDeleteAccount(
-                                    item
-                                  )
-                                }
-                              }
-                            },
-                            [_c("v-icon", [_vm._v("mdi-delete-forever")])],
-                            1
-                          )
-                        ]
-                      }
-                    }
-                  ],
-                  null,
-                  true
-                )
-              }),
-              _vm._v(" "),
-              _c(
-                "v-dialog",
-                {
-                  attrs: { "max-width": "800", persistent: "" },
-                  model: {
-                    value: _vm.ManageAccounts.state.modalAddIsOpen,
-                    callback: function($$v) {
-                      _vm.$set(_vm.ManageAccounts.state, "modalAddIsOpen", $$v)
-                    },
-                    expression: "ManageAccounts.state.modalAddIsOpen"
-                  }
-                },
-                [
-                  _vm.ManageAccounts.state.modalAddIsOpen
-                    ? _c("AccountsAdd")
-                    : _vm._e()
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-dialog",
-                {
-                  attrs: { "max-width": "800", persistent: "" },
-                  model: {
-                    value: _vm.ManageAccounts.state.modalEditIsOpen,
-                    callback: function($$v) {
-                      _vm.$set(_vm.ManageAccounts.state, "modalEditIsOpen", $$v)
-                    },
-                    expression: "ManageAccounts.state.modalEditIsOpen"
-                  }
-                },
-                [
-                  _vm.ManageAccounts.state.modalEditIsOpen
-                    ? _c("AccountsEdit")
-                    : _vm._e()
-                ],
-                1
-              )
-            ],
-            1
+  return _c("div", [
+    this.AppStore.isSuperAdmin() == false && this.AppStore.isAdmin() == false
+      ? _c("div", { staticClass: "pa-4 error--text" }, [
+          _vm._v(
+            "\n        " +
+              _vm._s(_vm.AppStore.state.guardMsgs.accessDenied) +
+              "\n    "
           )
-    ],
-    1
-  )
+        ])
+      : _c(
+          "div",
+          [
+            _c(
+              "v-row",
+              [
+                _c("v-col", { attrs: { cols: "12", md: "3" } }, [_c("Nav")], 1),
+                _vm._v(" "),
+                _c(
+                  "v-col",
+                  { attrs: { cols: "12", md: "9" } },
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c(
+                          "v-toolbar",
+                          { attrs: { elevation: "0" } },
+                          [
+                            _c("v-toolbar-title", [_vm._v("User Accounts")]),
+                            _vm._v(" "),
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c("v-text-field", {
+                              staticStyle: { "max-width": "200px" },
+                              attrs: {
+                                label: "Search",
+                                clearable: "",
+                                "hide-details": "",
+                                dense: "",
+                                flat: "",
+                                "solo-inverted": ""
+                              },
+                              model: {
+                                value: _vm.ManageAccounts.state.searchKey,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.ManageAccounts.state,
+                                    "searchKey",
+                                    $$v
+                                  )
+                                },
+                                expression: "ManageAccounts.state.searchKey"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("v-data-table", {
+                          attrs: {
+                            loading: _vm.ManageAccounts.state.usersLoading,
+                            items: _vm.filteredUsers,
+                            headers: _vm.tblUsersHeader,
+                            search: _vm.ManageAccounts.state.searchKey,
+                            "checkbox-color": "primary"
+                          },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "item.actions",
+                                fn: function(ref) {
+                                  var item = ref.item
+                                  return [
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          dense: "",
+                                          icon: "",
+                                          title: "Edit"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            $event.stopPropagation()
+                                            return _vm.ManageAccounts.editAccount(
+                                              item
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("v-icon", [
+                                          _vm._v("mdi-account-edit")
+                                        ])
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          dense: "",
+                                          icon: "",
+                                          title: "Delete"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.ManageAccounts.confirmDeleteAccount(
+                                              item
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("v-icon", [
+                                          _vm._v("mdi-delete-forever")
+                                        ])
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                }
+                              }
+                            ],
+                            null,
+                            true
+                          )
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "v-dialog",
+                          {
+                            attrs: { "max-width": "800", persistent: "" },
+                            model: {
+                              value: _vm.ManageAccounts.state.modalAddIsOpen,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.ManageAccounts.state,
+                                  "modalAddIsOpen",
+                                  $$v
+                                )
+                              },
+                              expression: "ManageAccounts.state.modalAddIsOpen"
+                            }
+                          },
+                          [
+                            _vm.ManageAccounts.state.modalAddIsOpen
+                              ? _c("AccountsAdd")
+                              : _vm._e()
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-dialog",
+                          {
+                            attrs: { "max-width": "800", persistent: "" },
+                            model: {
+                              value: _vm.ManageAccounts.state.modalEditIsOpen,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.ManageAccounts.state,
+                                  "modalEditIsOpen",
+                                  $$v
+                                )
+                              },
+                              expression: "ManageAccounts.state.modalEditIsOpen"
+                            }
+                          },
+                          [
+                            _vm.ManageAccounts.state.modalEditIsOpen
+                              ? _c("AccountsEdit")
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -68744,25 +68804,25 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: "dashboard",
       name: "student.dashboard",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ./pages/Student/Dashboard.vue */ "./resources/js/pages/Student/Dashboard.vue"));
+        return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ./pages/Student/Dashboard.vue */ "./resources/js/pages/Student/Dashboard.vue"));
       }
     }, {
       path: "programs",
       name: "student.programs",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ./pages/Student/Programs */ "./resources/js/pages/Student/Programs/index.vue"));
+        return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ./pages/Student/Programs */ "./resources/js/pages/Student/Programs/index.vue"));
       }
     }, {
       path: "announcements",
       name: "student.announcements",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ./pages/Student/Announcements */ "./resources/js/pages/Student/Announcements/index.vue"));
+        return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./pages/Student/Announcements */ "./resources/js/pages/Student/Announcements/index.vue"));
       }
     }, {
       path: "profile",
       name: "student.profile",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./pages/Student/Profile */ "./resources/js/pages/Student/Profile/index.vue"));
+        return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./pages/Student/Profile */ "./resources/js/pages/Student/Profile/index.vue"));
       }
     }]
   }, // /STUDENT ===========================================================================
@@ -68779,7 +68839,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: "dashboard",
       name: "admin.dashboard",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./pages/Admin/Dashboard.vue */ "./resources/js/pages/Admin/Dashboard.vue"));
+        return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ./pages/Admin/Dashboard.vue */ "./resources/js/pages/Admin/Dashboard.vue"));
+      }
+    }, {
+      path: "maintenance",
+      name: "admin.maintenance",
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ./pages/Admin/Maintenance */ "./resources/js/pages/Admin/Maintenance/index.vue"));
       }
     }]
   }, // /ADMIN ==============================================================================
@@ -68833,6 +68899,7 @@ router.beforeEach(function (to, from, next) {
 var map = {
 	"./AppStore.js": "./resources/js/stores.custom/AppStore.js",
 	"./ManageAccounts.js": "./resources/js/stores.custom/ManageAccounts.js",
+	"./ProgramsStore.js": "./resources/js/stores.custom/ProgramsStore.js",
 	"./StudentProgramsStore.js": "./resources/js/stores.custom/StudentProgramsStore.js"
 };
 
@@ -68946,6 +69013,15 @@ var actions = {
 
     });
     return formatter.format(number).replace('php', '').replace('₱', '');
+  },
+  resetForm: function resetForm(obj) {
+    var setAll = function setAll(obj, val) {
+      return Object.keys(obj).forEach(function (k) {
+        return obj[k] = val;
+      });
+    };
+
+    setAll(obj, "");
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (_objectSpread({
@@ -69108,6 +69184,77 @@ var actions = {
 
 /***/ }),
 
+/***/ "./resources/js/stores.custom/ProgramsStore.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/stores.custom/ProgramsStore.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _AppStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppStore */ "./resources/js/stores.custom/AppStore.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var state = vue__WEBPACK_IMPORTED_MODULE_1___default.a.observable({
+  programs: []
+});
+var actions = {
+  getPrograms: function getPrograms() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var url, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              url = "".concat(_AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].state.siteUrl, "learning-programs/getPrograms");
+              state.programs = [];
+              _context.prev = 2;
+              _context.next = 5;
+              return axios.get(url);
+
+            case 5:
+              response = _context.sent;
+              state.programs = response.data;
+              _context.next = 12;
+              break;
+
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](2);
+              _AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].toast(_context.t0, 2500, 'error');
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 9]]);
+    }))();
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (_objectSpread({
+  state: state
+}, actions));
+
+/***/ }),
+
 /***/ "./resources/js/stores.custom/StudentProgramsStore.js":
 /*!************************************************************!*\
   !*** ./resources/js/stores.custom/StudentProgramsStore.js ***!
@@ -69197,8 +69344,8 @@ var actions = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JD\Documents\DEV\C\ALSMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JD\Documents\DEV\C\ALSMS\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\sysdev\Documents\KALOY\SIDE\ALSMS\ALSMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\sysdev\Documents\KALOY\SIDE\ALSMS\ALSMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

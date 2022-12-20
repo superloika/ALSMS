@@ -1,132 +1,146 @@
 <template>
-    <v-card>
-        <v-toolbar elevation="0">
-            <v-toolbar-title>Add Account</v-toolbar-title>
+    <div>
+        <v-row>
+            <v-col cols="12" md="3">
+                <Nav></Nav>
+            </v-col>
+            <v-col cols="12" md="9">
+                <v-card>
+                    <v-toolbar elevation="0" class="">
+                        <v-toolbar-title >New Account</v-toolbar-title>
+                        <v-spacer></v-spacer>
 
-            <v-spacer></v-spacer>
+                        <!-- <v-btn
+                            dense
+                            icon
+                            rounded
+                            to="/user-accounts"
+                            title="Back to User Accounts"
+                            class="mr-2"
+                        >
+                            <v-icon>
+                                mdi-keyboard-backspace
+                            </v-icon>
+                        </v-btn> -->
 
-            <v-btn
-                dense
-                icon
-                rounded
-                to="/user-accounts"
-                title="Back to User Accounts"
-                class="mr-2"
-            >
-                <v-icon>
-                    mdi-keyboard-backspace
-                </v-icon>
-            </v-btn>
-        </v-toolbar>
-        <v-card-text>
-            <v-container grid-list-xs>
-                <v-alert
-                    densex
-                    rounded
-                    text
-                    type="error"
-                    dismissible
-                    transition="scale-transition"
-                    v-model="errMsgsShown"
-                >
-                    <p class="ma-0 pa-0" :key="index"
-                        v-for="(errMsg, index) in errMsgs"
-                    >
-                        {{ errMsg }}
-                    </p>
-                </v-alert>
-                <br />
-
-                <v-form v-model="frm_add" ref="frm_add">
-                    <v-row class="pa-0">
-                        <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
-                            <v-text-field
-                                hide-detailsx
-                                filled
-                                required
-                                label="Name *"
-                                v-model="newAccount.name"
-                                :rules="newAccount.rules.name"
-                            ></v-text-field>
-                        </v-col>
-
-                        <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
-                            <v-text-field
-                                hide-detailsx
-                                filled
-                                label="Username *"
-                                required
-                                v-model="newAccount.username"
-                                :rules="newAccount.rules.username"
-                            ></v-text-field>
-                        </v-col>
-
-                        <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
-                            <v-select
-                                hide-detailsx
-                                filled
-                                :items="ManageAccounts.state.userTypes"
-                                label="User Type *"
-                                required
-                                v-model="newAccount.user_type"
-                                :rules="newAccount.rules.user_type"
+                        <v-btn
+                            color="primary"
+                            @click="saveNewUser()"
+                            :loading="savingNewUser"
+                        >
+                            Save New Account
+                        </v-btn>
+                    </v-toolbar>
+                    <v-card-text>
+                        <v-container grid-list-xs>
+                            <v-alert
+                                densex
+                                rounded
+                                text
+                                type="error"
+                                dismissible
+                                transition="scale-transition"
+                                v-model="errMsgsShown"
                             >
-                            </v-select>
-                        </v-col>
-
-                        <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
-                            <v-text-field
-                                hide-detailsx
-                                filled
-                                label="Password *"
-                                autocomplete="false"
-                                required
-                                type="password"
-                                v-model="newAccount.password"
-                                :rules="newAccount.rules.password"
-                            ></v-text-field>
-                        </v-col>
-
-                        <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
-                            <v-text-field
-                                hide-detailsx
-                                filled
-                                label="Confirm Password *"
-                                autocomplete="false"
-                                required
-                                type="password"
-                                v-model="newAccount.passwordConfirm"
-                                :rules="newAccount.rules.passwordConfirm"
-                            ></v-text-field>
-                        </v-col>
-                    </v-row>
-
-                    <v-row class="pa-0">
-                        <v-col>
-                            <div class="float-right">
-                                <v-btn
-                                    color="primary"
-                                    @click="saveNewUser()"
-                                    :loading="savingNewUser"
+                                <p class="ma-0 pa-0" :key="index"
+                                    v-for="(errMsg, index) in errMsgs"
                                 >
-                                    Save New Account
-                                </v-btn>
-                            </div>
-                        </v-col>
-                    </v-row>
+                                    {{ errMsg }}
+                                </p>
+                            </v-alert>
+                            <br />
 
-                </v-form>
-            </v-container>
-        </v-card-text>
+                            <v-form v-model="frm_add" ref="frm_add">
+                                <v-row class="pa-0">
+                                    <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
+                                        <v-text-field
+                                            hide-detailsx
+                                            filled
+                                            required
+                                            label="Name *"
+                                            v-model="newAccount.name"
+                                            :rules="newAccount.rules.name"
+                                        ></v-text-field>
+                                    </v-col>
 
-        <!-- <v-card-actions>
-            <v-spacer></v-spacer>
-        </v-card-actions> -->
-    </v-card>
+                                    <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
+                                        <v-text-field
+                                            hide-detailsx
+                                            filled
+                                            label="Username *"
+                                            required
+                                            v-model="newAccount.username"
+                                            :rules="newAccount.rules.username"
+                                        ></v-text-field>
+                                    </v-col>
+
+                                    <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
+                                        <v-select
+                                            hide-detailsx
+                                            filled
+                                            :items="ManageAccounts.state.userTypes"
+                                            label="User Type *"
+                                            required
+                                            v-model="newAccount.user_type"
+                                            :rules="newAccount.rules.user_type"
+                                        >
+                                        </v-select>
+                                    </v-col>
+
+                                    <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
+                                        <v-text-field
+                                            hide-detailsx
+                                            filled
+                                            label="Password *"
+                                            autocomplete="false"
+                                            required
+                                            type="password"
+                                            v-model="newAccount.password"
+                                            :rules="newAccount.rules.password"
+                                        ></v-text-field>
+                                    </v-col>
+
+                                    <v-col cols="12" md="4" sm="6" class="pt-1 pb-1">
+                                        <v-text-field
+                                            hide-detailsx
+                                            filled
+                                            label="Confirm Password *"
+                                            autocomplete="false"
+                                            required
+                                            type="password"
+                                            v-model="newAccount.passwordConfirm"
+                                            :rules="newAccount.rules.passwordConfirm"
+                                        ></v-text-field>
+                                    </v-col>
+                                </v-row>
+
+                                <v-row class="pa-0">
+                                    <v-col>
+                                        <div class="float-right">
+
+                                        </div>
+                                    </v-col>
+                                </v-row>
+
+                            </v-form>
+                        </v-container>
+                    </v-card-text>
+
+                    <!-- <v-card-actions>
+                        <v-spacer></v-spacer>
+                    </v-card-actions> -->
+                </v-card>
+            </v-col>
+        </v-row>
+    </div>
 </template>
 
 <script>
 export default {
+    components: {
+        Nav: ()=>import('./Nav.vue')
+    },
+
     data() {
         return {
             nameRegex: /^[a-zA-Z\s]+$/,

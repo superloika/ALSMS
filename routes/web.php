@@ -38,6 +38,7 @@ Route::get('/logout', 'Auth\LogoutController@logout')->name('logout2');
 // Flush current session
 Route::get('/flush-session', 'Auth\LogoutController@flushSession')->name('flushSession');
 
+
 // ACCOUNTS
 // Route::prefix('accounts')->group(function() {
 Route::group(['prefix' => 'accounts'], function() {
@@ -50,10 +51,19 @@ Route::group(['prefix' => 'accounts'], function() {
 });
 
 
+//LEARNING PROGRAMS
+Route::group(['prefix'=>'learning-programs'], function(){
+    Route::get('/getPrograms','ProgramController@getPrograms');
+    Route::post('/saveProgram','ProgramController@saveProgram');
+    Route::post('/deleteProgram','ProgramController@deleteProgram');
+});
+
+
 // ADMIN
 Route::group(['prefix'=>'admin','middleware'=>'user_admin'], function(){
     // Route::get('/admin/dashboard','DashboardController@admin');
 });
+
 
 // STUDENT
 Route::group(['prefix'=>'student','middleware'=>'user_student'], function(){

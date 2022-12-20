@@ -11,8 +11,7 @@
                 ></v-img>
             </a>
         </div>
-        <v-card max-width="400" min-width="300" elevation="1" tile class="elevation-1">
-
+        <v-card max-width="400" min-width="300" class="elevation-0">
             <v-card-text>
                 <v-alert dense type="error" dismissible transition="scale-transition"
                     v-if="error_username" text>
