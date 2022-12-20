@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 20, 2022 at 09:09 AM
+-- Generation Time: Dec 20, 2022 at 10:01 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `alsms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clc`
+--
+
+CREATE TABLE `clc` (
+  `id` int(11) NOT NULL,
+  `code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` float NOT NULL DEFAULT '1',
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `clc`
+--
+
+INSERT INTO `clc` (`id`, `code`, `name`, `address`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, '111', 'BLC', 'Balilihan', 1, 3, '2022-12-20 17:54:51', '2022-12-20 17:54:51');
 
 -- --------------------------------------------------------
 
@@ -181,6 +205,12 @@ CREATE TABLE `websockets_statistics_entries` (
 --
 
 --
+-- Indexes for table `clc`
+--
+ALTER TABLE `clc`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -239,6 +269,12 @@ ALTER TABLE `websockets_statistics_entries`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `clc`
+--
+ALTER TABLE `clc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

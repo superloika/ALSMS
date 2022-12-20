@@ -59,6 +59,14 @@ Route::group(['prefix'=>'learning-programs'], function(){
 });
 
 
+//LEARNING CENTERS
+Route::group(['prefix'=>'clc'], function(){
+    Route::get('/getClcs','ClcController@getClcs');
+    Route::post('/saveClc','ClcController@saveClc');
+    Route::post('/deleteClc','ClcController@deleteClc');
+});
+
+
 // ADMIN
 Route::group(['prefix'=>'admin','middleware'=>'user_admin'], function(){
     // Route::get('/admin/dashboard','DashboardController@admin');
