@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 20, 2022 at 10:01 AM
--- Server version: 5.7.33
--- PHP Version: 7.4.19
+-- Host: 127.0.0.1
+-- Generation Time: Dec 20, 2022 at 11:01 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,30 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clc`
---
-
-CREATE TABLE `clc` (
-  `id` int(11) NOT NULL,
-  `code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` float NOT NULL DEFAULT '1',
-  `created_by` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `clc`
---
-
-INSERT INTO `clc` (`id`, `code`, `name`, `address`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, '111', 'BLC', 'Balilihan', 1, 3, '2022-12-20 17:54:51', '2022-12-20 17:54:51');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `failed_jobs`
 --
 
@@ -57,7 +33,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -112,8 +88,8 @@ CREATE TABLE `profiles` (
   `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guardian` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guardian_address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -133,11 +109,10 @@ CREATE TABLE `programs` (
   `id` int(11) NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description_short` text COLLATE utf8mb4_unicode_ci,
-  `description_long` text COLLATE utf8mb4_unicode_ci,
-  `status` float DEFAULT '1',
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `description_short` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description_long` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Learning programs';
 
@@ -145,12 +120,12 @@ CREATE TABLE `programs` (
 -- Dumping data for table `programs`
 --
 
-INSERT INTO `programs` (`id`, `title`, `slug`, `description_short`, `description_long`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
-(1, 'Test Program', 'test_program', 'Short Description for Test Program', 'This is just a test description for Test Program. This is just a test description for Test Program. This is just a test description for Test Program.', 1, '2022-11-13 12:17:30', '2022-11-13 12:49:08', 3),
-(2, 'Test Learning Program 2', 'test_learning_program_2', 'Short Description for Test Program 2', 'This is just a test description for Test Program This is just a test description for Test Program.\r\nThis is just a test description for Test Program. This is just a test description for Test Program', 1, '2022-11-13 12:17:30', '2022-11-13 12:49:29', 3),
-(3, 'Learning Program for Testing Only Learning Program for Testing Only', 'learning_program_for_testing_only_learning_program_for_testing_only', 'Short Description for Test Program 3', 'This is just a test description for Test Program', 1, '2022-11-13 12:17:30', '2022-11-13 12:50:11', 3),
-(4, 'Asdf qweqwe QWqwq', 'test_qwert', 'Short Description for Test Program 4', 'Asdf qweqwe QWqwq Asdf qweqwe QWqwq Asdf qweqwe QWqwq.\r\n\r\nAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwq Asdf qweqwe QWqwq\r\nAsdf qweqwe QWqwq\r\n\r\nAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwq.', 1, '2022-11-13 12:17:30', '2022-11-13 13:37:32', 3),
-(12, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit', 1, '2022-12-20 16:08:27', '2022-12-20 16:08:27', 3);
+INSERT INTO `programs` (`id`, `title`, `slug`, `description_short`, `description_long`, `created_at`, `updated_at`, `created_by`) VALUES
+(1, 'Test Program', 'test_program', 'Short Description for Test Program', 'This is just a test description for Test Program. This is just a test description for Test Program. This is just a test description for Test Program.', '2022-11-13 12:17:30', '2022-11-13 12:49:08', 3),
+(2, 'Test Learning Program 2', 'test_learning_program_2', 'Short Description for Test Program 2', 'This is just a test description for Test Program This is just a test description for Test Program.\r\nThis is just a test description for Test Program. This is just a test description for Test Program', '2022-11-13 12:17:30', '2022-11-13 12:49:29', 3),
+(3, 'Learning Program for Testing Only Learning Program for Testing Only', 'learning_program_for_testing_only_learning_program_for_testing_only', 'Short Description for Test Program 3', 'This is just a test description for Test Program', '2022-11-13 12:17:30', '2022-11-13 12:50:11', 3),
+(4, 'Asdf qweqwe QWqwq', 'test_qwert', 'Short Description for Test Program 4', 'Asdf qweqwe QWqwq Asdf qweqwe QWqwq Asdf qweqwe QWqwq.\r\n\r\nAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwq Asdf qweqwe QWqwq\r\nAsdf qweqwe QWqwq\r\n\r\nAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwq.', '2022-11-13 12:17:30', '2022-11-13 13:37:32', 3),
+(5, 'Test', 'test', 'test ra ni', 'test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni \n\ntest ra ni test ra ni test ra ni test ra ni test ra ni test ra ni', '2022-12-20 21:08:43', '2022-12-20 21:08:43', 3);
 
 -- --------------------------------------------------------
 
@@ -203,12 +178,6 @@ CREATE TABLE `websockets_statistics_entries` (
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `clc`
---
-ALTER TABLE `clc`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -271,12 +240,6 @@ ALTER TABLE `websockets_statistics_entries`
 --
 
 --
--- AUTO_INCREMENT for table `clc`
---
-ALTER TABLE `clc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -292,7 +255,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`

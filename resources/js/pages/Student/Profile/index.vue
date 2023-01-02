@@ -109,7 +109,7 @@
                 </v-col>
             </v-row>
         </v-card-text>
-        <v-card-actions class="d-flex justify-end">
+        <v-card-actions class="d-flex justify-end pt-0 pr-4 pb-4">
             <v-btn color="primary" @click="updateProfile()">Update Profile</v-btn>
         </v-card-actions>
     </v-card>

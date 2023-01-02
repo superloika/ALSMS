@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-app-bar app class="elevation-0" color="white">
+        <v-app-bar app class="elevation-0" dark color="primary">
             <v-toolbar-title class="ml-1 pr-12">
                 <div class="d-flex">
                     <a href="/">

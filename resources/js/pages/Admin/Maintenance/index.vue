@@ -4,11 +4,11 @@
             <v-col cols="12" md="3">
                 <v-card>
                     <v-tabs vertical v-model="tabs">
-                        <v-tab>
-                            Programs
+                        <v-tab class="text-caption font-weight-bold">
+                            Learning Programs
                         </v-tab>
-                        <v-tab title="Community Learning Centers">
-                            CLC
+                        <v-tab title="Community Learning Centers" class="text-caption font-weight-bold">
+                            Learning Centers
                         </v-tab>
                         <v-tab>
                             LARAVEL
