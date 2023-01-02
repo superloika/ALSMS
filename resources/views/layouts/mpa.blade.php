@@ -116,7 +116,7 @@
                 <v-footer color="primary" class="py-12" paddless dark>
                     <v-row justify="center" no-gutters>
                         <v-col class="text-center py-4">
-                            Copyright (C) 2022
+                            Copyright (C) 2023
                         </v-col>
                     </v-row>
                 </v-footer>

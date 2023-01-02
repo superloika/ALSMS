@@ -197,6 +197,10 @@ export default {
         };
     },
 
+    computed: {
+        // filteredUserType() {}
+    },
+
     watch: {
         'newAccount.name': function() {
             this.newAccount.name = this.newAccount.name.replace('  ',' ').trim();

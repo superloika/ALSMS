@@ -45,6 +45,26 @@ const router = new VueRouter({
         },
         // /STUDENT ===========================================================================
 
+        // TEACHER ==============================================================================
+        {
+            path: "/teacher",
+            name: "teacher",
+            component: { render: h => h('router-view') },
+            children: [
+                {
+                    path: "dashboard",
+                    name: "teacher.dashboard",
+                    component: ()=>import("./pages/Teacher/Dashboard.vue"),
+                },
+                {
+                    path: "maintenance",
+                    name: "teacher.maintenance",
+                    component: ()=>import("./pages/Teacher/Maintenance"),
+                },
+            ]
+        },
+        // /TEACHER ==============================================================================
+
         // ADMIN ==============================================================================
         {
             path: "/admin",

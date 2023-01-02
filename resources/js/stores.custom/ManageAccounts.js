@@ -4,7 +4,7 @@ import AppStore from "./AppStore";
 
 const state = Vue.observable({
     users: [],
-    userTypes: ["super_admin", "admin","student"],
+    userTypes: ["admin"],
     // usersLoading: false,
     modalAddIsOpen: false,
     modalEditIsOpen: false,

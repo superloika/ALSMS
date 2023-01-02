@@ -51,6 +51,20 @@ Route::group(['prefix' => 'accounts'], function() {
 });
 
 
+//School Years
+Route::group(['prefix'=>'sys'], function(){
+    Route::get('/getSchoolYears','SyController@getSchoolYears');
+    Route::post('/saveSchoolYear','SyController@saveSchoolYear');
+    Route::post('/toggleSYStatus','SyController@toggleSYStatus');
+    Route::get('/getActiveSchoolYear','SyController@getActiveSchoolYear');
+});
+
+//Teachers
+Route::group(['prefix'=>'teachers'], function(){
+    Route::get('/getTeachers','TeacherController@getTeachers');
+    Route::post('/saveTeacher','TeacherController@saveTeacher');
+});
+
 //LEARNING PROGRAMS
 Route::group(['prefix'=>'learning-programs'], function(){
     Route::get('/getPrograms','ProgramController@getPrograms');

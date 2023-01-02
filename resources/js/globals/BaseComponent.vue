@@ -38,12 +38,19 @@
 export default {
     computed: {
         userTypeComponent() {
-            if(this.AppStore.isAdmin()) {
+            if(this.AppStore.isAdmin() || this.AppStore.isSuperAdmin()) {
                 return () => import('../pages/Admin/Base.vue');
             } else if(this.AppStore.isStudent()) {
                 return () => import('../pages/Student/Base.vue');
+            } else if(this.AppStore.isTeacher()) {
+                return () => import('../pages/Teacher/Base.vue');
             }
         }
+    },
+
+    created() {
+        this.ProgramsStore.getPrograms();
+        this.SyStore.getActiveSchoolYear();
     },
 
     mounted() {

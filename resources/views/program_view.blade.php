@@ -13,13 +13,13 @@
     @auth
         @if (auth()->user()->user_type=='student')
             <v-container>
-                <v-btn rounded color="primary">Enroll Now</v-btn>
+                <v-btn rounded color="primary" href="/student/dashboard">Enroll Now</v-btn>
             </v-container>
         @endif
     @endauth
     @guest
         <v-container>
-            <v-btn rounded color="primary">Enroll Now</v-btn>
+            <v-btn rounded color="primary" href="/student/dashboard">Enroll Now</v-btn>
         </v-container>
     @endguest
 @endsection

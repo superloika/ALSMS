@@ -18,7 +18,7 @@
                             <v-btn color="primary"
                                 href="{{ route('programs.view',$p->slug) }}"
                             >
-                                Lear More
+                                Learn More
                             </v-btn>
                         </v-card-actions>
                     </v-card>

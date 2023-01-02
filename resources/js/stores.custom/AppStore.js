@@ -58,6 +58,13 @@ const actions = {
         return false;
     },
 
+    isTeacher() {
+        if(window.AuthUser.user_type == 'teacher') {
+            return true;
+        }
+        return false;
+    },
+
     isStudent() {
         if(window.AuthUser.user_type == 'student') {
             return true;

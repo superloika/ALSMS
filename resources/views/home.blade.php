@@ -34,10 +34,10 @@
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="primary"
+                            <v-btn color="primary" text
                                 href="{{ route('programs.view',$p->slug) }}"
                             >
-                                Lear More
+                                Learn More
                             </v-btn>
                         </v-card-actions>
                     </v-card>

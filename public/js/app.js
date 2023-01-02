@@ -2352,7 +2352,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     userTypeComponent: function userTypeComponent() {
-      if (this.AppStore.isAdmin()) {
+      if (this.AppStore.isAdmin() || this.AppStore.isSuperAdmin()) {
         return function () {
           return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../pages/Admin/Base.vue */ "./resources/js/pages/Admin/Base.vue"));
         };
@@ -2360,8 +2360,16 @@ __webpack_require__.r(__webpack_exports__);
         return function () {
           return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../pages/Student/Base.vue */ "./resources/js/pages/Student/Base.vue"));
         };
+      } else if (this.AppStore.isTeacher()) {
+        return function () {
+          return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! ../pages/Teacher/Base.vue */ "./resources/js/pages/Teacher/Base.vue"));
+        };
       }
     }
+  },
+  created: function created() {
+    this.ProgramsStore.getPrograms();
+    this.SyStore.getActiveSchoolYear();
   },
   mounted: function mounted() {
     console.log("BaseComponent mounted");
@@ -2973,6 +2981,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       errMsgsShown: false
     };
   },
+  computed: {// filteredUserType() {}
+  },
   watch: {
     'newAccount.name': function newAccountName() {
       this.newAccount.name = this.newAccount.name.replace('  ', ' ').trim();
@@ -3260,7 +3270,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.search-field {\r\n    border: 1px solid #f1f1f1;\n}\r\n\r\n/* .v-data-table__wrapper table tbody tr{\r\n\r\n    } */\n.v-data-table__wrapper table tbody tr td.text-start {\r\n    /* color: #222222; */\r\n    /* font-size: 12px; */\n}\n.theme--dark.v-data-table\r\n    > .v-data-table__wrapper\r\n    > table\r\n    > tbody\r\n    > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {\r\n    background-color: #000000;\n}\ndiv.v-tab {\r\n    padding: 0px 5px;\n}\n.theme--light.v-text-field--filled > .v-input__control > .v-input__slot {\r\n    background: #f7f7f7;\r\n    /* border: 1px solid rgba(0, 0, 0, 0.38); */\r\n    /* border-bottom-left-radius: 4px; */\r\n    /* border-bottom-right-radius: 4px; */\n&:before {\r\n        display: none;\n}\n}\n.v-input--is-focused .v-input__slot {\r\n    /* border: 2px solid #00cca0 !important; */\r\n    /* border-bottom-color: rgba(0, 0, 0, 0.38) !important; */\n}\r\n", ""]);
+exports.push([module.i, "\n.search-field {\n    border: 1px solid #f1f1f1;\n}\n\n/* .v-data-table__wrapper table tbody tr{\n\n    } */\n.v-data-table__wrapper table tbody tr td.text-start {\n    /* color: #222222; */\n    /* font-size: 12px; */\n}\n.theme--dark.v-data-table\n    > .v-data-table__wrapper\n    > table\n    > tbody\n    > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {\n    background-color: #000000;\n}\ndiv.v-tab {\n    padding: 0px 5px;\n}\n.theme--light.v-text-field--filled > .v-input__control > .v-input__slot {\n    background: #f7f7f7;\n    /* border: 1px solid rgba(0, 0, 0, 0.38); */\n    /* border-bottom-left-radius: 4px; */\n    /* border-bottom-right-radius: 4px; */\n&:before {\n        display: none;\n}\n}\n.v-input--is-focused .v-input__slot {\n    /* border: 2px solid #00cca0 !important; */\n    /* border-bottom-color: rgba(0, 0, 0, 0.38) !important; */\n}\n", ""]);
 
 // exports
 
@@ -68826,6 +68836,29 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       }
     }]
   }, // /STUDENT ===========================================================================
+  // TEACHER ==============================================================================
+  {
+    path: "/teacher",
+    name: "teacher",
+    component: {
+      render: function render(h) {
+        return h('router-view');
+      }
+    },
+    children: [{
+      path: "dashboard",
+      name: "teacher.dashboard",
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ 21).then(__webpack_require__.bind(null, /*! ./pages/Teacher/Dashboard.vue */ "./resources/js/pages/Teacher/Dashboard.vue"));
+      }
+    }, {
+      path: "maintenance",
+      name: "teacher.maintenance",
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ 28).then(__webpack_require__.bind(null, /*! ./pages/Teacher/Maintenance */ "./resources/js/pages/Teacher/Maintenance/index.vue"));
+      }
+    }]
+  }, // /TEACHER ==============================================================================
   // ADMIN ==============================================================================
   {
     path: "/admin",
@@ -68901,7 +68934,9 @@ var map = {
 	"./ClcStore.js": "./resources/js/stores.custom/ClcStore.js",
 	"./ManageAccounts.js": "./resources/js/stores.custom/ManageAccounts.js",
 	"./ProgramsStore.js": "./resources/js/stores.custom/ProgramsStore.js",
-	"./StudentProgramsStore.js": "./resources/js/stores.custom/StudentProgramsStore.js"
+	"./StudentProgramsStore.js": "./resources/js/stores.custom/StudentProgramsStore.js",
+	"./SyStore.js": "./resources/js/stores.custom/SyStore.js",
+	"./TeachersStore.js": "./resources/js/stores.custom/TeachersStore.js"
 };
 
 
@@ -68993,6 +69028,13 @@ var actions = {
   },
   isAdmin: function isAdmin() {
     if (window.AuthUser.user_type == 'admin') {
+      return true;
+    }
+
+    return false;
+  },
+  isTeacher: function isTeacher() {
+    if (window.AuthUser.user_type == 'teacher') {
       return true;
     }
 
@@ -69132,7 +69174,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var state = vue__WEBPACK_IMPORTED_MODULE_1___default.a.observable({
   users: [],
-  userTypes: ["super_admin", "admin", "student"],
+  userTypes: ["admin"],
   // usersLoading: false,
   modalAddIsOpen: false,
   modalEditIsOpen: false,
@@ -69375,6 +69417,184 @@ var actions = {
             case 5:
               response = _context.sent;
               state.programs = response.data;
+              _context.next = 12;
+              break;
+
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](2);
+              _AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].toast(_context.t0, 2500, 'error');
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 9]]);
+    }))();
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (_objectSpread({
+  state: state
+}, actions));
+
+/***/ }),
+
+/***/ "./resources/js/stores.custom/SyStore.js":
+/*!***********************************************!*\
+  !*** ./resources/js/stores.custom/SyStore.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _AppStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppStore */ "./resources/js/stores.custom/AppStore.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var state = vue__WEBPACK_IMPORTED_MODULE_1___default.a.observable({
+  sys: [],
+  activeSY: {
+    id: null,
+    sy: ''
+  }
+});
+var actions = {
+  getSchoolYears: function getSchoolYears() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var url, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              url = "".concat(_AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].state.siteUrl, "sys/getSchoolYears");
+              state.sys = [];
+              _context.prev = 2;
+              _context.next = 5;
+              return axios.get(url);
+
+            case 5:
+              response = _context.sent;
+              state.sys = response.data;
+              _context.next = 12;
+              break;
+
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](2);
+              _AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].toast(_context.t0, 2500, 'error');
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 9]]);
+    }))();
+  },
+  getActiveSchoolYear: function getActiveSchoolYear() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var url, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              url = "".concat(_AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].state.siteUrl, "sys/getActiveSchoolYear");
+              _context2.prev = 1;
+              _context2.next = 4;
+              return axios.get(url);
+
+            case 4:
+              response = _context2.sent;
+              state.activeSY.id = response.data.id;
+              state.activeSY.sy = response.data.sy;
+              _context2.next = 12;
+              break;
+
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](1);
+              _AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].toast(_context2.t0, 2500, 'error');
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 9]]);
+    }))();
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (_objectSpread({
+  state: state
+}, actions));
+
+/***/ }),
+
+/***/ "./resources/js/stores.custom/TeachersStore.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/stores.custom/TeachersStore.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _AppStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppStore */ "./resources/js/stores.custom/AppStore.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var state = vue__WEBPACK_IMPORTED_MODULE_1___default.a.observable({
+  teachers: []
+});
+var actions = {
+  getTeachers: function getTeachers() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var url, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              url = "".concat(_AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].state.siteUrl, "teachers/getTeachers");
+              state.teachers = [];
+              _context.prev = 2;
+              _context.next = 5;
+              return axios.get(url);
+
+            case 5:
+              response = _context.sent;
+              state.teachers = response.data;
               _context.next = 12;
               break;
 
