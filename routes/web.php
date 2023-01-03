@@ -51,6 +51,24 @@ Route::group(['prefix' => 'accounts'], function() {
 });
 
 
+///////////////////////////////////////////////////////////////////////////////////
+// ADMIN
+Route::group(['prefix'=>'admin','middleware'=>'user_admin'], function(){
+    // Route::get('/admin/dashboard','DashboardController@admin');
+});
+
+//Classes
+Route::group(['prefix'=>'enrollment'], function(){
+    Route::get('/getEnrollments','EnrollmentController@getEnrollments');
+    Route::post('/confirm','EnrollmentController@confirm');
+});
+
+//Classes
+Route::group(['prefix'=>'classes'], function(){
+    Route::get('/getClasses','ClassController@getClasses');
+    Route::post('/saveClass','ClassController@saveClass');
+});
+
 //School Years
 Route::group(['prefix'=>'sys'], function(){
     Route::get('/getSchoolYears','SyController@getSchoolYears');
@@ -72,19 +90,13 @@ Route::group(['prefix'=>'learning-programs'], function(){
     Route::post('/deleteProgram','ProgramController@deleteProgram');
 });
 
-
 //LEARNING CENTERS
 Route::group(['prefix'=>'clc'], function(){
     Route::get('/getClcs','ClcController@getClcs');
     Route::post('/saveClc','ClcController@saveClc');
     Route::post('/deleteClc','ClcController@deleteClc');
 });
-
-
-// ADMIN
-Route::group(['prefix'=>'admin','middleware'=>'user_admin'], function(){
-    // Route::get('/admin/dashboard','DashboardController@admin');
-});
+//////////////////////////////////////////////////////////////////////////////////
 
 
 // STUDENT
@@ -96,6 +108,11 @@ Route::group(['prefix'=>'student','middleware'=>'user_student'], function(){
     Route::group(['prefix'=>'profile'], function(){
         Route::post('/updateProfile','ProfileController@updateProfile');
         Route::get('/getProfile','ProfileController@getProfile');
+    });
+    Route::group(['prefix'=>'classes'], function(){
+        Route::get('/all','StudentClassController@all');
+        Route::post('/enroll','StudentClassController@enroll');
+        Route::post('/cancelRequest','StudentClassController@cancelRequest');
     });
 });
 

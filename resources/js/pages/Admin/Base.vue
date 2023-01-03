@@ -21,6 +21,9 @@
                 <v-tab to="/admin/dashboard" class="font-weight-bold">
                     Dashboard
                 </v-tab>
+                <v-tab to="/admin/enrollment" class="font-weight-bold">
+                    Enrollment
+                </v-tab>
                 <v-tab to="/admin/maintenance" class="font-weight-bold">
                     Maintenance
                 </v-tab>
@@ -83,6 +86,10 @@ export default {
         return {
             navDrawerState: null,
         }
+    },
+
+    created() {
+        this.ClassesStore.getClasses(this.SyStore.state.activeSY.id);
     }
 }
 </script>

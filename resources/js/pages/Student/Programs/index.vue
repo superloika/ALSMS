@@ -4,13 +4,13 @@
             <span class="text-h5 primary--text">Learning Programs</span>
         </v-card-title>
         <v-card-subtitle>
-            Listed below are the available learning programs you can enroll
+            Listed below are learning programs being offered
         </v-card-subtitle>
         <v-card-text>
             <v-data-table :headers="tableHeaders" :items="ProgramsStore.state.programs">
                 <template v-slot:[`item.actions`]="{item}">
-                    <v-btn dense color="primary" small>
-                        Enroll
+                    <v-btn small dense color="primary" small>
+                        More Details
                     </v-btn>
                 </template>
             </v-data-table>

@@ -41,6 +41,7 @@
     <style>
         body, #app {
             background-color: #f1f1f1;
+            /* background-color: #d2fff5; */
         }
     </style>
 </head>

@@ -5,16 +5,10 @@
                 <v-card>
                     <v-tabs vertical v-model="tabs">
                         <v-tab title="School Year" class="text-caption font-weight-bold">
-                            School Year
+                            Pending
                         </v-tab>
                         <v-tab title="Teachers" class="text-caption font-weight-bold">
-                            Teachers
-                        </v-tab>
-                        <v-tab class="text-caption font-weight-bold">
-                            Learning Programs
-                        </v-tab>
-                        <v-tab class="text-caption font-weight-bold">
-                            Classes
+                            Approved
                         </v-tab>
                     </v-tabs>
                 </v-card>
@@ -23,16 +17,10 @@
                 <v-card>
                     <v-tabs-items v-model="tabs" >
                         <v-tab-item>
-                            <SchoolYear></SchoolYear>
+                            <Pending></Pending>
                         </v-tab-item>
                         <v-tab-item>
-                            <Teachers></Teachers>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <Programs></Programs>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <Classes></Classes>
+                            <Approved></Approved>
                         </v-tab-item>
                     </v-tabs-items>
                 </v-card>
@@ -44,16 +32,18 @@
 <script>
 export default {
     components: {
-        Teachers: ()=>import('./Teachers'),
-        SchoolYear: ()=>import('./SchoolYear'),
-        Programs: ()=>import('./Programs'),
-        Classes: ()=>import('./Classes'),
-        // Clc: ()=>import('./Clc'),
+        Pending: ()=>import('./Pending'),
+        Approved: ()=>import('./Approved'),
     },
     data() {
         return {
             tabs: 0,
         }
+    },
+
+    created() {
+        this.EnrollmentStore.getEnrollments(this.SyStore.state.activeSY.id,'Pending');
+        this.EnrollmentStore.getEnrollments(this.SyStore.state.activeSY.id,'Approved');
     }
 }
 </script>

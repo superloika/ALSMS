@@ -2368,8 +2368,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.ProgramsStore.getPrograms();
     this.SyStore.getActiveSchoolYear();
+    this.SyStore.getSchoolYears();
+    this.ProgramsStore.getPrograms();
+    this.TeachersStore.getTeachers();
   },
   mounted: function mounted() {
     console.log("BaseComponent mounted");
@@ -68817,6 +68819,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ./pages/Student/Dashboard.vue */ "./resources/js/pages/Student/Dashboard.vue"));
       }
     }, {
+      path: "classes",
+      name: "student.classes",
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ 24).then(__webpack_require__.bind(null, /*! ./pages/Student/Classes */ "./resources/js/pages/Student/Classes/index.vue"));
+      }
+    }, {
       path: "programs",
       name: "student.programs",
       component: function component() {
@@ -68875,6 +68883,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./pages/Admin/Dashboard.vue */ "./resources/js/pages/Admin/Dashboard.vue"));
       }
     }, {
+      path: "enrollment",
+      name: "admin.enrollment",
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ 31).then(__webpack_require__.bind(null, /*! ./pages/Admin/Enrollment */ "./resources/js/pages/Admin/Enrollment/index.vue"));
+      }
+    }, {
       path: "maintenance",
       name: "admin.maintenance",
       component: function component() {
@@ -68931,9 +68945,12 @@ router.beforeEach(function (to, from, next) {
 
 var map = {
 	"./AppStore.js": "./resources/js/stores.custom/AppStore.js",
+	"./ClassesStore.js": "./resources/js/stores.custom/ClassesStore.js",
 	"./ClcStore.js": "./resources/js/stores.custom/ClcStore.js",
+	"./EnrollmentStore.js": "./resources/js/stores.custom/EnrollmentStore.js",
 	"./ManageAccounts.js": "./resources/js/stores.custom/ManageAccounts.js",
 	"./ProgramsStore.js": "./resources/js/stores.custom/ProgramsStore.js",
+	"./StudentClassesStore.js": "./resources/js/stores.custom/StudentClassesStore.js",
 	"./StudentProgramsStore.js": "./resources/js/stores.custom/StudentProgramsStore.js",
 	"./SyStore.js": "./resources/js/stores.custom/SyStore.js",
 	"./TeachersStore.js": "./resources/js/stores.custom/TeachersStore.js"
@@ -69073,6 +69090,77 @@ var actions = {
 
 /***/ }),
 
+/***/ "./resources/js/stores.custom/ClassesStore.js":
+/*!****************************************************!*\
+  !*** ./resources/js/stores.custom/ClassesStore.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _AppStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppStore */ "./resources/js/stores.custom/AppStore.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var state = vue__WEBPACK_IMPORTED_MODULE_1___default.a.observable({
+  classes: []
+});
+var actions = {
+  getClasses: function getClasses(sy_id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var url, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              url = "".concat(_AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].state.siteUrl, "classes/getClasses?sy_id=").concat(sy_id);
+              state.classes = [];
+              _context.prev = 2;
+              _context.next = 5;
+              return axios.get(url);
+
+            case 5:
+              response = _context.sent;
+              state.classes = response.data;
+              _context.next = 12;
+              break;
+
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](2);
+              _AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].toast(_context.t0, 2500, 'error');
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 9]]);
+    }))();
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (_objectSpread({
+  state: state
+}, actions));
+
+/***/ }),
+
 /***/ "./resources/js/stores.custom/ClcStore.js":
 /*!************************************************!*\
   !*** ./resources/js/stores.custom/ClcStore.js ***!
@@ -69135,6 +69223,85 @@ var actions = {
           }
         }
       }, _callee, null, [[2, 9]]);
+    }))();
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (_objectSpread({
+  state: state
+}, actions));
+
+/***/ }),
+
+/***/ "./resources/js/stores.custom/EnrollmentStore.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/stores.custom/EnrollmentStore.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _AppStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppStore */ "./resources/js/stores.custom/AppStore.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var state = vue__WEBPACK_IMPORTED_MODULE_1___default.a.observable({
+  enrollment_pending: [],
+  enrollment_approved: []
+});
+var actions = {
+  getEnrollments: function getEnrollments(sy_id, status) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var url, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              url = "".concat(_AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].state.siteUrl, "enrollment/getEnrollments?sy_id=").concat(sy_id, "&status=").concat(status);
+              _context.prev = 1;
+              _context.next = 4;
+              return axios.get(url);
+
+            case 4:
+              response = _context.sent;
+
+              if (status == 'Pending') {
+                state.enrollment_pending = [];
+                state.enrollment_pending = response.data;
+              } else if (status == 'Approved') {
+                state.enrollment_approved = [];
+                state.enrollment_approved = response.data;
+              }
+
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](1);
+              _AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].toast(_context.t0, 2500, 'error');
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 8]]);
     }))();
   }
 };
@@ -69346,6 +69513,77 @@ var actions = {
             case 5:
               response = _context.sent;
               state.programs = response.data;
+              _context.next = 12;
+              break;
+
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](2);
+              _AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].toast(_context.t0, 2500, 'error');
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 9]]);
+    }))();
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (_objectSpread({
+  state: state
+}, actions));
+
+/***/ }),
+
+/***/ "./resources/js/stores.custom/StudentClassesStore.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/stores.custom/StudentClassesStore.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _AppStore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppStore */ "./resources/js/stores.custom/AppStore.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var state = vue__WEBPACK_IMPORTED_MODULE_1___default.a.observable({
+  classes: []
+});
+var actions = {
+  all: function all(sy_id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var url, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              url = "".concat(_AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].state.siteUrl, "student/classes/all?sy_id=").concat(sy_id);
+              state.classes = [];
+              _context.prev = 2;
+              _context.next = 5;
+              return axios.get(url);
+
+            case 5:
+              response = _context.sent;
+              state.classes = response.data;
               _context.next = 12;
               break;
 

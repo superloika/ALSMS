@@ -27,6 +27,11 @@ const router = new VueRouter({
                     component: ()=>import("./pages/Student/Dashboard.vue"),
                 },
                 {
+                    path: "classes",
+                    name: "student.classes",
+                    component: ()=>import("./pages/Student/Classes"),
+                },
+                {
                     path: "programs",
                     name: "student.programs",
                     component: ()=>import("./pages/Student/Programs"),
@@ -75,6 +80,11 @@ const router = new VueRouter({
                     path: "dashboard",
                     name: "admin.dashboard",
                     component: ()=>import("./pages/Admin/Dashboard.vue"),
+                },
+                {
+                    path: "enrollment",
+                    name: "admin.enrollment",
+                    component: ()=>import("./pages/Admin/Enrollment"),
                 },
                 {
                     path: "maintenance",

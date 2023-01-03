@@ -5,16 +5,13 @@
                 <v-card>
                     <v-tabs vertical v-model="tabs">
                         <v-tab title="School Year" class="text-caption font-weight-bold">
-                            School Year
+                            Available
+                        </v-tab>
+                        <v-tab class="text-caption font-weight-bold">
+                            Pending
                         </v-tab>
                         <v-tab title="Teachers" class="text-caption font-weight-bold">
-                            Teachers
-                        </v-tab>
-                        <v-tab class="text-caption font-weight-bold">
-                            Learning Programs
-                        </v-tab>
-                        <v-tab class="text-caption font-weight-bold">
-                            Classes
+                            Enrolled
                         </v-tab>
                     </v-tabs>
                 </v-card>
@@ -23,16 +20,13 @@
                 <v-card>
                     <v-tabs-items v-model="tabs" >
                         <v-tab-item>
-                            <SchoolYear></SchoolYear>
+                            <Available></Available>
                         </v-tab-item>
                         <v-tab-item>
-                            <Teachers></Teachers>
+                            <Requested></Requested>
                         </v-tab-item>
                         <v-tab-item>
-                            <Programs></Programs>
-                        </v-tab-item>
-                        <v-tab-item>
-                            <Classes></Classes>
+                            <Enrolled></Enrolled>
                         </v-tab-item>
                     </v-tabs-items>
                 </v-card>
@@ -44,16 +38,18 @@
 <script>
 export default {
     components: {
-        Teachers: ()=>import('./Teachers'),
-        SchoolYear: ()=>import('./SchoolYear'),
-        Programs: ()=>import('./Programs'),
-        Classes: ()=>import('./Classes'),
-        // Clc: ()=>import('./Clc'),
+        Available: ()=>import('./Available'),
+        Enrolled: ()=>import('./Enrolled'),
+        Requested: ()=>import('./Requested'),
     },
     data() {
         return {
             tabs: 0,
         }
-    }
+    },
+
+    created() {
+        this.StudentClassesStore.all(this.SyStore.state.activeSY.id);
+    },
 }
 </script>

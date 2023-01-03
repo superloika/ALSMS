@@ -20,7 +20,7 @@
         ></v-img>
     </v-container>
 
-    <v-container fluid class="d-flex justify-center primary lighten-5 pa-8">
+    <v-container fluid class="d-flex justify-center  pa-8 pb-12">
         <v-row>
             <v-col cols="12" class="d-flex justify-center">
                 <p class="text-h4 primary--text">Learning Programs Offered</p>

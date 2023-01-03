@@ -10,21 +10,21 @@
                 </v-card>
             </v-col>
             <v-col cols="12" md="4" lg="3">
-                <v-card color="primary" dark>
+                <v-card color="info" dark>
                     <v-card-title>Learning Programs</v-card-title>
                     <v-card-text>
                         <h1>{{ programsCount }}</h1>
                     </v-card-text>
                 </v-card>
             </v-col>
-            <!-- <v-col cols="12" md="4" lg="3">
+            <v-col cols="12" md="4" lg="3">
                 <v-card color="primary" dark>
-                    <v-card-title>Learning Centers</v-card-title>
+                    <v-card-title>Classes</v-card-title>
                     <v-card-text>
-                        <h1>{{ clcCount }}</h1>
+                        <h1>{{ classesCount }}</h1>
                     </v-card-text>
                 </v-card>
-            </v-col> -->
+            </v-col>
         </v-row>
     </div>
 </template>
@@ -43,10 +43,14 @@ export default {
         },
         activeSchoolYear() {
             return this.SyStore.state.activeSY.sy;
+        },
+        classesCount() {
+            return this.ClassesStore.state.classes.length;
         }
     },
 
     created() {
+
     }
 }
 </script>

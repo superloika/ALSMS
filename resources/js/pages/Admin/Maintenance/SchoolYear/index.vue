@@ -91,6 +91,7 @@ export default {
                 }).then(res=>{
                     this.SyStore.getSchoolYears();
                     this.SyStore.getActiveSchoolYear();
+                    this.ClassesStore.getClasses(id);
                     this.AppStore.toast(res.data, 2500,'success');
                 }).catch(e=>{
                     this.AppStore.toast(e, 2500,'error');
@@ -100,7 +101,7 @@ export default {
     },
 
     created() {
-        this.SyStore.getSchoolYears();
+
     }
 }
 </script>

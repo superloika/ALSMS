@@ -21,9 +21,12 @@
                 <v-tab to="/student/dashboard" class="font-weight-bold">
                     Dashboard
                 </v-tab>
-                <v-tab to="/student/programs" class="font-weight-bold">
-                    Programs
+                <v-tab to="/student/classes" class="font-weight-bold">
+                    Classes
                 </v-tab>
+                <!-- <v-tab to="/student/programs" class="font-weight-bold">
+                    Programs
+                </v-tab> -->
                 <v-tab to="/student/announcements" class="font-weight-bold">
                     Announcements
                 </v-tab>
@@ -93,6 +96,10 @@ export default {
         return {
             navDrawerState: null,
         }
+    },
+
+    created() {
+        this.ClassesStore.getClasses(this.SyStore.state.activeSY.id);
     }
 }
 </script>

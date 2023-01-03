@@ -79,7 +79,7 @@
 
                 <div class="mr-4">
                     @auth
-                        <v-btn class="ml-2" color="primary lighten-1" small depressed
+                        <v-btn class="ml-2" color="primary lightenx-1" small depressedx rounded
                             href="/{{ Auth::user()->user_type }}/dashboard"
                             title="Go to Dashboard"
                         >
@@ -88,10 +88,10 @@
                     @endauth
 
                     @guest()
-                        <v-btn class="ml-2" small depressed color="primary lighten-1" href="/login">
+                        <v-btn class="ml-2" small depressedx rounded color="primary lightenx-1" href="/login">
                             Login
                         </v-btn>
-                        <v-btn class="ml-2" small depressed color="primary lighten-1" href="/register">
+                        <v-btn class="ml-2" small depressedx rounded color="primary lightenx-1" href="/register">
                             Register
                         </v-btn>
                     @endguest

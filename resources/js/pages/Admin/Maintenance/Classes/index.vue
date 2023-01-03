@@ -2,19 +2,25 @@
     <v-card>
         <v-toolbar class="elevation-0">
             <v-toolbar-title>
-                Learning Programs
+                Classes
+                <v-chip small color="info">
+                    SY {{ SyStore.state.activeSY.sy }}
+                </v-chip>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn @click="drawer=true" color="primary">Add</v-btn>
         </v-toolbar>
         <v-card-text>
-            <v-data-table :headers="tableHeaders" :items="ProgramsStore.state.programs">
+            <v-data-table :headers="tableHeaders" :items="ClassesStore.state.classes">
+                <template v-slot:[`item.teacher_name`]="{item}">
+                    <span>{{ item.firstname }} {{ item.middlename }} {{ item.lastname }}</span>
+                </template>
                 <template v-slot:[`item.actions`]="{item}">
-                    <div style="width:100px;">
-                        <v-btn icon small color="error" @click="deleteProgram(item.id)">
+                    <div stylex="width:100px;" class="d-flex">
+                        <v-btn icon small color="error" class="ml-2" disabled>
                             <v-icon>mdi-delete</v-icon>
                         </v-btn>
-                        <v-btn icon small color="primary" @click="editProgram(item.id)" disabled>
+                        <v-btn icon small color="primary" class="ml-2" disabled>
                             <v-icon>mdi-pencil</v-icon>
                         </v-btn>
                     </div>
@@ -37,8 +43,9 @@ export default {
     data() {
         return {
             tableHeaders: [
-                {text:"Title", value:"title"},
-                {text:"Description", value:"description_short"},
+                {text:"Class ID", value:"id"},
+                {text:"Program", value:"program_title"},
+                {text:"Teacher", value:"teacher_name"},
                 {text:"Actions", value:"actions"},
             ],
             drawer: null,
@@ -46,28 +53,11 @@ export default {
     },
 
     methods: {
-        async deleteProgram(id) {
-            if(!confirm('Delete selected program?')) return;
 
-            let url = `${this.AppStore.state.siteUrl}learning-programs/deleteProgram`;
-            await axios.post(url,{
-                    id: id
-                }).then(res=>{
-                    this.ProgramsStore.getPrograms();
-                    this.AppStore.toast(res.data, 2500,'success');
-                }).catch(e=>{
-                    this.AppStore.toast(e, 2500,'error');
-                })
-                ;
-            // try {
-
-            // } catch (error) {
-            // }
-        },
     },
 
     created() {
-
+        // this.ClassesStore.getClasses(this.SyStore.state.activeSY.id);
     }
 }
 </script>

@@ -49,8 +49,10 @@ export default {
     },
 
     created() {
-        this.ProgramsStore.getPrograms();
         this.SyStore.getActiveSchoolYear();
+        this.SyStore.getSchoolYears();
+        this.ProgramsStore.getPrograms();
+        this.TeachersStore.getTeachers();
     },
 
     mounted() {
