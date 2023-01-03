@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2022 at 11:01 PM
+-- Generation Time: Jan 03, 2023 at 02:49 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -20,6 +20,55 @@ SET time_zone = "+00:00";
 --
 -- Database: `alsms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classes`
+--
+
+CREATE TABLE `classes` (
+  `id` int(11) NOT NULL,
+  `sy_id` int(11) NOT NULL,
+  `program_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Classes' ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`id`, `sy_id`, `program_id`, `teacher_id`, `created_at`, `updated_at`, `created_by`) VALUES
+(6, 7, 2, 10, '2023-01-03 04:12:45', '2023-01-03 04:12:45', 3),
+(7, 7, 1, 10, '2023-01-03 04:30:07', '2023-01-03 04:30:07', 3),
+(8, 7, 5, 10, '2023-01-03 09:46:41', '2023-01-03 09:46:41', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `enrollment`
+--
+
+CREATE TABLE `enrollment` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Pending',
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Enrollment' ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `enrollment`
+--
+
+INSERT INTO `enrollment` (`id`, `user_id`, `class_id`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
+(15, 8, 6, 'Approved', '2023-01-03 09:06:02', '2023-01-03 09:14:16', 8),
+(17, 8, 7, 'Approved', '2023-01-03 09:36:45', '2023-01-03 09:37:11', 8);
 
 -- --------------------------------------------------------
 
@@ -90,7 +139,7 @@ CREATE TABLE `profiles` (
   `guardian_address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Student Profiles';
 
 --
 -- Dumping data for table `profiles`
@@ -111,6 +160,7 @@ CREATE TABLE `programs` (
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description_short` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description_long` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) DEFAULT 1,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_by` int(11) NOT NULL
@@ -120,12 +170,62 @@ CREATE TABLE `programs` (
 -- Dumping data for table `programs`
 --
 
-INSERT INTO `programs` (`id`, `title`, `slug`, `description_short`, `description_long`, `created_at`, `updated_at`, `created_by`) VALUES
-(1, 'Test Program', 'test_program', 'Short Description for Test Program', 'This is just a test description for Test Program. This is just a test description for Test Program. This is just a test description for Test Program.', '2022-11-13 12:17:30', '2022-11-13 12:49:08', 3),
-(2, 'Test Learning Program 2', 'test_learning_program_2', 'Short Description for Test Program 2', 'This is just a test description for Test Program This is just a test description for Test Program.\r\nThis is just a test description for Test Program. This is just a test description for Test Program', '2022-11-13 12:17:30', '2022-11-13 12:49:29', 3),
-(3, 'Learning Program for Testing Only Learning Program for Testing Only', 'learning_program_for_testing_only_learning_program_for_testing_only', 'Short Description for Test Program 3', 'This is just a test description for Test Program', '2022-11-13 12:17:30', '2022-11-13 12:50:11', 3),
-(4, 'Asdf qweqwe QWqwq', 'test_qwert', 'Short Description for Test Program 4', 'Asdf qweqwe QWqwq Asdf qweqwe QWqwq Asdf qweqwe QWqwq.\r\n\r\nAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwq Asdf qweqwe QWqwq\r\nAsdf qweqwe QWqwq\r\n\r\nAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwq.', '2022-11-13 12:17:30', '2022-11-13 13:37:32', 3),
-(5, 'Test', 'test', 'test ra ni', 'test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni \n\ntest ra ni test ra ni test ra ni test ra ni test ra ni test ra ni', '2022-12-20 21:08:43', '2022-12-20 21:08:43', 3);
+INSERT INTO `programs` (`id`, `title`, `slug`, `description_short`, `description_long`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
+(1, 'Test Program', 'test_program', 'Short Description for Test Program', 'This is just a test description for Test Program. This is just a test description for Test Program. This is just a test description for Test Program.', 1, '2022-11-13 12:17:30', '2022-11-13 12:49:08', 3),
+(2, 'Test Learning Program 2', 'test_learning_program_2', 'Short Description for Test Program 2', 'This is just a test description for Test Program This is just a test description for Test Program.\r\nThis is just a test description for Test Program. This is just a test description for Test Program', 1, '2022-11-13 12:17:30', '2022-11-13 12:49:29', 3),
+(3, 'Learning Program for Testing Only Learning Program for Testing Only', 'learning_program_for_testing_only_learning_program_for_testing_only', 'Short Description for Test Program 3', 'This is just a test description for Test Program', 1, '2022-11-13 12:17:30', '2022-11-13 12:50:11', 3),
+(4, 'Asdf qweqwe QWqwq', 'test_qwert', 'Short Description for Test Program 4', 'Asdf qweqwe QWqwq Asdf qweqwe QWqwq Asdf qweqwe QWqwq.\r\n\r\nAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwq Asdf qweqwe QWqwq\r\nAsdf qweqwe QWqwq\r\n\r\nAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwqAsdf qweqwe QWqwq.', 1, '2022-11-13 12:17:30', '2022-11-13 13:37:32', 3),
+(5, 'Test', 'test', 'test ra ni', 'test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni test ra ni \n\ntest ra ni test ra ni test ra ni test ra ni test ra ni test ra ni', 1, '2022-12-20 21:08:43', '2022-12-20 21:08:43', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sys`
+--
+
+CREATE TABLE `sys` (
+  `id` int(11) NOT NULL,
+  `sy` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) DEFAULT 0,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Learning programs' ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `sys`
+--
+
+INSERT INTO `sys` (`id`, `sy`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
+(7, '2023-2024', 1, '2023-01-02 22:26:45', '2023-01-03 04:56:57', 3),
+(8, '2022-2023', 0, '2023-01-02 22:46:09', '2023-01-03 04:56:57', 3),
+(9, '2021-2022', 0, '2023-01-02 22:54:19', '2023-01-03 04:56:38', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teachers`
+--
+
+CREATE TABLE `teachers` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `middlename` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `address`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
+(10, 'John', 'Smith', 'Doe', 'Male', 'Bohol', 1, '2023-01-03 02:20:43', '2023-01-03 02:20:43', 3);
 
 -- --------------------------------------------------------
 
@@ -142,8 +242,8 @@ CREATE TABLE `users` (
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -153,11 +253,12 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `user_type`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Super Admin', 'superadmin', NULL, NULL, '$2y$10$5IaNdp/3SBqzN7x7XBFvR.0nEkVqRDlm06tau4W/tkxA3jRj7zqTy', 'super_admin', NULL, '2022-10-23 06:07:28', '2022-10-23 06:07:28'),
 (3, 'Admin Test', 'admin', NULL, NULL, '$2y$10$WEovje8Q.4j14bY3zv5nleRZG9euxfm9mJMofqjSi64IfduNNfbn2', 'admin', NULL, '2022-10-23 08:44:55', '2022-10-23 08:44:55'),
-(8, 'Crisia B', 'crisia', NULL, NULL, '$2y$10$o9N6nYf8gEE3iW2q1T02JufnpKqTIy/z3Crz.jz6ItFjPHiV35XNC', 'student', NULL, NULL, NULL),
+(8, 'Crisia B', 'crisia', NULL, NULL, '$2y$10$o9N6nYf8gEE3iW2q1T02JufnpKqTIy/z3Crz.jz6ItFjPHiV35XNC', 'student', NULL, '2023-01-02 18:15:07', '2023-01-02 18:15:07'),
 (10, 'Student One', 'student1', 'student1@test.com', NULL, '$2y$10$CvTlId3R4vRrY02.36554ub0auq9843kI.3qh2igynJlPb4qEH/Ke', 'student', NULL, '2022-11-13 05:53:03', '2022-11-13 05:53:03'),
-(11, 'Student Two', 'student2', NULL, NULL, '$2y$10$VhFV6gt0rqZFYojdqWJeI.CI9ifS4.Secp4YYKLbe0/e74msZnjQ6', 'student', NULL, NULL, NULL),
+(11, 'Student Two', 'student2', NULL, NULL, '$2y$10$VhFV6gt0rqZFYojdqWJeI.CI9ifS4.Secp4YYKLbe0/e74msZnjQ6', 'student', NULL, '2023-01-02 18:15:08', '2023-01-02 18:15:09'),
 (12, 'Carl', 'admin1', 'admin@test.com', NULL, '$2y$10$M.JsISpef0r3DRloueN5weUjrJpv0sAo8PeL6.pNbpRuGae5cA1.a', 'student', NULL, '2022-11-23 14:46:31', '2022-11-23 14:46:31'),
-(13, 'Ceejay C', 'ceejay', NULL, NULL, '$2y$10$xyXfNA7raYltpI1EmKMGquzsHru/ZnfRWN7.btOKmBE7vnowcvGwS', 'student', NULL, NULL, NULL);
+(13, 'Ceejay C', 'ceejay', NULL, NULL, '$2y$10$xyXfNA7raYltpI1EmKMGquzsHru/ZnfRWN7.btOKmBE7vnowcvGwS', 'student', NULL, '2023-01-02 18:15:09', '2023-01-02 18:15:10'),
+(15, 'John Smith Doe', 'johndoe', NULL, NULL, '$2y$10$dYVbkIGXhadbyD4v2vWv2ObUPyUDH3S8Zpkq6rMX09PRGLylZ7Gam', 'teacher', NULL, '2023-01-02 18:20:43', '2023-01-02 18:32:30');
 
 -- --------------------------------------------------------
 
@@ -178,6 +279,18 @@ CREATE TABLE `websockets_statistics_entries` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `enrollment`
+--
+ALTER TABLE `enrollment`
+  ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
 -- Indexes for table `failed_jobs`
@@ -222,6 +335,26 @@ ALTER TABLE `programs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sys`
+--
+ALTER TABLE `sys`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `firstname` (`firstname`),
+  ADD KEY `middlename` (`middlename`),
+  ADD KEY `lastname` (`lastname`),
+  ADD KEY `created_at` (`created_at`),
+  ADD KEY `updated_at` (`updated_at`),
+  ADD KEY `gender` (`gender`),
+  ADD KEY `address` (`address`),
+  ADD KEY `status` (`status`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -238,6 +371,18 @@ ALTER TABLE `websockets_statistics_entries`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `enrollment`
+--
+ALTER TABLE `enrollment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -258,10 +403,22 @@ ALTER TABLE `programs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `sys`
+--
+ALTER TABLE `sys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `websockets_statistics_entries`
