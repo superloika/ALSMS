@@ -9,6 +9,8 @@
             @foreach ($programs as $p)
                 <v-col cols="12" md="4">
                     <v-card outlined>
+
+
                         <v-card-title class="primary--text">{{ $p->title }}</v-card-title>
                         <v-card-text>
                             {{ $p->description_short }}

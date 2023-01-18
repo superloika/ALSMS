@@ -57,7 +57,7 @@ Route::group(['prefix'=>'admin','middleware'=>'user_admin'], function(){
     // Route::get('/admin/dashboard','DashboardController@admin');
 });
 
-//Classes
+//ENrollment
 Route::group(['prefix'=>'enrollment'], function(){
     Route::get('/getEnrollments','EnrollmentController@getEnrollments');
     Route::post('/confirm','EnrollmentController@confirm');
@@ -99,6 +99,7 @@ Route::group(['prefix'=>'clc'], function(){
 //////////////////////////////////////////////////////////////////////////////////
 
 
+//////////////////////////////////////////////////////////////////////////////////
 // STUDENT
 Route::group(['prefix'=>'student','middleware'=>'user_student'], function(){
     // Route::get('/student/dashboard','DashboardController@student');
@@ -115,6 +116,18 @@ Route::group(['prefix'=>'student','middleware'=>'user_student'], function(){
         Route::post('/cancelRequest','StudentClassController@cancelRequest');
     });
 });
+//////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////
+// TEACHER
+Route::group(['prefix'=>'teacher'], function(){
+    Route::group(['prefix'=>'classes'], function(){
+        Route::post('/getTeacherClasses','ClassController@getTeacherClasses');
+    });
+});
+//////////////////////////////////////////////////////////////////////////////////
+
 
 
 /**

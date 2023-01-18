@@ -35,7 +35,7 @@ export default {
     data() {
         return {
             tableHeaders: [
-                {text:"Class ID", value:"id"},
+                // {text:"Class ID", value:"id"},
                 {text:"Program", value:"program_title"},
                 {text:"Teacher", value:"teacher_name"},
                 {text:"Schedule", value:"schedule"},
@@ -48,7 +48,7 @@ export default {
     computed: {
         classes() {
             return this.StudentClassesStore.state.classes.filter((e)=>{
-                return e.user_id!=null && e.status=='Pending';
+                return e.user_id==this.AuthUser.id && e.status=='Pending';
             });
         }
     },

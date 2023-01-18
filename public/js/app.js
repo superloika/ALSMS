@@ -2358,11 +2358,11 @@ __webpack_require__.r(__webpack_exports__);
         };
       } else if (this.AppStore.isStudent()) {
         return function () {
-          return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../pages/Student/Base.vue */ "./resources/js/pages/Student/Base.vue"));
+          return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ../pages/Student/Base.vue */ "./resources/js/pages/Student/Base.vue"));
         };
       } else if (this.AppStore.isTeacher()) {
         return function () {
-          return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! ../pages/Teacher/Base.vue */ "./resources/js/pages/Teacher/Base.vue"));
+          return __webpack_require__.e(/*! import() */ 26).then(__webpack_require__.bind(null, /*! ../pages/Teacher/Base.vue */ "./resources/js/pages/Teacher/Base.vue"));
         };
       }
     }
@@ -68766,8 +68766,10 @@ var opts = {
         error: '#FF5252',
         info: '#2196F3',
         success: '#4CAF50',
-        primary: '#00C853',
-        accent: "#7dd663"
+        // primary: '#00C853',
+        primary: '#2196F3' // warning: "#FF5722",
+        // accent: "#7dd663",
+
       }
     }
   }
@@ -68816,31 +68818,31 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: "dashboard",
       name: "student.dashboard",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ./pages/Student/Dashboard.vue */ "./resources/js/pages/Student/Dashboard.vue"));
+        return __webpack_require__.e(/*! import() */ 23).then(__webpack_require__.bind(null, /*! ./pages/Student/Dashboard.vue */ "./resources/js/pages/Student/Dashboard.vue"));
       }
     }, {
       path: "classes",
       name: "student.classes",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 24).then(__webpack_require__.bind(null, /*! ./pages/Student/Classes */ "./resources/js/pages/Student/Classes/index.vue"));
+        return __webpack_require__.e(/*! import() */ 22).then(__webpack_require__.bind(null, /*! ./pages/Student/Classes */ "./resources/js/pages/Student/Classes/index.vue"));
       }
     }, {
       path: "programs",
       name: "student.programs",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ./pages/Student/Programs */ "./resources/js/pages/Student/Programs/index.vue"));
+        return __webpack_require__.e(/*! import() */ 25).then(__webpack_require__.bind(null, /*! ./pages/Student/Programs */ "./resources/js/pages/Student/Programs/index.vue"));
       }
     }, {
       path: "announcements",
       name: "student.announcements",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ./pages/Student/Announcements */ "./resources/js/pages/Student/Announcements/index.vue"));
+        return __webpack_require__.e(/*! import() */ 29).then(__webpack_require__.bind(null, /*! ./pages/Student/Announcements */ "./resources/js/pages/Student/Announcements/index.vue"));
       }
     }, {
       path: "profile",
       name: "student.profile",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ./pages/Student/Profile */ "./resources/js/pages/Student/Profile/index.vue"));
+        return __webpack_require__.e(/*! import() */ 24).then(__webpack_require__.bind(null, /*! ./pages/Student/Profile */ "./resources/js/pages/Student/Profile/index.vue"));
       }
     }]
   }, // /STUDENT ===========================================================================
@@ -68857,15 +68859,25 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: "dashboard",
       name: "teacher.dashboard",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 21).then(__webpack_require__.bind(null, /*! ./pages/Teacher/Dashboard.vue */ "./resources/js/pages/Teacher/Dashboard.vue"));
+        return __webpack_require__.e(/*! import() */ 28).then(__webpack_require__.bind(null, /*! ./pages/Teacher/Dashboard.vue */ "./resources/js/pages/Teacher/Dashboard.vue"));
       }
     }, {
-      path: "maintenance",
-      name: "teacher.maintenance",
+      path: "classes",
+      name: "teacher.classes",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 28).then(__webpack_require__.bind(null, /*! ./pages/Teacher/Maintenance */ "./resources/js/pages/Teacher/Maintenance/index.vue"));
+        return __webpack_require__.e(/*! import() */ 27).then(__webpack_require__.bind(null, /*! ./pages/Teacher/Classes */ "./resources/js/pages/Teacher/Classes/index.vue"));
       }
-    }]
+    } // {
+    //     path: "enrollment",
+    //     name: "teacher.enrollment",
+    //     component: ()=>import("./pages/Admin/Enrollment"),
+    // },
+    // {
+    //     path: "maintenance",
+    //     name: "teacher.maintenance",
+    //     component: ()=>import("./pages/Teacher/Maintenance"),
+    // },
+    ]
   }, // /TEACHER ==============================================================================
   // ADMIN ==============================================================================
   {
@@ -68886,13 +68898,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: "enrollment",
       name: "admin.enrollment",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 31).then(__webpack_require__.bind(null, /*! ./pages/Admin/Enrollment */ "./resources/js/pages/Admin/Enrollment/index.vue"));
+        return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ./pages/Admin/Enrollment */ "./resources/js/pages/Admin/Enrollment/index.vue"));
       }
     }, {
       path: "maintenance",
       name: "admin.maintenance",
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ./pages/Admin/Maintenance */ "./resources/js/pages/Admin/Maintenance/index.vue"));
+        return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ./pages/Admin/Maintenance */ "./resources/js/pages/Admin/Maintenance/index.vue"));
       }
     }]
   }, // /ADMIN ==============================================================================
@@ -69119,7 +69131,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var state = vue__WEBPACK_IMPORTED_MODULE_1___default.a.observable({
-  classes: []
+  classes: [],
+  teacherClasses: []
 });
 var actions = {
   getClasses: function getClasses(sy_id) {
@@ -69152,6 +69165,41 @@ var actions = {
           }
         }
       }, _callee, null, [[2, 9]]);
+    }))();
+  },
+  getTeacherClasses: function getTeacherClasses(sy_id, teacher_id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var url, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              url = "".concat(_AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].state.siteUrl, "teacher/classes/getTeacherClasses");
+              state.teacherClasses = [];
+              _context2.prev = 2;
+              _context2.next = 5;
+              return axios.post(url, {
+                sy_id: sy_id,
+                teacher_id: teacher_id
+              });
+
+            case 5:
+              response = _context2.sent;
+              state.teacherClasses = response.data;
+              _context2.next = 12;
+              break;
+
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](2);
+              _AppStore__WEBPACK_IMPORTED_MODULE_2__["default"].toast(_context2.t0, 2500, 'error');
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[2, 9]]);
     }))();
   }
 };
@@ -69874,8 +69922,8 @@ var actions = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JD\Documents\DEV\C\ALSMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JD\Documents\DEV\C\ALSMS\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\KALOY\DEV\C\ALSMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\KALOY\DEV\C\ALSMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

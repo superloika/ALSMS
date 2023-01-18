@@ -34,11 +34,16 @@ class StudentClassController extends Controller
                     'teachers.firstname',
                     'teachers.middlename',
                     'teachers.lastname',
+                    'profiles.verified'
                 )
                 ->leftJoin('enrollment','enrollment.class_id','classes.id')
+                ->leftJoin('profiles','profiles.user_id','enrollment.user_id')
                 ->join('programs','programs.id','classes.program_id')
                 ->join('teachers','teachers.id','classes.teacher_id')
-                ->where('classes.sy_id', $sy_id)->latest()->get();
+                ->where('classes.sy_id', $sy_id)
+                ->orWhere('enrollment.user_id', Auth::user()->id)
+                ->latest()->get();
+
             return response()->json($classes);
         }
     }

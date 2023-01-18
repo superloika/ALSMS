@@ -54,6 +54,10 @@ export default {
         return {
             tabs: 0,
         }
+    },
+
+    created() {
+        this.ClassesStore.getClasses(this.SyStore.state.activeSY.id);
     }
 }
 </script>

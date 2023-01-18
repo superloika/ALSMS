@@ -17,8 +17,10 @@ const opts = {
                 error: '#FF5252',
                 info: '#2196F3',
                 success: '#4CAF50',
-                primary: '#00C853',
-                accent: "#7dd663",
+                // primary: '#00C853',
+                primary: '#2196F3',
+                // warning: "#FF5722",
+                // accent: "#7dd663",
             },
         }
     }

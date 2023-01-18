@@ -4,6 +4,7 @@ import AppStore from "./AppStore";
 
 const state = Vue.observable({
     classes: [],
+    teacherClasses: [],
 });
 
 
@@ -14,6 +15,20 @@ const actions = {
         try {
             let response = await axios.get(url);
             state.classes = response.data;
+        } catch (error) {
+            AppStore.toast(error, 2500,'error');
+        }
+    },
+
+    async getTeacherClasses(sy_id, teacher_id) {
+        let url = `${AppStore.state.siteUrl}teacher/classes/getTeacherClasses`;
+        state.teacherClasses = [];
+        try {
+            let response = await axios.post(url,{
+                sy_id: sy_id,
+                teacher_id: teacher_id,
+            });
+            state.teacherClasses = response.data;
         } catch (error) {
             AppStore.toast(error, 2500,'error');
         }

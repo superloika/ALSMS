@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $programs = DB::table('programs')->get();
+        $programs = DB::table('programs')->orderBy('id','DESC')->get();
         return view('home', ['programs'=>$programs]);
     }
 

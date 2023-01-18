@@ -26,7 +26,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs = DB::table('programs')->get();
+        $programs = DB::table('programs')->orderBy('id','DESC')->get();
         return view('programs', ['programs' => $programs]);
     }
 
@@ -39,7 +39,7 @@ class ProgramController extends Controller
 
     public function getPrograms()
     {
-        $programs = DB::table('programs')->latest()->get();
+        $programs = DB::table('programs')->orderBy('id','DESC')->get();
         return response()->json($programs);
     }
 
@@ -48,7 +48,6 @@ class ProgramController extends Controller
         try {
             $data = request()->data;
             extract($data);
-            // $slug = Str::snake($value)::snake($title);
             $slug = Str::slug($title);
 
             DB::table('programs')->insert([

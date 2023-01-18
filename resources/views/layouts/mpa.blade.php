@@ -40,7 +40,16 @@
     {{-- <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet"> --}}
 
     <style>
+        a {
+            text-decoration: none;
+        }
 
+        .flex-wrapper {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
@@ -109,17 +118,19 @@
             </v-app-bar>
 
             <v-main>
-                <v-container fluid class="pa-0">
-                    @yield('content')
-                </v-container>
+                <div class="flex-wrapper">
+                    <v-container fluid class="pa-0">
+                        @yield('content')
+                    </v-container>
 
-                <v-footer color="primary" class="py-12" paddless dark>
-                    <v-row justify="center" no-gutters>
-                        <v-col class="text-center py-4">
-                            Copyright (C) 2023
-                        </v-col>
-                    </v-row>
-                </v-footer>
+                    <v-footer color="primary" class="py-12" paddless dark>
+                        <v-row justify="center" no-gutters>
+                            <v-col class="text-center py-4">
+                                Copyright (C) 2023
+                            </v-col>
+                        </v-row>
+                    </v-footer>
+                </div>
             </v-main>
         </v-app>
     </div>

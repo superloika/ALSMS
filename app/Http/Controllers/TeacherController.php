@@ -34,7 +34,7 @@ class TeacherController extends Controller
             $data = request()->data;
             extract($data);
 
-            DB::table('teachers')->insert([
+            $teacher_id = DB::table('teachers')->insertGetId([
                 'firstname'=>$firstname,
                 'middlename'=>$middlename,
                 'lastname'=>$lastname,
@@ -48,7 +48,8 @@ class TeacherController extends Controller
                 'name'=>"$firstname $middlename $lastname",
                 'username'=>Str::lower($firstname). Str::lower($lastname),
                 'password'=>Hash::make('123'),
-                'user_type'=>'teacher'
+                'user_type'=>'teacher',
+                'teacher_id'=>$teacher_id,
             ]);
 
             return response()->json('Success', 200);

@@ -21,9 +21,12 @@
                 <v-tab to="/teacher/dashboard" class="font-weight-bold">
                     Dashboard
                 </v-tab>
-                <v-tab to="/teacher/maintenance" class="font-weight-bold">
-                    Maintenance
+                <v-tab to="/teacher/classes" class="font-weight-bold">
+                    Classes
                 </v-tab>
+                <!-- <v-tab to="/teacher/maintenance" class="font-weight-bold">
+                    Maintenance
+                </v-tab> -->
             </v-tabs>
 
             <!-- <span class="text-caption mr-1 overflow-auto font-weight-bold">

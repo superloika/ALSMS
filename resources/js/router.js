@@ -62,10 +62,20 @@ const router = new VueRouter({
                     component: ()=>import("./pages/Teacher/Dashboard.vue"),
                 },
                 {
-                    path: "maintenance",
-                    name: "teacher.maintenance",
-                    component: ()=>import("./pages/Teacher/Maintenance"),
+                    path: "classes",
+                    name: "teacher.classes",
+                    component: ()=>import("./pages/Teacher/Classes"),
                 },
+                // {
+                //     path: "enrollment",
+                //     name: "teacher.enrollment",
+                //     component: ()=>import("./pages/Admin/Enrollment"),
+                // },
+                // {
+                //     path: "maintenance",
+                //     name: "teacher.maintenance",
+                //     component: ()=>import("./pages/Teacher/Maintenance"),
+                // },
             ]
         },
         // /TEACHER ==============================================================================

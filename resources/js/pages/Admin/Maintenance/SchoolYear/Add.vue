@@ -39,10 +39,21 @@ export default {
                     data: this.form
                 }).then(res=>{
                     this.SyStore.getSchoolYears();
+                    this.SyStore.getActiveSchoolYear();
                     this.AppStore.resetForm(this.form);
                     this.AppStore.toast(res.data, 2500,'success');
+
                 }).catch(e=>{
-                    this.AppStore.toast(e, 2500,'error');
+                    if(e.response) {
+                        console.log(e.response);
+                        if(e.response.status=="409") {
+                            this.AppStore.toast(e.response.data, 2500,'error');
+                        } else {
+                            this.AppStore.toast(e, 2500,'error');
+                        }
+                    }
+                }).finally(()=>{
+                    this.ClassesStore.getClasses();
                 })
                 ;
         },

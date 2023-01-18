@@ -35,9 +35,33 @@ class ClassController extends Controller
                 )
                 ->join('programs','programs.id','classes.program_id')
                 ->join('teachers','teachers.id','classes.teacher_id')
-                ->where('classes.sy_id', $sy_id)->latest()->get();
+                ->where('classes.sy_id', $sy_id)
+                ->latest()->get();
             return response()->json($classes);
         }
+    }
+
+    public function getTeacherClasses()
+    {
+        $sy_id = request()->sy_id ?? '';
+        $teacher_id = request()->teacher_id ?? '';
+
+        // if($sy_id != ''){
+            $classes = DB::table('classes')
+                ->select(
+                    'classes.*',
+                    'programs.title as program_title',
+                    'teachers.firstname',
+                    'teachers.middlename',
+                    'teachers.lastname',
+                )
+                ->join('programs','programs.id','classes.program_id')
+                ->join('teachers','teachers.id','classes.teacher_id')
+                ->where('classes.sy_id', $sy_id)
+                ->where('classes.teacher_id', $teacher_id)
+                ->orderBy('id','DESC')->get();
+            return response()->json($classes);
+        // }
     }
 
 

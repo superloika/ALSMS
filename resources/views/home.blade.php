@@ -28,9 +28,28 @@
             @foreach ($programs as $p)
                 <v-col cols="12" md="4">
                     <v-card>
-                        <v-card-title class="primary--text">{{ $p->title }}</v-card-title>
+                        <v-img
+                            height="200px"
+                            lazy-src="img/study.png"
+                            src="img/study.png"
+                        >
+                        </v-img>
+
+                        <v-card-title class="primary--text">
+                            <a href="{{ route('programs.view',$p->slug) }}">
+                                {{ $p->title }}
+                            </a>
+                        </v-card-title>
                         <v-card-text>
-                            {{ $p->description_short }}
+                            <v-container style="
+                                white-space: nowrapx ;
+                                word-break: normalx;
+                                overflow: hidden ;
+                                text-overflow: ellipsis;
+                                max-height:60px;
+                            ">
+                                {{ $p->description_short }}
+                            </v-container>
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>

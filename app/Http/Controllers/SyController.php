@@ -33,8 +33,17 @@ class SyController extends Controller
             $data = request()->data;
             extract($data);
 
+            $sy_existing = DB::table('sys')->where('sy', $sy)->exists();
+            if($sy_existing) {
+                return response()->json('Specified school year already exists', 409);
+            }
+            DB::table('sys')->update([
+                'status'=>0
+            ]);
+
             DB::table('sys')->insert([
                 'sy'=>$sy,
+                'status'=>1,
                 'created_by'=>Auth::user()->id
             ]);
             return response()->json('Success', 200);

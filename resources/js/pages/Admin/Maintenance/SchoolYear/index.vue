@@ -19,18 +19,16 @@
                 </template>
                 <template v-slot:[`item.actions`]="{item}">
                     <div stylex="width:100px;" class="d-flex">
-                        <v-btn small color="primary" class="ml-2" :disabled="item.status==1"
+                        <!-- <v-btn small color="primary" class="ml-2" :disabled="item.status==1"
                             @click="toggleSYStatus(item.id, 1)"
                         >
-                            <!-- <v-icon>mdi-check</v-icon> -->
                             Activate
                         </v-btn>
                         <v-btn small color="warning" class="ml-2" :disabled="item.status==0"
                             @click="toggleSYStatus(item.id, 0)"
                         >
-                            <!-- <v-icon>mdi-check</v-icon> -->
                             Deactivate
-                        </v-btn>
+                        </v-btn> -->
                         <v-btn icon small color="error" class="ml-2" disabled>
                             <v-icon>mdi-delete</v-icon>
                         </v-btn>

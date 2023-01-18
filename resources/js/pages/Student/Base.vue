@@ -99,7 +99,7 @@ export default {
     },
 
     created() {
-        this.ClassesStore.getClasses(this.SyStore.state.activeSY.id);
+        // this.ClassesStore.getClasses(this.SyStore.state.activeSY.id);
     }
 }
 </script>
