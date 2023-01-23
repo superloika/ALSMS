@@ -19,14 +19,15 @@
                 </template>
                 <template v-slot:[`item.actions`]="{item}">
                     <div class="d-flex">
-                        <v-btn icon small color="" class="ml-2" title="View Details"
+                        <v-btn iconx text small color="" class="ml-2" title="Review Student Details"
+                            @click.stop="user_id=item.user_id;viewStudentDetailsDialog=true;"
                         >
                             <v-icon>mdi-eye</v-icon>
                         </v-btn>
                     </div>
                     <div class="d-flex">
-                        <v-btn icon small color="primary" class="ml-2"
-                            @click="confirm(item.id)" title="Accept"
+                        <v-btn iconx text small color="primary" class="ml-2"
+                            @click="confirm(item.id)" title="Approve"
                         >
                             <v-icon>mdi-check</v-icon>
                         </v-btn>
@@ -34,12 +35,17 @@
                 </template>
             </v-data-table>
         </v-card-text>
+
+        <v-dialog v-model="viewStudentDetailsDialog">
+            <StudentProfile :key="user_id" :user_id="user_id"></StudentProfile>
+        </v-dialog>
     </v-card>
 </template>
 
 <script>
 export default {
     components: {
+        StudentProfile: ()=>import('../../../Student/Profile')
     },
 
     data() {
@@ -48,9 +54,13 @@ export default {
                 {text:"Student Name", value:"student_name"},
                 {text:"Program", value:"program_title"},
                 {text:"Teacher", value:"teacher_name"},
+                {text:"CLC", value:"clc_name"},
+                // {text:"CLC Address", value:"clc_address"},
                 {text:"Actions", value:"actions"},
             ],
             drawer: null,
+            viewStudentDetailsDialog: null,
+            user_id: '',
         }
     },
 
@@ -73,11 +83,20 @@ export default {
                     this.AppStore.toast(e, 2500,'error');
                 })
                 ;
-        }
+        },
+
+        // viewStudentDetails(user_id) {
+        //     this.user_id = user_id;
+        //     this.viewStudentDetailsDialog=true;
+        // }
     },
 
     created() {
 
+    },
+
+    watch: {
+        // user_id
     }
 }
 </script>

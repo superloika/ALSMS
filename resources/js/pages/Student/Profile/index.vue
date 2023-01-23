@@ -1,10 +1,14 @@
 <template>
     <v-card>
-        <v-card-title class="primary">
+        <v-card-title class="primary" v-if="user_id=='undefined' || user_id==null">
             <div class="text-h5 white--text">Student Profile</div>
         </v-card-title>
         <v-card-text class="pt-4">
             <v-row>
+                <v-col cols="12" md="12" class="accent lighten-2 py-1">
+                    <div class="font-weight-bold">Personal Information</div>
+                </v-col>
+
                 <v-col cols="12" md="3">
                     <v-text-field
                         label="First Name"
@@ -108,8 +112,115 @@
                     ></v-text-field>
                 </v-col>
             </v-row>
+
+            <v-row>
+                <v-col cols="12" md="12" class="accent lighten-2 py-1">
+                    <div class="font-weight-bold">Educational Information (Upon Registration)</div>
+                </v-col>
+
+                <v-col cols="12" md="12">
+                    <v-radio-group v-model="form.gl_upon_registration"
+                        label="Last grade level completed" row>
+                        <v-radio
+                            v-for="g in AppStore.state.gLevels"
+                            :key="g"
+                            :label="g"
+                            :value="g"
+                        >
+
+                        </v-radio>
+                    </v-radio-group>
+                </v-col>
+
+                <v-col cols="12" md="12">
+                    <v-text-field
+                        label="Why did you drop-out of school? (For OSY only)"
+                        v-model="form.drop_reason"
+                        filled
+                    ></v-text-field>
+                </v-col>
+
+                <v-col cols="12" md="12">
+                    <v-radio-group v-model="form.attended_als"
+                        label="Have you attended ALS learning sessions before?" row>
+                        <v-radio
+                            v-for="i in ['YES','NO']"
+                            :key="i"
+                            :label="i"
+                            :value="i"
+                        >
+
+                        </v-radio>
+                    </v-radio-group>
+                    <v-row v-if="form.attended_als=='YES'">
+                        <v-col md="6">
+                            <v-text-field
+                                label="Name of the Program"
+                                v-model="form.als_program"
+                                filled
+                            ></v-text-field>
+                        </v-col>
+                        <v-col md="6">
+                            <v-radio-group v-model="form.literacy_level"
+                                label="Literacy Level" row>
+                                <v-radio
+                                    v-for="i in ['Basic','Elementary','Secondary','InfEd']"
+                                    :key="i"
+                                    :label="i"
+                                    :value="i"
+                                >
+
+                                </v-radio>
+                            </v-radio-group>
+                        </v-col>
+                        <v-col md="2">
+                            <v-text-field
+                                label="Year Attended"
+                                v-model="form.program_year_attended"
+                                filled
+                            ></v-text-field>
+                        </v-col>
+                        <v-col md="5">
+                            <v-radio-group v-model="form.program_completed"
+                                label="Have you completed the program?" row>
+                                <v-radio
+                                    v-for="i in ['YES','NO']"
+                                    :key="i"
+                                    :label="i"
+                                    :value="i"
+                                >
+
+                                </v-radio>
+                            </v-radio-group>
+                        </v-col>
+                        <v-col md="5">
+                            <v-text-field
+                                label="If NO, state the reason"
+                                v-model="form.program_inc_reason"
+                                filled
+                            ></v-text-field>
+                        </v-col>
+                    </v-row>
+                </v-col>
+
+                <v-col cols="12" md="12">
+                    <label>What learning modality/ties do you prefer? Choose all that applies</label>
+                    <v-container class="d-flex">
+                        <v-checkbox
+                            v-for="(i,index) in ['Face to Face','Modular Learning','Online','Radio','Others']"
+                            :key="i"
+                            v-model="form.modalities"
+                            :label="i"
+                            :value="i"
+                            hide-details
+                            :class="(index>0) ? 'pl-8':''"
+                        ></v-checkbox>
+                    </v-container>
+                </v-col>
+            </v-row>
         </v-card-text>
-        <v-card-actions class="d-flex justify-end pt-0 pr-4 pb-4">
+
+        <v-card-actions class="d-flex justify-end pt-0 pr-4 pb-4" v-if="user_id=='undefined' || user_id==null">
             <v-btn color="primary" @click="updateProfile()">Update Profile</v-btn>
         </v-card-actions>
     </v-card>
@@ -118,6 +229,8 @@
 <script>
 
 export default {
+    props: ['user_id'],
+
     data() {
         return {
             form: {
@@ -132,6 +245,18 @@ export default {
                 address: '',
                 guardian: '',
                 guardian_address: '',
+
+                gl_upon_registration: '',
+                drop_reason: '',
+                attended_als: '',
+                als_program: '',
+                literacy_level: '',
+                program_year_attended: '',
+                program_completed: '',
+                program_inc_reason: '',
+
+                modalities: [],
+
             },
             //dob
             dob: null,
@@ -153,7 +278,7 @@ export default {
 
         async updateProfile() {
             await axios.post(
-                `${this.AppStore.state.siteUrl}student/profile/updateProfile`,
+                `${this.AppStore.state.siteUrl}student/profile/updateProfile?user_id=${this.user_id}`,
                 {
                     data: this.form
                 }
@@ -168,8 +293,9 @@ export default {
         },
 
         async getProfile() {
+            this.AppStore.state.topLoadingCtr++;
             await axios.get(
-                `${this.AppStore.state.siteUrl}student/profile/getProfile`
+                `${this.AppStore.state.siteUrl}student/profile/getProfile?user_id=${this.user_id}`
             ).then(e=>{
                 console.log(e.data);
                 if(e.data.firstname!=undefined) {
@@ -183,7 +309,18 @@ export default {
                     this.form.address = e.data.address;
                     this.form.guardian = e.data.guardian;
                     this.form.guardian_address = e.data.guardian_address;
+                    // educ info
+                    this.form.gl_upon_registration = e.data.gl_upon_registration;
+                    this.form.drop_reason = e.data.drop_reason;
+                    this.form.attended_als = e.data.attended_als;
+                    this.form.als_program = e.data.als_program;
+                    this.form.literacy_level = e.data.literacy_level;
+                    this.form.program_year_attended = e.data.program_year_attended;
+                    this.form.program_completed = e.data.program_completed;
+                    this.form.program_inc_reason = e.data.program_inc_reason;
+                    this.form.modalities = JSON.parse(e.data.modalities);
                 }
+                this.AppStore.state.topLoadingCtr--;
             }).catch(e=>{
                 if(e.response) {
                     this.AppStore.toast(e.response.data,3000,'error');
@@ -197,6 +334,15 @@ export default {
         this.getProfile();
         this.form.user_id = this.AuthUser.id;
         console.log(this.form);
+    },
+
+    watch: {
+        form() {
+            console.log(this.form);
+        },
+        user_id() {
+            console.error(this.user_id);
+        }
     }
 };
 </script>

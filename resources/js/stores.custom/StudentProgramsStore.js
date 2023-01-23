@@ -9,6 +9,7 @@ const state = Vue.observable({
 
 const actions = {
     async getPrograms() {
+        AppStore.state.topLoadingCtr++;
         let url = `${AppStore.state.siteUrl}student/programs/getPrograms`;
         state.programs = [];
         try {
@@ -16,6 +17,8 @@ const actions = {
             state.programs = response.data;
         } catch (error) {
             AppStore.toast(error, 2500,'error');
+        } finally {
+            AppStore.state.topLoadingCtr--;
         }
     },
 };

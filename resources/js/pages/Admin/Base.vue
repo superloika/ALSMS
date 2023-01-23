@@ -14,8 +14,14 @@
                     </a>
                 </div>
             </v-toolbar-title>
+            <v-progress-linear v-if="AppStore.state.topLoadingCtr>0" indeterminate color="error"
+                absolute bottom>
+            </v-progress-linear>
+
+
 
             <v-spacer></v-spacer>
+
 
             <v-tabs hide-slider class="hidden-sm-and-down">
                 <v-tab to="/admin/dashboard" class="font-weight-bold">
@@ -38,7 +44,11 @@
             <v-btn icon dense @click="navDrawerState=true" class="hidden-md-and-up">
                 <span class="text-h4">&equiv;</span>
             </v-btn>
+
         </v-app-bar>
+
+
+
 
         <!-- SIDE NAV -->
         <v-navigation-drawer v-model="navDrawerState" absolute temporary>

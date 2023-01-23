@@ -42,9 +42,10 @@ export default {
     data() {
         return {
             tableHeaders: [
-                // {text:"Class ID", value:"id"},
                 {text:"Program", value:"program_title"},
                 {text:"Teacher", value:"teacher_name"},
+                {text:"CLC", value:"clc_name"},
+                {text:"CLC Address", value:"clc_address"},
                 {text:"Actions", value:"actions"},
             ],
             drawer: null,

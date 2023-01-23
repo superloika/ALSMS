@@ -9,6 +9,7 @@ const state = Vue.observable({
 
 const actions = {
     async getClcs() {
+        AppStore.state.topLoadingCtr++;
         let url = `${AppStore.state.siteUrl}clc/getClcs`;
         state.clcs = [];
         try {
@@ -16,6 +17,8 @@ const actions = {
             state.clcs = response.data;
         } catch (error) {
             AppStore.toast(error, 2500,'error');
+        } finally {
+            AppStore.state.topLoadingCtr--;
         }
     },
 };

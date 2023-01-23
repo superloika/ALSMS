@@ -13,8 +13,8 @@
     <v-container fluid class="d-flex justify-center py-8 primary">
         <v-img
             contain
-            max-width="400"
-            min-width="300"
+            max-width="500"
+            min-width="400"
             lazy-src="img/alsms-logo.png"
             src="img/alsms-logo.png"
         ></v-img>

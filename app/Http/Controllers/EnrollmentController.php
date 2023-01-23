@@ -40,11 +40,15 @@ class EnrollmentController extends Controller
                     'teachers.firstname as teacher_firstname',
                     'teachers.middlename as teacher_middlename',
                     'teachers.lastname as teacher_lastname',
+
+                    'clc.name as clc_name',
+                    'clc.address as clc_address',
                 )
                 ->join('classes','classes.id','enrollment.class_id')
                 ->join('profiles','profiles.user_id','enrollment.user_id')
                 ->join('programs','programs.id','classes.program_id')
                 ->join('teachers','teachers.id','classes.teacher_id')
+                ->join('clc','clc.id','classes.clc_id')
 
                 ->where('classes.sy_id', $sy_id)
 

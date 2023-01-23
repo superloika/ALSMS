@@ -8,7 +8,7 @@
             </v-list-item>
             <v-list-item link to="/account/add" color="primary">
                 <v-list-item-title>
-                    New Account
+                    New Admin Account
                 </v-list-item-title>
             </v-list-item>
         </v-list>

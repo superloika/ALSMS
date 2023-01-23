@@ -13,6 +13,7 @@ const state = Vue.observable({
 
 const actions = {
     async getSchoolYears() {
+        AppStore.state.topLoadingCtr++;
         let url = `${AppStore.state.siteUrl}sys/getSchoolYears`;
         state.sys = [];
         try {
@@ -20,10 +21,13 @@ const actions = {
             state.sys = response.data;
         } catch (error) {
             AppStore.toast(error, 2500,'error');
+        } finally {
+            AppStore.state.topLoadingCtr--;
         }
     },
 
     async getActiveSchoolYear() {
+        AppStore.state.topLoadingCtr++;
         let url = `${AppStore.state.siteUrl}sys/getActiveSchoolYear`;
         try {
             let response = await axios.get(url);
@@ -31,6 +35,8 @@ const actions = {
             state.activeSY.sy = response.data.sy;
         } catch (error) {
             AppStore.toast(error, 2500,'error');
+        } finally {
+            AppStore.state.topLoadingCtr--;
         }
     },
 };

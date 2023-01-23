@@ -42,6 +42,9 @@
         body, #app {
             background-color: #f1f1f1;
             /* background-color: #d2fff5; */
+            background: url('/img/bg.png') no-repeat;
+            background-size: cover;
+
         }
     </style>
 </head>

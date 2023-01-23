@@ -1,16 +1,17 @@
 <template>
-    <div>
-        <div class="mb-3">
+    <v-card>
+        <v-card-title>
             <v-icon x-large color="primary">
                 mdi-alert-circle-outline
             </v-icon>
-            <span class="text-h5 primary--text">Announcements</span>
-        </div>
-        <div class="pl-11">
+            Announcements
+        </v-card-title>
+        <v-card-text>
             Announcements from your facilitator/teacher will appear here
-        </div>
+        </v-card-text>
         <div>
 
         </div>
-    </div>
+    </v-card>
+
 </template>

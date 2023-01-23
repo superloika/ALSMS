@@ -9,7 +9,7 @@
         <v-card-text class="pt-4">
             <v-row>
                 <v-col cols="12">
-                    <v-text-field filled label="Code" v-model="form.code"></v-text-field>
+                    <!-- <v-text-field filled label="Code" v-model="form.code"></v-text-field> -->
                     <v-text-field filled label="Name" v-model="form.name"></v-text-field>
                     <v-textarea filled label="Address"
                         v-model="form.address"
@@ -31,7 +31,7 @@ export default {
     data() {
         return {
             form: {
-                code: '',
+                // code: '',
                 name: '',
                 address: '',
             }

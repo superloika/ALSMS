@@ -69,6 +69,7 @@ Route::group(['prefix'=>'enrollment'], function(){
 Route::group(['prefix'=>'classes'], function(){
     Route::get('/getClasses','ClassController@getClasses');
     Route::post('/saveClass','ClassController@saveClass');
+    Route::post('/deleteClass','ClassController@deleteClass');
 });
 
 //School Years
@@ -83,6 +84,7 @@ Route::group(['prefix'=>'sys'], function(){
 Route::group(['prefix'=>'teachers'], function(){
     Route::get('/getTeachers','TeacherController@getTeachers');
     Route::post('/saveTeacher','TeacherController@saveTeacher');
+    Route::post('/deleteTeacher','TeacherController@deleteTeacher');
 });
 
 //LEARNING PROGRAMS
@@ -103,7 +105,8 @@ Route::group(['prefix'=>'clc'], function(){
 
 //////////////////////////////////////////////////////////////////////////////////
 // STUDENT
-Route::group(['prefix'=>'student','middleware'=>'user_student'], function(){
+// Route::group(['prefix'=>'student','middleware'=>'user_student'], function(){
+Route::group(['prefix'=>'student'], function(){
     // Route::get('/student/dashboard','DashboardController@student');
     Route::group(['prefix'=>'programs'], function(){
         Route::get('/getPrograms','ProgramController@getPrograms');
@@ -126,6 +129,7 @@ Route::group(['prefix'=>'student','middleware'=>'user_student'], function(){
 Route::group(['prefix'=>'teacher'], function(){
     Route::group(['prefix'=>'classes'], function(){
         Route::post('/getTeacherClasses','ClassController@getTeacherClasses');
+        Route::post('/getClassStudents','ClassController@getClassStudents');
     });
 });
 //////////////////////////////////////////////////////////////////////////////////

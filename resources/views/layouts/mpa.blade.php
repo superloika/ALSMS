@@ -50,6 +50,11 @@
             flex-direction: column;
             justify-content: space-between;
         }
+
+        body {
+            background: url('/img/bg.png') no-repeat;
+            background-size: cover;
+        }
     </style>
 </head>
 <body>

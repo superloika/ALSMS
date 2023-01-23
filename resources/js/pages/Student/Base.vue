@@ -14,6 +14,9 @@
                     </a>
                 </div>
             </v-toolbar-title>
+            <v-progress-linear v-if="AppStore.state.topLoadingCtr>0" indeterminate color="error"
+                absolute bottom>
+            </v-progress-linear>
 
             <v-spacer></v-spacer>
 

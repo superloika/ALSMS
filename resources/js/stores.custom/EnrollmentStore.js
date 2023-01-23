@@ -10,6 +10,7 @@ const state = Vue.observable({
 
 const actions = {
     async getEnrollments(sy_id,status) {
+        AppStore.state.topLoadingCtr++;
         let url = `${AppStore.state.siteUrl}enrollment/getEnrollments?sy_id=${sy_id}&status=${status}`;
         try {
             let response = await axios.get(url);
@@ -22,6 +23,8 @@ const actions = {
             }
         } catch (error) {
             AppStore.toast(error, 2500,'error');
+        } finally {
+            AppStore.state.topLoadingCtr--;
         }
     },
 

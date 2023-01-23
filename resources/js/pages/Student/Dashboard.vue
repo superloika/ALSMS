@@ -40,7 +40,7 @@
                     </v-card-title>
                     <v-card-text>
                         <h1>
-                            0
+                            {{ pendingApplicationsCount }}
                         </h1>
                     </v-card-text>
                 </v-card>
@@ -85,6 +85,7 @@ export default {
 
     created() {
         this.StudentClassesStore.all(this.SyStore.state.activeSY.id);
+        // this.$router.push('/teacher/classes');
     }
 }
 </script>

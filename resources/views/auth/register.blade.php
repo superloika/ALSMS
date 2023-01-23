@@ -22,6 +22,12 @@
 
     {{-- EXTRAS --}}
     {{-- <link href="{{ asset('css/materialdesignicons.min.css') }}" rel="stylesheet"> --}}
+    <style>
+        body {
+            background: url('/img/bg.png') no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
 

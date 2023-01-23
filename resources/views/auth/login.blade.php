@@ -34,6 +34,11 @@
         .v - text - field--outlined fieldset {
             color: red!important;
         }
+
+        body {
+            background: url('/img/bg.png') no-repeat;
+            background-size: cover;
+        }
     </style>
 </head>
 <body>

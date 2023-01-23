@@ -5,7 +5,7 @@
                 Teachers
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn @click="drawer=true" color="primary">Add</v-btn>
+            <v-btn @click="drawer=true" color="primary" rounded outlined>Add</v-btn>
         </v-toolbar>
         <v-card-text>
             <v-data-table :headers="tableHeaders" :items="TeachersStore.state.teachers">
@@ -22,7 +22,7 @@
                 </template>
                 <template v-slot:[`item.actions`]="{item}">
                     <div stylex="width:100px;" class="d-flex">
-                        <v-btn icon small color="error" class="ml-2" disabled>
+                        <v-btn icon small color="error" class="ml-2" @click="deleteTeacher(item.id)">
                             <v-icon>mdi-delete</v-icon>
                         </v-btn>
                         <v-btn icon small color="primary" class="ml-2" disabled>
@@ -59,7 +59,24 @@ export default {
     },
 
     methods: {
+        async deleteTeacher(id) {
+            if(!confirm('Delete selected teacher?')) return;
 
+            let url = `${this.AppStore.state.siteUrl}teachers/deleteTeacher`;
+            await axios.post(url,{
+                    id: id
+                }).then(res=>{
+                    this.TeachersStore.getTeachers();
+                    this.AppStore.toast(res.data, 2500,'success');
+                }).catch(e=>{
+                    this.AppStore.toast(e, 2500,'error');
+                })
+                ;
+            // try {
+
+            // } catch (error) {
+            // }
+        },
     },
 
     created() {

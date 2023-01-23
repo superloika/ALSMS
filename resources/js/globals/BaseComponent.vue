@@ -1,7 +1,10 @@
 <template>
     <v-app>
+
         <v-container class="" fluid>
+
             <component v-bind:is="userTypeComponent"></component>
+
         </v-container>
 
         <!-- MISC -->
@@ -53,6 +56,7 @@ export default {
         this.SyStore.getSchoolYears();
         this.ProgramsStore.getPrograms();
         this.TeachersStore.getTeachers();
+        this.ClcStore.getClcs();
     },
 
     mounted() {
@@ -97,8 +101,8 @@ div.v-tab {
     }
 }
 
-.v-input--is-focused .v-input__slot {
-    /* border: 2px solid #00cca0 !important; */
-    /* border-bottom-color: rgba(0, 0, 0, 0.38) !important; */
-}
+/* .v-input--is-focused .v-input__slot {
+    border: 2px solid #00cca0 !important;
+    border-bottom-color: rgba(0, 0, 0, 0.38) !important;
+} */
 </style>

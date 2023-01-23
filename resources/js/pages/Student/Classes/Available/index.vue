@@ -38,7 +38,8 @@ export default {
                 // {text:"Class ID", value:"id"},
                 {text:"Program", value:"program_title"},
                 {text:"Teacher", value:"teacher_name"},
-                {text:"Schedule", value:"schedule"},
+                {text:"CLC", value:"clc_name"},
+                {text:"CLC Address", value:"clc_address"},
                 {text:"Actions", value:"actions"},
             ],
             drawer: null,
@@ -47,9 +48,10 @@ export default {
 
     computed: {
         classes() {
-            return this.StudentClassesStore.state.classes.filter((e)=>{
-                return e.user_id!=null && e.user_id != this.AuthUser.id;
-            });
+            // return this.StudentClassesStore.state.classes.filter((e)=>{
+            //     return e.user_id != this.AuthUser.id || e.user_id == null;
+            // });
+            return this.ClassesStore.state.classes;
         }
     },
 
@@ -62,15 +64,23 @@ export default {
                     }
                 }).then(res=>{
                     this.StudentClassesStore.all(this.SyStore.state.activeSY.id);
-                    this.AppStore.toast(res.data, 2500,'success');
+                    this.AppStore.toast(res.data, 3500,'success');
                 }).catch(e=>{
-                    this.AppStore.toast(e, 2500,'error');
+                    if(e.response) {
+                        if(e.response.status=='409') {
+
+                            this.AppStore.toast(e.response.data, 3500,'error');
+                        }
+                    } else {
+                        this.AppStore.toast(e, 2500,'error');
+                    }
                 })
                 ;
         }
     },
 
     created() {
+        this.ClassesStore.getClasses(this.SyStore.state.activeSY.id);
     }
 }
 </script>

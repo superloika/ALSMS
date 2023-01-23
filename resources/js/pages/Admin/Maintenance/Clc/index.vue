@@ -5,7 +5,7 @@
                 Community Learning Centers
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn @click="drawer=true" color="primary">Add</v-btn>
+            <v-btn @click="drawer=true" color="primary" rounded outlined>Add</v-btn>
         </v-toolbar>
         <v-card-text>
             <v-data-table :headers="tableHeaders" :items="ClcStore.state.clcs">
@@ -37,7 +37,6 @@ export default {
     data() {
         return {
             tableHeaders: [
-                {text:"Code", value:"code"},
                 {text:"Name", value:"name"},
                 {text:"Address", value:"address"},
                 {text:"Actions", value:"actions"},
@@ -54,7 +53,7 @@ export default {
             await axios.post(url,{
                     id: id
                 }).then(res=>{
-                    this.ClcStore.getPrograms();
+                    this.ClcStore.getClcs();
                     this.AppStore.toast(res.data, 2500,'success');
                 }).catch(e=>{
                     this.AppStore.toast(e, 2500,'error');

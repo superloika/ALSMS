@@ -59,4 +59,16 @@ class TeacherController extends Controller
     }
 
 
+    public function deleteTeacher()
+    {
+        try {
+            $id = request()->id;
+            DB::table('teachers')->where('id', $id)->delete();
+            return response()->json('Done', 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 500);
+        }
+    }
+
+
 }

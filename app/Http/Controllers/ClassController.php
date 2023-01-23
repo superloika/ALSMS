@@ -77,22 +77,24 @@ class ClassController extends Controller
     {
         $class_id = request()->class_id ?? '';
 
-        $students = DB::table('classes')
+        $students = DB::table('enrollment')
             ->select(
-                'classes.*',
-                'programs.title as program_title',
-                'teachers.firstname',
-                'teachers.middlename',
-                'teachers.lastname',
-                'clc.name as clc_name',
-                'clc.address as clc_address',
+                'enrollment.*',
+                'profiles.firstname',
+                'profiles.middlename',
+                'profiles.lastname',
+                'profiles.gender',
+                'programs.title',
+                'clc.name as clc_name'
+                // 'clc.name as clc_name',
+                // 'clc.address as clc_address',
             )
+            ->join('profiles','profiles.user_id','enrollment.user_id')
+            ->join('classes','classes.id','enrollment.class_id')
             ->join('programs','programs.id','classes.program_id')
-            ->join('teachers','teachers.id','classes.teacher_id')
             ->join('clc','clc.id','classes.clc_id')
+            ->where('enrollment.class_id', $class_id)
 
-            ->where('classes.sy_id', $sy_id)
-            ->where('classes.teacher_id', $teacher_id)
             ->orderBy('id','DESC')->get();
         return response()->json($students);
     }
@@ -121,6 +123,17 @@ class ClassController extends Controller
             ]);
 
             return response()->json('Success', 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 500);
+        }
+    }
+
+    public function deleteClass()
+    {
+        try {
+            $id = request()->id;
+            DB::table('classes')->where('id', $id)->delete();
+            return response()->json('Done', 200);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 500);
         }

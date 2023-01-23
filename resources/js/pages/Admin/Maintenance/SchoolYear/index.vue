@@ -5,7 +5,7 @@
                 School Year
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn @click="drawer=true" color="primary">Add</v-btn>
+            <v-btn @click="drawer=true" color="primary" rounded outlined>Add</v-btn>
         </v-toolbar>
         <v-card-text>
             <v-data-table :headers="tableHeaders" :items="SyStore.state.sys">

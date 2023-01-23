@@ -7,7 +7,7 @@
             <v-col cols="12" md="9">
                 <v-card>
                     <v-toolbar elevation="0" class="">
-                        <v-toolbar-title >New Account</v-toolbar-title>
+                        <v-toolbar-title >New Admin Account</v-toolbar-title>
                         <v-spacer></v-spacer>
 
                         <!-- <v-btn
@@ -27,6 +27,7 @@
                             color="primary"
                             @click="saveNewUser()"
                             :loading="savingNewUser"
+                            rounded outlined
                         >
                             Save New Account
                         </v-btn>
