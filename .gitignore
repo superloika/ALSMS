@@ -3,6 +3,9 @@
 /public/storage
 /public/*.js
 /public/*.js.map
+/public/js/*.js
+/public/js/*.txt
+/public/js/*.map
 /storage/*.key
 /vendor
 .env.backup
