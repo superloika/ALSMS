@@ -66,6 +66,11 @@ const router = new VueRouter({
                     name: "teacher.classes",
                     component: ()=>import("./pages/Teacher/Classes"),
                 },
+                {
+                    path: "classes/:id",
+                    name: "teacher.view_class",
+                    component: ()=>import("./pages/Teacher/Classes/ViewClass"),
+                },
                 // {
                 //     path: "enrollment",
                 //     name: "teacher.enrollment",

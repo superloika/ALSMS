@@ -45,6 +45,8 @@ export default {
             tableHeaders: [
                 {text:"Program", value:"program_title"},
                 {text:"Teacher", value:"teacher_name"},
+                {text:"CLC", value:"clc_name"},
+                {text:"Address", value:"clc_address"},
                 {text:"Actions", value:"actions"},
             ],
             drawer: null,

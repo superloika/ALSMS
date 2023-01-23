@@ -21,7 +21,7 @@ class ClcController extends Controller
 
     public function getClcs()
     {
-        $clcs = DB::table('clc')->latest()->get();
+        $clcs = DB::table('clc')->orderBy('id','DESC')->get();
         return response()->json($clcs);
     }
 
@@ -32,10 +32,8 @@ class ClcController extends Controller
             extract($data);
 
             DB::table('clc')->insert([
-                'code'=>$code,
                 'name'=>$name,
                 'address'=>$address,
-                'created_by'=>Auth::user()->id
             ]);
             return response()->json('Success', 200);
         } catch (\Throwable $th) {

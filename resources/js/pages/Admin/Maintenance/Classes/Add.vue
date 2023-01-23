@@ -33,6 +33,21 @@
                         </template>
                     </v-select>
                 </v-col>
+                <v-col cols="12">
+                    <v-select
+                        label="CLC"
+                        :items="clcs"
+                        item-value="id"
+                        v-model="form.clc_id"
+                    >
+                        <template slot="selection" slot-scope="data">
+                            {{ data.item.name }}
+                        </template>
+                        <template slot="item" slot-scope="data">
+                            {{ data.item.name }}
+                        </template>
+                    </v-select>
+                </v-col>
             </v-row>
         </v-card-text>
         <v-card-actions class="pt-0 pb-6 d-flex justify-end">
@@ -52,24 +67,23 @@ export default {
                 sy_id: '',
                 program_id: '',
                 teacher_id: '',
+                clc_id: '',
             }
         }
     },
 
     computed: {
         programs() {
-            // if(this.ProgramsStore.state.programs.length>1){
-            //     return this.ProgramsStore.state.programs.map((e)=>{
-
-            //     });
-            // }
-            // return [];
             return this.ProgramsStore.state.programs;
         },
 
         teachers() {
             return this.TeachersStore.state.teachers;
         },
+
+        clcs() {
+            return this.ClcStore.state.clcs;
+        }
     },
 
     methods: {

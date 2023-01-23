@@ -31,6 +31,8 @@ Route::get('/announcements', 'AnnouncementController@index')->name('announcement
 Route::get('/announcements/{slug}', 'AnnouncementController@view')->name('announcements.view');
 // about
 Route::get('/about', 'AboutController@index')->name('about');
+// about
+Route::get('/faq', 'FaqController@index')->name('faq');
 
 // logout using get http method
 Route::get('/logout', 'Auth\LogoutController@logout')->name('logout2');

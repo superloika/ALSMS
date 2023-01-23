@@ -14,6 +14,9 @@
                             Learning Programs
                         </v-tab>
                         <v-tab class="text-caption font-weight-bold">
+                            CLC
+                        </v-tab>
+                        <v-tab class="text-caption font-weight-bold">
                             Classes
                         </v-tab>
                     </v-tabs>
@@ -32,6 +35,9 @@
                             <Programs></Programs>
                         </v-tab-item>
                         <v-tab-item>
+                            <Clc></Clc>
+                        </v-tab-item>
+                        <v-tab-item>
                             <Classes></Classes>
                         </v-tab-item>
                     </v-tabs-items>
@@ -47,9 +53,10 @@ export default {
         Teachers: ()=>import('./Teachers'),
         SchoolYear: ()=>import('./SchoolYear'),
         Programs: ()=>import('./Programs'),
+        Clc: ()=>import('./Clc'),
         Classes: ()=>import('./Classes'),
-        // Clc: ()=>import('./Clc'),
     },
+
     data() {
         return {
             tabs: 0,
@@ -58,6 +65,7 @@ export default {
 
     created() {
         this.ClassesStore.getClasses(this.SyStore.state.activeSY.id);
+        this.ClcStore.getClcs();
     }
 }
 </script>

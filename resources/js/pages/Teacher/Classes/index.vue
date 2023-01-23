@@ -8,13 +8,18 @@
                 </v-chip>
             </v-toolbar-title>
             <v-spacer></v-spacer>
+
         </v-toolbar>
+
         <v-card-text>
             <v-data-table :headers="tableHeaders" :items="ClassesStore.state.teacherClasses">
                 <template v-slot:[`item.actions`]="{item}">
                     <div stylex="width:100px;" class="d-flex">
-                        <v-btn text small color="primary" class="ml-2" title="View">
-                            <v-icon>mdi-eye</v-icon>&nbsp;View Class
+                        <v-btn text color="primary" class="ml-2" title="View"
+                            link :to="'/teacher/classes/' + item.id"
+                            rounded outlined
+                        >
+                            View Class
                         </v-btn>
                     </div>
                 </template>
@@ -37,6 +42,8 @@ export default {
         return {
             tableHeaders: [
                 {text:"Learning Program", value:"program_title"},
+                {text:"CLC", value:"clc_name"},
+                {text:"Address", value:"clc_address"},
                 {text:"Actions", value:"actions"},
             ],
             drawer: null,

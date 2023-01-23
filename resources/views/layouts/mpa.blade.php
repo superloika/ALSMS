@@ -81,6 +81,11 @@
                         class="text-subtitle-2 font-weight-bold"
                     >Announcements</v-btn> --}}
                     <v-btn color="transparent" depressed dark
+                        href="/faq"
+                        class="text-subtitle-2 font-weight-bold"
+                    >FAQs</v-btn>
+
+                    <v-btn color="transparent" depressed dark
                         href="/about"
                         class="text-subtitle-2 font-weight-bold"
                     >About</v-btn>
