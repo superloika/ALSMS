@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2023 at 12:05 AM
+-- Generation Time: Jan 24, 2023 at 12:39 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -35,6 +35,13 @@ CREATE TABLE `classes` (
   `clc_id` int(11) NOT NULL,
   `class_status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Classes' ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`id`, `sy_id`, `program_id`, `teacher_id`, `clc_id`, `class_status`) VALUES
+(15, 7, 7, 14, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -71,6 +78,13 @@ CREATE TABLE `enrollment` (
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Enrollment' ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `enrollment`
+--
+
+INSERT INTO `enrollment` (`id`, `user_id`, `class_id`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
+(39, 23, 15, 'Approved', '2023-01-24 07:25:48', '2023-01-24 07:32:10', 23);
 
 -- --------------------------------------------------------
 
@@ -159,7 +173,8 @@ CREATE TABLE `profiles` (
 
 INSERT INTO `profiles` (`user_id`, `firstname`, `middlename`, `lastname`, `extname`, `gender`, `dob`, `pob`, `address`, `guardian`, `guardian_address`, `gl_upon_registration`, `drop_reason`, `attended_als`, `als_program`, `literacy_level`, `program_year_attended`, `program_completed`, `program_inc_reason`, `modalities`, `verified`, `created_at`, `updated_at`) VALUES
 (8, 'Crisia', 'Dummy', 'Test', NULL, 'Female', '1990-06-13', 'Test', 'test', 'test', 'test', 'G-4', 'Hago skwela', 'YES', 'baw unsa ra to hahaha', 'Basic', '2019', 'NO', 'hago as usual', '[null,\"Online\",\"Face to Face\",\"Modular Learning\",\"Radio\",\"Others\"]', 1, '2022-12-16 08:04:41', '2023-01-24 06:54:15'),
-(16, 'Christine', 'Christine', 'Christine', NULL, 'Female', '2023-01-18', 'asd', 'asd', 'asd', 'asd', 'G-3', NULL, 'NO', NULL, NULL, NULL, NULL, NULL, '[\"Modular Learning\",\"Online\"]', 1, '2023-01-24 06:53:33', '2023-01-24 06:54:41');
+(16, 'Christine', 'Christine', 'Christine', NULL, 'Female', '2023-01-18', 'asd', 'asd', 'asd', 'asd', 'G-3', NULL, 'NO', NULL, NULL, NULL, NULL, NULL, '[\"Modular Learning\",\"Online\"]', 1, '2023-01-24 06:53:33', '2023-01-24 06:54:41'),
+(23, 'Jolina', 'Martinez', 'Araiz', NULL, 'Female', '1995-05-19', 'Bohol', 'Bohol', 'Test', 'Test', 'G-3', 'Test', 'NO', NULL, NULL, NULL, 'NO', NULL, '[\"Online\",\"Face to Face\"]', 1, '2023-01-24 07:30:11', '2023-01-24 07:30:11');
 
 -- --------------------------------------------------------
 
@@ -185,7 +200,8 @@ CREATE TABLE `programs` (
 
 INSERT INTO `programs` (`id`, `title`, `slug`, `description_short`, `description_long`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
 (6, 'Basic Literacy Program (BLP)', 'basic-literacy-program-blp', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', 1, '2023-01-18 04:31:17', '2023-01-18 04:31:17', 3),
-(7, 'Accreditation and Equivalency (A&E)', 'accreditation-and-equivalency-ae', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution.', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution. Through this program, school dropouts are able to complete elementary and high school education outside the formal school system.', 1, '2023-01-18 04:32:40', '2023-01-18 04:32:40', 3);
+(7, 'Accreditation and Equivalency (A&E)', 'accreditation-and-equivalency-ae', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution.', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution. Through this program, school dropouts are able to complete elementary and high school education outside the formal school system.', 1, '2023-01-18 04:32:40', '2023-01-18 04:32:40', 3),
+(8, 'test', 'test', 'sad', 'asd', 1, '2023-01-24 07:23:07', '2023-01-24 07:23:07', 3);
 
 -- --------------------------------------------------------
 
@@ -233,8 +249,7 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `address`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
-(10, 'John', 'Smith', 'Doe', 'Male', 'Bohol', 1, '2023-01-03 02:20:43', '2023-01-03 02:20:43', 3),
-(11, 'Ada', 'Augusta', 'Lovelace', 'Female', 'Philippines', 1, '2023-01-24 03:35:01', '2023-01-24 03:35:01', 3);
+(14, 'Zinklyn', 'Pamugas', 'Largo', 'Female', 'Balilihan', 1, '2023-01-24 07:16:33', '2023-01-24 07:16:33', 3);
 
 -- --------------------------------------------------------
 
@@ -263,17 +278,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `user_type`, `teacher_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Super Admin', 'superadmin', NULL, NULL, '$2y$10$5IaNdp/3SBqzN7x7XBFvR.0nEkVqRDlm06tau4W/tkxA3jRj7zqTy', 'super_admin', NULL, NULL, '2022-10-23 06:07:28', '2022-10-23 06:07:28'),
 (3, 'Admin Test', 'admin', NULL, NULL, '$2y$10$WEovje8Q.4j14bY3zv5nleRZG9euxfm9mJMofqjSi64IfduNNfbn2', 'admin', NULL, NULL, '2022-10-23 08:44:55', '2022-10-23 08:44:55'),
-(8, 'Crisia B', 'crisia', NULL, NULL, '$2y$10$o9N6nYf8gEE3iW2q1T02JufnpKqTIy/z3Crz.jz6ItFjPHiV35XNC', 'student', NULL, NULL, '2023-01-02 18:15:07', '2023-01-02 18:15:07'),
-(10, 'Student One', 'student1', 'student1@test.com', NULL, '$2y$10$CvTlId3R4vRrY02.36554ub0auq9843kI.3qh2igynJlPb4qEH/Ke', 'student', NULL, NULL, '2022-11-13 05:53:03', '2022-11-13 05:53:03'),
-(11, 'Student Two', 'student2', NULL, NULL, '$2y$10$VhFV6gt0rqZFYojdqWJeI.CI9ifS4.Secp4YYKLbe0/e74msZnjQ6', 'student', NULL, NULL, '2023-01-02 18:15:08', '2023-01-02 18:15:09'),
-(12, 'Carl', 'admin1', 'admin@test.com', NULL, '$2y$10$M.JsISpef0r3DRloueN5weUjrJpv0sAo8PeL6.pNbpRuGae5cA1.a', 'student', NULL, NULL, '2022-11-23 14:46:31', '2022-11-23 14:46:31'),
-(13, 'Ceejay C', 'ceejay', NULL, NULL, '$2y$10$xyXfNA7raYltpI1EmKMGquzsHru/ZnfRWN7.btOKmBE7vnowcvGwS', 'student', NULL, NULL, '2023-01-02 18:15:09', '2023-01-02 18:15:10'),
-(15, 'John Smith Doe', 'johndoe', NULL, NULL, '$2y$10$dYVbkIGXhadbyD4v2vWv2ObUPyUDH3S8Zpkq6rMX09PRGLylZ7Gam', 'teacher', 10, NULL, '2023-01-02 18:20:43', '2023-01-17 22:23:18'),
-(16, 'Christine', 'christine', 'christine@test.com', NULL, '$2y$10$DhLYFWiavFT3LVjgiglz6.p5CRZVuN9huab0smIZztaQAXjag9mCS', 'student', NULL, NULL, '2023-01-18 00:01:31', '2023-01-18 00:01:31'),
-(17, 'Jolina', 'jolina', 'jolina@test.com', NULL, '$2y$10$0ZTOPtmE5DJKQB2xaR3/Xuyg3cO9SI8CccJh16z//WGj6EXkEn0i.', 'student', NULL, NULL, '2023-01-18 00:06:15', '2023-01-18 00:06:15'),
-(18, 'Ada Augusta Lovelace', 'adalovelace', NULL, NULL, '$2y$10$/tONew2Lx7QhehOyJzuUZuWUbmLblLOpuMTaCexYm7Cr7G9tgA9Sy', 'teacher', 11, NULL, '2023-01-23 19:35:01', '2023-01-23 19:35:01'),
-(19, 'xzc zxc zxc', 'xzczxc', NULL, NULL, '$2y$10$LURoMWLU3BX7AFnERASs5OzRd/o1RvqXDnqDnWDWwdYC5I65KLKiO', 'teacher', 12, NULL, '2023-01-23 22:43:48', '2023-01-23 22:43:48'),
-(20, 'zxc zxc zxc', 'zxczxc', NULL, NULL, '$2y$10$XsmABjfd28uycYt/CwMzW.cDhzZP5jjMKy6Vfd5rxeDJLjNXQH2i.', 'teacher', 13, NULL, '2023-01-23 22:43:57', '2023-01-23 22:43:57');
+(22, 'Zinklyn Pamugas Largo', 'zinklynlargo', NULL, NULL, '$2y$10$dBznaFxa1Jlc6Z/F8de53.2w73m7Vy0GH/B4M0G1D/iKAA1IcN5vy', 'teacher', 14, NULL, '2023-01-23 23:16:33', '2023-01-23 23:16:33'),
+(23, 'Jolina', 'jolina', 'jolina@test.com', NULL, '$2y$10$Ze5Ur/yCEJiuRka36D2ybu3kC/ZN9o0zZXIWLgkZWiXwPkaqK/Fba', 'student', NULL, NULL, '2023-01-23 23:18:11', '2023-01-23 23:18:11');
 
 -- --------------------------------------------------------
 
@@ -410,7 +416,7 @@ ALTER TABLE `websockets_statistics_entries`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `clc`
@@ -422,7 +428,7 @@ ALTER TABLE `clc`
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -440,7 +446,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sys`
@@ -452,13 +458,13 @@ ALTER TABLE `sys`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `websockets_statistics_entries`
