@@ -26,6 +26,13 @@ class SyController extends Controller
         return response()->json($sys);
     }
 
+    public function edit()
+    {
+        $item_id = request()->item_id ?? '';
+        $res = DB::table('sys')->find($item_id);
+        return response()->json($res);
+    }
+
 
     public function saveSchoolYear()
     {
@@ -45,6 +52,22 @@ class SyController extends Controller
                 'sy'=>$sy,
                 'status'=>1,
                 'created_by'=>Auth::user()->id
+            ]);
+            return response()->json('Success', 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 500);
+        }
+    }
+
+    public function update()
+    {
+        try {
+            $data = request()->data;
+            extract($data);
+
+            DB::table('sys')->where('id', $id)
+            ->update([
+                'sy'=>$sy,
             ]);
             return response()->json('Success', 200);
         } catch (\Throwable $th) {

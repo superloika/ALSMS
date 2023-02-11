@@ -32,7 +32,7 @@
                         <v-btn icon small color="error" class="ml-2" disabled>
                             <v-icon>mdi-delete</v-icon>
                         </v-btn>
-                        <v-btn icon small color="primary" class="ml-2" disabled>
+                        <v-btn icon small color="primary" class="ml-2" @click="edit(item.id)">
                             <v-icon>mdi-pencil</v-icon>
                         </v-btn>
                     </div>
@@ -43,6 +43,9 @@
         <v-navigation-drawer v-model="drawer" app temporary right style="width:600px;">
             <Add></Add>
         </v-navigation-drawer>
+        <v-navigation-drawer v-model="SyStore.state.editSyDlg" app temporary right style="width:600px;">
+            <Edit></Edit>
+        </v-navigation-drawer>
     </v-card>
 </template>
 
@@ -50,6 +53,7 @@
 export default {
     components: {
         Add: ()=>import('./Add'),
+        Edit: ()=>import('./Edit'),
     },
 
     data() {
@@ -96,6 +100,21 @@ export default {
                 })
                 ;
         },
+
+        async edit(item_id) {
+            console.log(item_id);
+            this.SyStore.state.editSyDlg = true;
+            let url = `${this.AppStore.state.siteUrl}sys/edit`;
+            await axios.post(url,{
+                    item_id: item_id,
+                }).then(res=>{
+                    this.SyStore.state.editSyObj = res.data;
+                    this.SyStore.state.editSyObj.old_sy = res.data.sy;
+                }).catch(e=>{
+                    this.AppStore.toast(e, 2500,'error');
+                })
+                ;
+        }
     },
 
     created() {

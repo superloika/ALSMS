@@ -78,6 +78,8 @@ Route::group(['prefix'=>'sys'], function(){
     Route::post('/saveSchoolYear','SyController@saveSchoolYear');
     Route::post('/toggleSYStatus','SyController@toggleSYStatus');
     Route::get('/getActiveSchoolYear','SyController@getActiveSchoolYear');
+    Route::post('/edit','SyController@edit');
+    Route::post('/update','SyController@update');
 });
 
 //Teachers

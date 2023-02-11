@@ -8,6 +8,8 @@ const state = Vue.observable({
         id: null,
         sy: ''
     },
+    editSyDlg: null,
+    editSyObj: {},
 });
 
 
