@@ -25,7 +25,7 @@
                         <v-btn icon small color="error" class="ml-2" @click="deleteTeacher(item.id)">
                             <v-icon>mdi-delete</v-icon>
                         </v-btn>
-                        <v-btn icon small color="primary" class="ml-2" disabled>
+                        <v-btn icon small color="primary" class="ml-2" @click="edit(item.id)">
                             <v-icon>mdi-pencil</v-icon>
                         </v-btn>
                     </div>
@@ -36,6 +36,9 @@
         <v-navigation-drawer v-model="drawer" app temporary right style="width:600px;">
             <Add></Add>
         </v-navigation-drawer>
+        <v-navigation-drawer v-model="TeachersStore.state.editTeacherDlg" app temporary right style="width:600px;">
+            <Edit></Edit>
+        </v-navigation-drawer>
     </v-card>
 </template>
 
@@ -43,6 +46,7 @@
 export default {
     components: {
         Add: ()=>import('./Add'),
+        Edit: ()=>import('./Edit'),
     },
 
     data() {
@@ -77,10 +81,22 @@ export default {
             // } catch (error) {
             // }
         },
+
+        async edit(id) {
+            console.log(id);
+            this.TeachersStore.state.editTeacherDlg = true;
+            let url = `${this.AppStore.state.siteUrl}teachers/edit`;
+            await axios.post(url,{
+                    id: id,
+                }).then(res=>{
+                    this.TeachersStore.state.editTeacherObj = res.data;
+                    // this.TeachersStore.state.editTeacherObj.old_sy = res.data.sy;
+                }).catch(e=>{
+                    this.AppStore.toast(e, 2500,'error');
+                })
+                ;
+        }
     },
 
-    created() {
-
-    }
 }
 </script>

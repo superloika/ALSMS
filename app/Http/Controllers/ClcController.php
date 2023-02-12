@@ -25,6 +25,12 @@ class ClcController extends Controller
         return response()->json($clcs);
     }
 
+    public function edit()
+    {
+        $clc = DB::table('clc')->find(request()->id ?? '');
+        return response()->json($clc);
+    }
+
     public function saveClc()
     {
         try {
@@ -32,6 +38,24 @@ class ClcController extends Controller
             extract($data);
 
             DB::table('clc')->insert([
+                'name'=>$name,
+                'address'=>$address,
+            ]);
+            return response()->json('Success', 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 500);
+        }
+    }
+
+    public function update()
+    {
+        try {
+            $data = request()->data;
+            extract($data);
+
+            DB::table('clc')
+            ->where('id', $id)
+            ->update([
                 'name'=>$name,
                 'address'=>$address,
             ]);

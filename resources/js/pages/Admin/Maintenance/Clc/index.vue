@@ -14,7 +14,7 @@
                         <v-btn icon small color="error" @click="deleteClc(item.id)">
                             <v-icon>mdi-delete</v-icon>
                         </v-btn>
-                        <v-btn icon small color="primary" @click="editClc(item.id)" disabled>
+                        <v-btn icon small color="primary" @click="edit(item.id)">
                             <v-icon>mdi-pencil</v-icon>
                         </v-btn>
                     </div>
@@ -25,6 +25,9 @@
         <v-navigation-drawer v-model="drawer" app temporary right style="width:600px;">
             <Add></Add>
         </v-navigation-drawer>
+        <v-navigation-drawer v-model="ClcStore.state.editClcDlg" app temporary right style="width:600px;">
+            <Edit></Edit>
+        </v-navigation-drawer>
     </v-card>
 </template>
 
@@ -32,6 +35,7 @@
 export default {
     components: {
         Add: ()=>import('./Add'),
+        Edit: ()=>import('./Edit'),
     },
 
     data() {
@@ -64,6 +68,20 @@ export default {
             // } catch (error) {
             // }
         },
+
+        async edit(id) {
+            console.log(id);
+            this.ClcStore.state.editClcDlg = true;
+            let url = `${this.AppStore.state.siteUrl}clc/edit`;
+            await axios.post(url,{
+                    id: id,
+                }).then(res=>{
+                    this.ClcStore.state.editClcObj = res.data;
+                }).catch(e=>{
+                    this.AppStore.toast(e, 2500,'error');
+                })
+                ;
+        }
     },
 
     created() {

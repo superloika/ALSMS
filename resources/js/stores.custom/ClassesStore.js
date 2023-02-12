@@ -6,6 +6,8 @@ const state = Vue.observable({
     classes: [],
     teacherClasses: [],
     classStudents: [],
+    editClassDlg: null,
+    editClassObj: {},
 });
 
 

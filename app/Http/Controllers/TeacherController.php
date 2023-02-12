@@ -27,6 +27,13 @@ class TeacherController extends Controller
         return response()->json($sys);
     }
 
+    public function edit()
+    {
+        $id = request()->id ?? '';
+        $teacher = DB::table('teachers')->find($id);
+        return response()->json($teacher);
+    }
+
 
     public function saveTeacher()
     {
@@ -50,6 +57,28 @@ class TeacherController extends Controller
                 'password'=>Hash::make('123'),
                 'user_type'=>'teacher',
                 'teacher_id'=>$teacher_id,
+            ]);
+
+            return response()->json('Success', 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 500);
+        }
+    }
+
+    public function update()
+    {
+        try {
+            $data = request()->data;
+            extract($data);
+
+            DB::table('teachers')
+            ->where('id', $id)
+            ->update([
+                'firstname'=>$firstname,
+                'middlename'=>$middlename,
+                'lastname'=>$lastname,
+                'gender'=>$gender,
+                'address'=>$address,
             ]);
 
             return response()->json('Success', 200);

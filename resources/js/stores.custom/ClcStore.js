@@ -3,7 +3,9 @@ import AppStore from "./AppStore";
 
 
 const state = Vue.observable({
-    clcs: []
+    clcs: [],
+    editClcDlg: null,
+    editClcObj: {}
 });
 
 

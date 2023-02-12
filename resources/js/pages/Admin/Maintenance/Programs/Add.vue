@@ -10,10 +10,10 @@
             <v-row>
                 <v-col cols="12">
                     <v-text-field filled label="Title" v-model="form.title"></v-text-field>
-                    <v-textarea filled label="Short Description"
+                    <v-textarea filled label="Short Description" auto-grow
                         v-model="form.description_short"
                     ></v-textarea>
-                    <v-textarea filled label="Long Description"
+                    <v-textarea filled label="Long Description" auto-grow
                         v-model="form.description_long"
                     ></v-textarea>
                 </v-col>

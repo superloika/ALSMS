@@ -4,6 +4,8 @@ import AppStore from "./AppStore";
 
 const state = Vue.observable({
     teachers: [],
+    editTeacherDlg: null,
+    editTeacherObj: {},
 });
 
 

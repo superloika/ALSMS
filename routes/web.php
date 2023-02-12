@@ -70,6 +70,8 @@ Route::group(['prefix'=>'classes'], function(){
     Route::get('/getClasses','ClassController@getClasses');
     Route::post('/saveClass','ClassController@saveClass');
     Route::post('/deleteClass','ClassController@deleteClass');
+    Route::post('/edit','ClassController@edit');
+    Route::post('/update','ClassController@update');
 });
 
 //School Years
@@ -87,6 +89,8 @@ Route::group(['prefix'=>'teachers'], function(){
     Route::get('/getTeachers','TeacherController@getTeachers');
     Route::post('/saveTeacher','TeacherController@saveTeacher');
     Route::post('/deleteTeacher','TeacherController@deleteTeacher');
+    Route::post('/edit','TeacherController@edit');
+    Route::post('/update','TeacherController@update');
 });
 
 //LEARNING PROGRAMS
@@ -94,6 +98,8 @@ Route::group(['prefix'=>'learning-programs'], function(){
     Route::get('/getPrograms','ProgramController@getPrograms');
     Route::post('/saveProgram','ProgramController@saveProgram');
     Route::post('/deleteProgram','ProgramController@deleteProgram');
+    Route::post('/edit','ProgramController@edit');
+    Route::post('/update','ProgramController@update');
 });
 
 //LEARNING CENTERS
@@ -101,6 +107,8 @@ Route::group(['prefix'=>'clc'], function(){
     Route::get('/getClcs','ClcController@getClcs');
     Route::post('/saveClc','ClcController@saveClc');
     Route::post('/deleteClc','ClcController@deleteClc');
+    Route::post('/edit','ClcController@edit');
+    Route::post('/update','ClcController@update');
 });
 //////////////////////////////////////////////////////////////////////////////////
 

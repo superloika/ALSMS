@@ -43,6 +43,12 @@ class ProgramController extends Controller
         return response()->json($programs);
     }
 
+    public function edit()
+    {
+        $programs = DB::table('programs')->find(request()->id);
+        return response()->json($programs);
+    }
+
     public function saveProgram()
     {
         try {
@@ -56,6 +62,27 @@ class ProgramController extends Controller
                 'description_short'=>$description_short,
                 'description_long'=>$description_long,
                 'created_by'=>Auth::user()->id
+            ]);
+            return response()->json('Success', 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 500);
+        }
+    }
+
+    public function update()
+    {
+        try {
+            $data = request()->data;
+            extract($data);
+            $slug = Str::slug($title);
+
+            DB::table('programs')
+            ->where('id', $id)
+            ->update([
+                'title'=>$title,
+                'slug'=>$slug,
+                'description_short'=>$description_short,
+                'description_long'=>$description_long,
             ]);
             return response()->json('Success', 200);
         } catch (\Throwable $th) {

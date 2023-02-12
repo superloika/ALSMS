@@ -3,7 +3,9 @@ import AppStore from "./AppStore";
 
 
 const state = Vue.observable({
-    programs: []
+    programs: [],
+    editProgramDlg: null,
+    editProgramObj: {}
 });
 
 

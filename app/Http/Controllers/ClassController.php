@@ -46,6 +46,29 @@ class ClassController extends Controller
         }
     }
 
+    public function edit()
+    {
+        // dd(request()->id);
+
+        $class = DB::table('classes')
+            // ->select(
+            //     'classes.*',
+            //     'programs.title as program_title',
+            //     'teachers.firstname',
+            //     'teachers.middlename',
+            //     'teachers.lastname',
+            //     'clc.name as clc_name',
+            //     'clc.address as clc_address',
+            // )
+            // ->join('programs','programs.id','classes.program_id')
+            // ->join('teachers','teachers.id','classes.teacher_id')
+            // ->join('clc','clc.id','classes.clc_id')
+
+            ->find(request()->id);
+
+        return response()->json($class);
+    }
+
     public function getTeacherClasses()
     {
         $sy_id = request()->sy_id ?? '';
@@ -116,6 +139,27 @@ class ClassController extends Controller
             }
 
             DB::table('classes')->insert([
+                'sy_id'=>$sy_id,
+                'program_id'=>$program_id,
+                'teacher_id'=>$teacher_id,
+                'clc_id'=>$clc_id,
+            ]);
+
+            return response()->json('Success', 200);
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage(), 500);
+        }
+    }
+
+    public function update()
+    {
+        try {
+            $data = request()->data;
+            extract($data);
+
+            DB::table('classes')
+            ->where('id', $id)
+            ->update([
                 'sy_id'=>$sy_id,
                 'program_id'=>$program_id,
                 'teacher_id'=>$teacher_id,
