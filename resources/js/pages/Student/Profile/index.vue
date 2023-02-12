@@ -286,7 +286,9 @@ export default {
                 this.AppStore.toast(e.data,3000,'success');
             }).catch(e=>{
                 if(e.response) {
-                    this.AppStore.toast(e.response.data,3000,'error');
+                    // this.AppStore.toast(e.response.data,3000,'error');
+                    console.error(e.response.data);
+                    this.AppStore.toast('An error has occured',2000,'error');
                 }
             })
             ;
@@ -323,7 +325,9 @@ export default {
                 this.AppStore.state.topLoadingCtr--;
             }).catch(e=>{
                 if(e.response) {
-                    this.AppStore.toast(e.response.data,3000,'error');
+                    // this.AppStore.toast(e.response.data,3000,'error');
+                    console.error(e.response.data);
+                    this.AppStore.toast('An error has occured',2000,'error');
                 }
             })
             ;

@@ -126,9 +126,11 @@ Route::group(['prefix'=>'student'], function(){
         Route::get('/getProfile','ProfileController@getProfile');
     });
     Route::group(['prefix'=>'classes'], function(){
-        Route::get('/all','StudentClassController@all');
-        Route::post('/enroll','StudentClassController@enroll');
-        Route::post('/cancelRequest','StudentClassController@cancelRequest');
+        Route::get('/studentEnrollment','StudentClassController@studentEnrollment');
+        // Route::get('/all','StudentClassController@all');
+        // Route::post('/enroll','StudentClassController@enroll');
+        Route::get('/enroll','StudentClassController@enroll');
+        Route::get('/cancelRequest','StudentClassController@cancelRequest');
     });
 });
 //////////////////////////////////////////////////////////////////////////////////

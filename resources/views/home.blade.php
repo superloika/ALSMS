@@ -10,20 +10,19 @@
     </v-container>
     @endauth --}}
 
-    <v-container fluid class="d-flex justify-center py-8 primary">
+    <div fluid class="d-flex justify-center p-0 primary">
         <v-img
             contain
-            max-width="500"
-            min-width="400"
-            lazy-src="img/alsms-logo.png"
-            src="img/alsms-logo.png"
+            width="100%"
+            lazy-src="img/hpbg_1.jpg"
+            src="img/hpbg_1.jpg"
         ></v-img>
-    </v-container>
+    </div>
 
     <v-container fluid class="d-flex justify-center  pa-8 pb-12">
         <v-row>
             <v-col cols="12" class="d-flex justify-center">
-                <p class="text-h4 primary--text">Learning Programs Offered</p>
+                <p class="text-h4 primary--text">Learning Programs</p>
             </v-col>
             @foreach ($programs as $p)
                 <v-col cols="12" md="4">

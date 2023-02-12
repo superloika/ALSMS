@@ -12,7 +12,7 @@
             <v-col cols="12" md="4" lg="3" xl="2">
                 <v-card color="info" dark>
                     <v-card-title>
-                        Enrolled Classes
+                        Enrolled Class
                     </v-card-title>
                     <v-card-text>
                         <h1>
@@ -84,7 +84,8 @@ export default {
     },
 
     created() {
-        this.StudentClassesStore.all(this.SyStore.state.activeSY.id);
+        // this.StudentClassesStore.all(this.SyStore.state.activeSY.id);
+        this.StudentClassesStore.studentEnrollment(this.SyStore.state.activeSY.id);
         // this.$router.push('/teacher/classes');
     }
 }

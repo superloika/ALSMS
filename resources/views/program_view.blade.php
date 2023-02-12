@@ -13,7 +13,7 @@
                     {{ $program->description_long }}
                 </p>
             </v-container>
-            @auth
+            {{-- @auth
                 @if (auth()->user()->user_type=='student')
                     <v-container>
                         <v-btn rounded color="primary" href="/student/classes">Enroll Now</v-btn>
@@ -24,7 +24,7 @@
                 <v-container>
                     <v-btn rounded color="primary" href="/student/classes">Enroll Now</v-btn>
                 </v-container>
-            @endguest
+            @endguest --}}
         </v-col>
         <v-col md="4">
 
