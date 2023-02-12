@@ -227,9 +227,10 @@
                     </v-container>
                 </v-col>
 
-                <v-col cols="12" md="12" v-if="showAttachments">
+                <v-col cols="12" md="12">
                     <label>Attachments</label>
                     <v-file-input
+                        v-if="isStudentView"
                         multiple
                         label="Select files to attach"
                         chips
@@ -239,6 +240,7 @@
                         dense
                     ></v-file-input>
                     <v-container>
+                        <em class="error--text" v-if="!form.attachments.length">No attachments available</em>
                         <v-btn small outlined rounded color="primary" link target="_blank"
                             :to="'/storage/attachments/23/' + a"
                             v-for="(a,i) in form.attachments"
@@ -251,7 +253,7 @@
             </v-row>
         </v-card-text>
 
-        <v-card-actions class="d-flex justify-end pt-0 pr-4 pb-4" v-if="user_id=='undefined' || user_id==null">
+        <v-card-actions class="d-flex justify-end pt-0 pr-4 pb-4" v-if="isStudentView">
             <v-btn color="primary" @click="updateProfile()">Save</v-btn>
         </v-card-actions>
     </v-card>
@@ -296,7 +298,7 @@ export default {
             dobMenu: false,
 
             file: [],
-            showAttachments: false,
+            // showAttachments: false,
         };
     },
 
@@ -384,15 +386,17 @@ export default {
                     this.form.modalities = JSON.parse(e.data.modalities);
                     this.form.attachments = JSON.parse(e.data.attachments);
 
-                    this.showAttachments = true;
+                    // this.showAttachments = true;
                 }
-                this.AppStore.state.topLoadingCtr--;
+
             }).catch(e=>{
                 if(e.response) {
                     // this.AppStore.toast(e.response.data,3000,'error');
                     console.error(e.response.data);
                     this.AppStore.toast('An error has occured',2000,'error');
                 }
+            }).finally(()=>{
+                this.AppStore.state.topLoadingCtr--;
             })
             ;
         }
