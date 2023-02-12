@@ -19,10 +19,10 @@
                 </template>
                 <template v-slot:[`item.actions`]="{item}">
                     <div class="d-flex">
-                        <v-btn icon small color="" class="ml-2" title="View Details"
+                        <v-btn iconx small text color="primary" class="ml-2" title="View Details"
                             @click.stop="user_id=item.user_id;viewStudentDetailsDialog=true;"
                         >
-                            <v-icon>mdi-eye</v-icon>
+                            <v-icon>mdi-eye</v-icon> View Details
                         </v-btn>
                     </div>
                 </template>

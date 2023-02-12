@@ -44,13 +44,14 @@ class EnrollmentController extends Controller
                     'clc.name as clc_name',
                     'clc.address as clc_address',
                 )
-                ->join('classes','classes.id','enrollment.class_id')
+                ->leftJoin('classes','classes.id','enrollment.class_id')
                 ->join('profiles','profiles.user_id','enrollment.user_id')
-                ->join('programs','programs.id','classes.program_id')
-                ->join('teachers','teachers.id','classes.teacher_id')
-                ->join('clc','clc.id','classes.clc_id')
+                ->leftJoin('programs','programs.id','classes.program_id')
+                ->leftJoin('teachers','teachers.id','classes.teacher_id')
+                ->leftJoin('clc','clc.id','classes.clc_id')
 
-                ->where('classes.sy_id', $sy_id)
+                // ->where('classes.sy_id', $sy_id)
+                ->where('enrollment.sy_id', $sy_id)
 
                 ->when($status=='Pending', function($q){
                     $q->where('enrollment.status','Pending');
@@ -75,6 +76,7 @@ class EnrollmentController extends Controller
                 ->where('id', $enrollment_id)
                 ->update([
                     'status'=>'Approved',
+                    'class_id'=>$class_id,
                     // 'created_by'=>$user_id,
                 ]);
             return response()->json('Success', 200);

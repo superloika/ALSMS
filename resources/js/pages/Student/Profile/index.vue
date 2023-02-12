@@ -221,7 +221,7 @@
         </v-card-text>
 
         <v-card-actions class="d-flex justify-end pt-0 pr-4 pb-4" v-if="user_id=='undefined' || user_id==null">
-            <v-btn color="primary" @click="updateProfile()">Update Profile</v-btn>
+            <v-btn color="primary" @click="updateProfile()">Save</v-btn>
         </v-card-actions>
     </v-card>
 </template>
