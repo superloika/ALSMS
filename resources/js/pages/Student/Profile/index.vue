@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-card-title class="primary" v-if="user_id=='undefined' || user_id==null">
+        <v-card-title class="primary" v-if="isStudentView">
             <div class="text-h5 white--text">Student Profile</div>
         </v-card-title>
         <v-card-text class="pt-4">
@@ -51,7 +51,7 @@
                     </v-radio-group>
                 </v-col>
 
-                <v-col cols="12" md="3">
+                <v-col cols="12" md="2">
                     <v-menu
                         ref="dobMenu"
                         v-model="dobMenu"
@@ -78,6 +78,15 @@
                             @change="saveDOB"
                         ></v-date-picker>
                     </v-menu>
+                </v-col>
+
+                <v-col cols="12" md="1">
+                    <v-text-field
+                        label="Age"
+                        v-model="form.age"
+                        filled
+                        readonly
+                    ></v-text-field>
                 </v-col>
 
                 <v-col cols="12" md="6">
@@ -217,6 +226,28 @@
                         ></v-checkbox>
                     </v-container>
                 </v-col>
+
+                <v-col cols="12" md="12" v-if="showAttachments">
+                    <label>Attachments</label>
+                    <v-file-input
+                        multiple
+                        label="Select files to attach"
+                        chips
+                        v-model="file"
+                        hide-details
+                        filled
+                        dense
+                    ></v-file-input>
+                    <v-container>
+                        <v-btn small outlined rounded color="primary" link target="_blank"
+                            :to="'/storage/attachments/23/' + a"
+                            v-for="(a,i) in form.attachments"
+                            :key="i"
+                        >
+                            {{ a }}
+                        </v-btn>
+                    </v-container>
+                </v-col>
             </v-row>
         </v-card-text>
 
@@ -241,6 +272,7 @@ export default {
                 extname: '',
                 gender: '',
                 dob: '',
+                age: '',
                 pob: '',
                 address: '',
                 guardian: '',
@@ -256,33 +288,61 @@ export default {
                 program_inc_reason: '',
 
                 modalities: [],
-
+                attachments: [],
             },
             //dob
-            dob: null,
+            // dob: null,
             dobActivePicker: null,
             dobMenu: false,
+
+            file: [],
+            showAttachments: false,
         };
+    },
+
+    computed: {
+        isStudentView() {
+            return (this.user_id=='undefined' || this.user_id==null) ? true : false;
+        },
     },
 
     watch: {
         dobMenu(val){
             val && setTimeout(() => (this.dobActivePicker = 'YEAR'));
-        }
+        },
+        user_id() {
+            console.error(this.user_id);
+        },
+
     },
 
     methods: {
+        test() {
+            console.log('PROFILE:', this.form);
+        },
         saveDOB(date) {
             this.$refs.dobMenu.save(date);
+            this.form.age = this.AppStore.calculateAge(this.form.dob);
         },
 
         async updateProfile() {
+            let frmData = new FormData();
+            for(let i=0;i<this.file.length;i++) {
+                frmData.append('files[' + i + ']', this.file[i]);
+            }
+
+            frmData.append('form', JSON.stringify(this.form));
+
             await axios.post(
                 `${this.AppStore.state.siteUrl}student/profile/updateProfile?user_id=${this.user_id}`,
+                frmData,
                 {
-                    data: this.form
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
                 }
             ).then(e=>{
+                this.getProfile();
                 this.AppStore.toast(e.data,3000,'success');
             }).catch(e=>{
                 if(e.response) {
@@ -307,6 +367,7 @@ export default {
                     this.form.extname = e.data.extname;
                     this.form.gender = e.data.gender;
                     this.form.dob = e.data.dob;
+                    this.form.age = this.AppStore.calculateAge(e.data.dob);
                     this.form.pob = e.data.pob;
                     this.form.address = e.data.address;
                     this.form.guardian = e.data.guardian;
@@ -321,6 +382,9 @@ export default {
                     this.form.program_completed = e.data.program_completed;
                     this.form.program_inc_reason = e.data.program_inc_reason;
                     this.form.modalities = JSON.parse(e.data.modalities);
+                    this.form.attachments = JSON.parse(e.data.attachments);
+
+                    this.showAttachments = true;
                 }
                 this.AppStore.state.topLoadingCtr--;
             }).catch(e=>{
@@ -340,14 +404,6 @@ export default {
         console.log(this.form);
     },
 
-    watch: {
-        form() {
-            console.log(this.form);
-        },
-        user_id() {
-            console.error(this.user_id);
-        }
-    }
 };
 </script>
 
