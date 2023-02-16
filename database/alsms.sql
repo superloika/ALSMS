@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2023 at 10:08 PM
+-- Generation Time: Feb 16, 2023 at 09:32 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -141,6 +141,7 @@ CREATE TABLE `profiles` (
   `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guardian` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `guardian_address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `fb_account` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `gl_upon_registration` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `drop_reason` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `attended_als` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -149,8 +150,8 @@ CREATE TABLE `profiles` (
   `program_year_attended` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `program_completed` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `program_inc_reason` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `modalities` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `attachments` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modalities` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '[]',
+  `attachments` text COLLATE utf8mb4_unicode_ci DEFAULT '[]',
   `verified` tinyint(4) NOT NULL DEFAULT 1,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -168,6 +169,7 @@ CREATE TABLE `programs` (
   `slug` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
   `description_short` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description_long` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attachments` text COLLATE utf8mb4_unicode_ci DEFAULT '[]',
   `status` tinyint(4) DEFAULT 1,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -178,10 +180,10 @@ CREATE TABLE `programs` (
 -- Dumping data for table `programs`
 --
 
-INSERT INTO `programs` (`id`, `title`, `slug`, `description_short`, `description_long`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
-(6, 'Basic Literacy Program (BLP)', 'basic-literacy-program-blp', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', 1, '2023-01-18 04:31:17', '2023-01-18 04:31:17', 3),
-(7, 'Accreditation and Equivalency (A&E)', 'accreditation-and-equivalency-ae', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution.', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution. Through this program, school dropouts are able to complete elementary and high school education outside the formal school system.', 1, '2023-01-18 04:32:40', '2023-01-18 04:32:40', 3),
-(8, 'InFed', 'infed', 'Informal education', 'Informal education', 1, '2023-01-24 07:23:07', '2023-02-12 13:09:17', 3);
+INSERT INTO `programs` (`id`, `title`, `slug`, `description_short`, `description_long`, `attachments`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
+(6, 'Basic Literacy Program (BLP)', 'basic-literacy-program-blp', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', '[]', 1, '2023-01-18 04:31:17', '2023-02-17 04:27:51', 3),
+(7, 'Accreditation and Equivalency (A&E)', 'accreditation-and-equivalency-ae', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution.', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution. Through this program, school dropouts are able to complete elementary and high school education outside the formal school system.', '[]', 1, '2023-01-18 04:32:40', '2023-01-18 04:32:40', 3),
+(8, 'InFed', 'infed', 'Informal education', 'Informal education Informal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal education\n\nInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal education\n\n*Informal education\n*Informal education\n*Informal education\n*Informal education', '[]', 1, '2023-01-24 07:23:07', '2023-02-17 04:27:53', 3);
 
 -- --------------------------------------------------------
 
@@ -224,6 +226,13 @@ CREATE TABLE `teachers` (
   `created_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `address`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
+(16, 'Zinklyn', 'Test', 'Largo', 'Female', 'Balilihan', 1, '2023-02-17 00:16:35', '2023-02-17 00:16:35', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -250,7 +259,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `user_type`, `teacher_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Super Admin', 'superadmin', NULL, NULL, '$2y$10$5IaNdp/3SBqzN7x7XBFvR.0nEkVqRDlm06tau4W/tkxA3jRj7zqTy', 'super_admin', NULL, NULL, '2022-10-23 06:07:28', '2022-10-23 06:07:28'),
-(3, 'Admin', 'admin', NULL, NULL, '$2y$10$WEovje8Q.4j14bY3zv5nleRZG9euxfm9mJMofqjSi64IfduNNfbn2', 'admin', NULL, NULL, '2022-10-23 08:44:55', '2023-02-12 16:21:06');
+(3, 'Admin', 'admin', NULL, NULL, '$2y$10$WEovje8Q.4j14bY3zv5nleRZG9euxfm9mJMofqjSi64IfduNNfbn2', 'admin', NULL, NULL, '2022-10-23 08:44:55', '2023-02-12 16:21:06'),
+(28, 'Zinklyn Test Largo', 'zinklynlargo', NULL, NULL, '$2y$10$i6x4eVlLcQM.pjdhH.J/ge284eAOJKYtZuXIETw/.GTv.xcGDVOGO', 'teacher', 16, NULL, '2023-02-16 16:16:35', '2023-02-16 16:16:35');
 
 -- --------------------------------------------------------
 
@@ -339,7 +349,8 @@ ALTER TABLE `profiles`
   ADD KEY `program_completed` (`program_completed`),
   ADD KEY `program_inc_reason` (`program_inc_reason`),
   ADD KEY `modalities` (`modalities`),
-  ADD KEY `attachments` (`attachments`(768));
+  ADD KEY `attachments` (`attachments`(768)),
+  ADD KEY `fb_account` (`fb_account`);
 
 --
 -- Indexes for table `programs`
@@ -389,7 +400,7 @@ ALTER TABLE `websockets_statistics_entries`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `clc`
@@ -401,7 +412,7 @@ ALTER TABLE `clc`
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -419,7 +430,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `sys`
@@ -431,13 +442,13 @@ ALTER TABLE `sys`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `websockets_statistics_entries`
