@@ -10,7 +10,7 @@
             </v-container>
             <v-container class="">
                 <p>
-                    {{ $program->description_long }}
+                    {!! nl2br($program->description_long) !!}
                 </p>
             </v-container>
             {{-- @auth

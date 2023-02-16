@@ -34,6 +34,7 @@
                 <template v-slot:[`item.actions`]="{item}">
                     <div class="d-flex">
                         <v-btn small rounded outlined color="primary" class="ml-2" title="View Details"
+                            @click.stop="view(item)"
                         >
                             <v-icon>mdi-eye</v-icon> View
                         </v-btn>
@@ -41,12 +42,32 @@
                 </template>
             </v-data-table>
         </v-card-text>
+
+        <v-dialog v-model="dlgViewClass" max-width="900">
+            <ViewClass :selectedClass="selectedClass"></ViewClass>
+        </v-dialog>
     </v-card>
 </template>
 
 <script>
 export default {
     components: {
+        ViewClass: ()=>import('./ViewClass.vue'),
+    },
+
+    data() {
+        return {
+            tableHeaders: [
+                {text:"Program", value:"program_title"},
+                {text:"Teacher", value:"teacher_name"},
+                {text:"CLC", value:"clc_name"},
+                {text:"CLC Address", value:"clc_address"},
+                {text:"Actions", value:"actions"},
+            ],
+            drawer: null,
+            dlgViewClass: null,
+            selectedClass: null,
+        }
     },
 
     computed:{
@@ -67,19 +88,6 @@ export default {
             } catch (error) {
                 return 0;
             }
-        }
-    },
-
-    data() {
-        return {
-            tableHeaders: [
-                {text:"Program", value:"program_title"},
-                {text:"Teacher", value:"teacher_name"},
-                {text:"CLC", value:"clc_name"},
-                {text:"CLC Address", value:"clc_address"},
-                {text:"Actions", value:"actions"},
-            ],
-            drawer: null,
         }
     },
 
@@ -118,7 +126,12 @@ export default {
                     this.StudentClassesStore.studentEnrollment(this.SyStore.state.activeSY.id);
                 })
                 ;
-        }
+        },
+
+        view(selectedClass) {
+            this.selectedClass = selectedClass;
+            this.dlgViewClass = true;
+        },
     },
 
     created() {

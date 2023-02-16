@@ -64,6 +64,7 @@
                         transition="scale-transition"
                         offset-y
                         min-width="auto"
+                        :readonly="!AppStore.isStudent()"
                     >
                         <template v-slot:activator="{ on, attrs }">
                             <v-text-field
@@ -73,7 +74,7 @@
                                 v-bind="attrs"
                                 v-on="on"
                                 filled
-                                :readonly="!AppStore.isStudent()"
+
                             ></v-text-field>
                         </template>
                         <v-date-picker
@@ -91,7 +92,6 @@
                         label="Age"
                         v-model="form.age"
                         filled
-                        :readonly="!AppStore.isStudent()"
                         readonly
                     ></v-text-field>
                 </v-col>
@@ -127,6 +127,15 @@
                     <v-text-field
                         label="Parent/Guardian Address"
                         v-model="form.guardian_address"
+                        filled
+                        :readonly="!AppStore.isStudent()"
+                    ></v-text-field>
+                </v-col>
+
+                <v-col cols="12" md="3">
+                    <v-text-field
+                        label="Facebook Account"
+                        v-model="form.fb_account"
                         filled
                         :readonly="!AppStore.isStudent()"
                     ></v-text-field>
@@ -260,7 +269,7 @@
                         :readonly="!AppStore.isStudent()"
                         dense
                     ></v-file-input>
-                    <v-container>
+                    <v-container class="pt-6">
                         <em class="error--text" v-if="!form.attachments.length">No attachments available</em>
                         <v-btn small outlined rounded color="primary" link target="_blank"
                             :to="'/storage/attachments/'+ form.user_id +'/' + a"
@@ -300,6 +309,7 @@ export default {
                 address: '',
                 guardian: '',
                 guardian_address: '',
+                fb_account: '',
 
                 gl_upon_registration: '',
                 drop_reason: '',
@@ -401,6 +411,7 @@ export default {
                     this.form.address = e.data.address;
                     this.form.guardian = e.data.guardian;
                     this.form.guardian_address = e.data.guardian_address;
+                    this.form.fb_account = e.data.fb_account;
                     // educ info
                     this.form.gl_upon_registration = e.data.gl_upon_registration;
                     this.form.drop_reason = e.data.drop_reason;

@@ -65,6 +65,8 @@ class StudentClassController extends Controller
                     'classes.teacher_id',
                     'classes.clc_id',
                     'programs.title as program_title',
+                    'programs.description_long as program_description',
+                    'programs.attachments',
                     'teachers.firstname',
                     'teachers.middlename',
                     'teachers.lastname',
