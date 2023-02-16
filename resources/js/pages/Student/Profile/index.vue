@@ -14,6 +14,7 @@
                         label="First Name"
                         v-model="form.firstname"
                         filled
+                        :readonly="!AppStore.isStudent()"
                     ></v-text-field>
                 </v-col>
 
@@ -22,6 +23,7 @@
                         label="Middle Name"
                         v-model="form.middlename"
                         filled
+                        :readonly="!AppStore.isStudent()"
                     ></v-text-field>
                 </v-col>
 
@@ -30,6 +32,7 @@
                         label="Last Name"
                         v-model="form.lastname"
                         filled
+                        :readonly="!AppStore.isStudent()"
                     ></v-text-field>
                 </v-col>
 
@@ -38,11 +41,13 @@
                         label="Extension Name"
                         v-model="form.extname"
                         filled
+                        :readonly="!AppStore.isStudent()"
                     ></v-text-field>
                 </v-col>
 
                 <v-col cols="12" md="3">
-                    <v-radio-group v-model="form.gender" row>
+                    <v-radio-group v-model="form.gender" row
+                    :readonly="!AppStore.isStudent()">
                         <template v-slot:label>
                             <div>Gender</div>
                         </template>
@@ -68,6 +73,7 @@
                                 v-bind="attrs"
                                 v-on="on"
                                 filled
+                                :readonly="!AppStore.isStudent()"
                             ></v-text-field>
                         </template>
                         <v-date-picker
@@ -85,6 +91,7 @@
                         label="Age"
                         v-model="form.age"
                         filled
+                        :readonly="!AppStore.isStudent()"
                         readonly
                     ></v-text-field>
                 </v-col>
@@ -94,6 +101,7 @@
                         label="Place of Birth"
                         v-model="form.pob"
                         filled
+                        :readonly="!AppStore.isStudent()"
                     ></v-text-field>
                 </v-col>
 
@@ -102,6 +110,7 @@
                         label="Address"
                         v-model="form.address"
                         filled
+                        :readonly="!AppStore.isStudent()"
                     ></v-text-field>
                 </v-col>
 
@@ -110,6 +119,7 @@
                         label="Parent/Guardian"
                         v-model="form.guardian"
                         filled
+                        :readonly="!AppStore.isStudent()"
                     ></v-text-field>
                 </v-col>
 
@@ -118,6 +128,7 @@
                         label="Parent/Guardian Address"
                         v-model="form.guardian_address"
                         filled
+                        :readonly="!AppStore.isStudent()"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -129,7 +140,8 @@
 
                 <v-col cols="12" md="12">
                     <v-radio-group v-model="form.gl_upon_registration"
-                        label="Last grade level completed" row>
+                        label="Last grade level completed" row
+                        :readonly="!AppStore.isStudent()">
                         <v-radio
                             v-for="g in AppStore.state.gLevels"
                             :key="g"
@@ -146,12 +158,14 @@
                         label="Why did you drop-out of school? (For OSY only)"
                         v-model="form.drop_reason"
                         filled
+                        :readonly="!AppStore.isStudent()"
                     ></v-text-field>
                 </v-col>
 
                 <v-col cols="12" md="12">
                     <v-radio-group v-model="form.attended_als"
-                        label="Have you attended ALS learning sessions before?" row>
+                        label="Have you attended ALS learning sessions before?" row
+                        :readonly="!AppStore.isStudent()">
                         <v-radio
                             v-for="i in ['YES','NO']"
                             :key="i"
@@ -167,11 +181,13 @@
                                 label="Name of the Program"
                                 v-model="form.als_program"
                                 filled
+                                :readonly="!AppStore.isStudent()"
                             ></v-text-field>
                         </v-col>
                         <v-col md="6">
                             <v-radio-group v-model="form.literacy_level"
-                                label="Literacy Level" row>
+                                label="Literacy Level" row
+                                :readonly="!AppStore.isStudent()">
                                 <v-radio
                                     v-for="i in ['Basic','Elementary','Secondary','InfEd']"
                                     :key="i"
@@ -187,11 +203,13 @@
                                 label="Year Attended"
                                 v-model="form.program_year_attended"
                                 filled
+                                :readonly="!AppStore.isStudent()"
                             ></v-text-field>
                         </v-col>
                         <v-col md="5">
                             <v-radio-group v-model="form.program_completed"
-                                label="Have you completed the program?" row>
+                                label="Have you completed the program?" row
+                                :readonly="!AppStore.isStudent()">
                                 <v-radio
                                     v-for="i in ['YES','NO']"
                                     :key="i"
@@ -207,6 +225,7 @@
                                 label="If NO, state the reason"
                                 v-model="form.program_inc_reason"
                                 filled
+                                :readonly="!AppStore.isStudent()"
                             ></v-text-field>
                         </v-col>
                     </v-row>
@@ -223,6 +242,7 @@
                             :value="i"
                             hide-details
                             :class="(index>0) ? 'pl-8':''"
+                            :readonly="!AppStore.isStudent()"
                         ></v-checkbox>
                     </v-container>
                 </v-col>
@@ -237,12 +257,13 @@
                         v-model="file"
                         hide-details
                         filled
+                        :readonly="!AppStore.isStudent()"
                         dense
                     ></v-file-input>
                     <v-container>
                         <em class="error--text" v-if="!form.attachments.length">No attachments available</em>
                         <v-btn small outlined rounded color="primary" link target="_blank"
-                            :to="'/storage/attachments/23/' + a"
+                            :to="'/storage/attachments/'+ form.user_id +'/' + a"
                             v-for="(a,i) in form.attachments"
                             :key="i"
                         >
@@ -306,6 +327,11 @@ export default {
         isStudentView() {
             return (this.user_id=='undefined' || this.user_id==null) ? true : false;
         },
+        // form_user_id() {
+        //     if(this.user_id==undefined) {
+        //         return this.form.user_id
+        //     }
+        // }
     },
 
     watch: {
@@ -315,7 +341,6 @@ export default {
         user_id() {
             console.error(this.user_id);
         },
-
     },
 
     methods: {
@@ -363,6 +388,8 @@ export default {
             ).then(e=>{
                 console.log(e.data);
                 if(e.data.firstname!=undefined) {
+                    this.form.user_id = e.data.user_id;
+
                     this.form.firstname = e.data.firstname;
                     this.form.middlename = e.data.middlename;
                     this.form.lastname = e.data.lastname;
@@ -385,10 +412,7 @@ export default {
                     this.form.program_inc_reason = e.data.program_inc_reason;
                     this.form.modalities = JSON.parse(e.data.modalities);
                     this.form.attachments = JSON.parse(e.data.attachments);
-
-                    // this.showAttachments = true;
                 }
-
             }).catch(e=>{
                 if(e.response) {
                     // this.AppStore.toast(e.response.data,3000,'error');
@@ -402,7 +426,7 @@ export default {
         }
     },
 
-    created(){
+    created() {
         this.getProfile();
         this.form.user_id = this.AuthUser.id;
         console.log(this.form);

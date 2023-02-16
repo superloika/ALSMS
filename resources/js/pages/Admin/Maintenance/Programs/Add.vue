@@ -16,6 +16,23 @@
                     <v-textarea filled label="Long Description" auto-grow
                         v-model="form.description_long"
                     ></v-textarea>
+                    <v-file-input
+                        multiple
+                        label="Attachments"
+                        chips
+                        v-model="file"
+                        filled
+                    ></v-file-input>
+                    <!-- <v-container>
+                        <em class="error--text" v-if="!form.attachments.length">No attachments available</em>
+                        <v-btn small outlined rounded color="primary" link target="_blank"
+                            :to="'/storage/attachments/programs/'+ form.title +'/' + a"
+                            v-for="(a,i) in form.attachments"
+                            :key="i"
+                        >
+                            {{ a }}
+                        </v-btn>
+                    </v-container> -->
                 </v-col>
             </v-row>
         </v-card-text>
@@ -36,18 +53,33 @@ export default {
                 title: '',
                 description_short: '',
                 description_long: '',
-            }
+            },
+            file:[],
         }
     },
 
     methods: {
         async save() {
             let url = `${this.AppStore.state.siteUrl}learning-programs/saveProgram`;
-            await axios.post(url,{
-                    data: this.form
-                }).then(res=>{
+
+            let frmData = new FormData();
+            for(let i=0;i<this.file.length;i++) {
+                frmData.append('files[' + i + ']', this.file[i]);
+            }
+            frmData.append('form', JSON.stringify(this.form));
+
+            await axios.post(
+                    url,
+                    frmData,
+                    {
+                        headers: {
+                            "Content-Type": "multipart/form-data",
+                        },
+                    }
+                ).then(res=>{
                     this.ProgramsStore.getPrograms();
                     this.AppStore.resetForm(this.form);
+                    this.file = [];
                     this.AppStore.toast(res.data, 2500,'success');
                 }).catch(e=>{
                     this.AppStore.toast(e, 2500,'error');

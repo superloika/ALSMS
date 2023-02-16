@@ -12,6 +12,10 @@ class ProfileController extends Controller
         try {
             $files = request()->file('files');
             $form = json_decode(request()->form);
+            // dd(implode($form->modalities));
+            $modalities = $form->modalities;
+            // $modalities = (is_array($modalities)==1) ? implode($modalities) : $modalities;
+            $modalities = json_encode($modalities);
 
             if(DB::table('profiles')->where('user_id', $form->user_id)->exists()) {
                 DB::table('profiles')->where('user_id', $form->user_id)
@@ -34,7 +38,7 @@ class ProfileController extends Controller
                         'program_year_attended'=>$form->program_year_attended,
                         'program_completed'=>$form->program_completed,
                         'program_inc_reason'=>$form->program_inc_reason,
-                        'modalities'=>$form->modalities,
+                        'modalities'=>$modalities,
                     ])
                     ;
             } else {
@@ -58,7 +62,7 @@ class ProfileController extends Controller
                     'program_year_attended'=>$form->program_year_attended,
                     'program_completed'=>$form->program_completed,
                     'program_inc_reason'=>$form->program_inc_reason,
-                    'modalities'=>$form->modalities,
+                    'modalities'=>$modalities,
                 ]);
 
                 // temp

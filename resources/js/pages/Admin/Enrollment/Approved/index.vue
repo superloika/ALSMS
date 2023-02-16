@@ -4,9 +4,24 @@
             <v-toolbar-title>
                 Approved Enrollments
             </v-toolbar-title>
+
+            <v-spacer></v-spacer>
+            <v-text-field
+                solo-inverted
+                rounded
+                v-model="search"
+                hide-details
+                placeholder="Search student here"
+                dense
+                flat
+                style="max-width:200px;"
+            >
+            </v-text-field>
         </v-toolbar>
         <v-card-text>
-            <v-data-table :headers="tableHeaders" :items="EnrollmentStore.state.enrollment_approved">
+            <v-data-table :headers="tableHeaders" :items="EnrollmentStore.state.enrollment_approved"
+                :search="search"
+            >
                 <template v-slot:[`item.student_name`]="{item}">
                     <span>
                         {{ item.student_firstname }} {{ item.student_middlename }} {{ item.student_lastname }}
@@ -44,7 +59,9 @@ export default {
     data() {
         return {
             tableHeaders: [
-                {text:"Student Name", value:"student_name"},
+                {text:"First Name", value:"student_firstname"},
+                {text:"Middle Name", value:"student_middlename"},
+                {text:"Last Name", value:"student_lastname"},
                 {text:"Program", value:"program_title"},
                 {text:"Teacher", value:"teacher_name"},
                 {text:"CLC", value:"clc_name"},
@@ -54,6 +71,7 @@ export default {
             drawer: null,
             viewStudentDetailsDialog: null,
             user_id: '',
+            search: ''
         }
     },
 

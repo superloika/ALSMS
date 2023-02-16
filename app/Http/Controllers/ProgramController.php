@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProgramController extends Controller
@@ -52,17 +53,34 @@ class ProgramController extends Controller
     public function saveProgram()
     {
         try {
-            $data = request()->data;
-            extract($data);
-            $slug = Str::slug($title);
+            $form = json_decode(request()->form);
+            $files = request()->file('files');
+            // extract($data);
+            $slug = Str::slug($form->title);
 
-            DB::table('programs')->insert([
-                'title'=>$title,
+            $program_id = DB::table('programs')->insertGetId([
+                'title'=>$form->title,
                 'slug'=>$slug,
-                'description_short'=>$description_short,
-                'description_long'=>$description_long,
+                'description_short'=>$form->description_short,
+                'description_long'=>$form->description_long,
                 'created_by'=>Auth::user()->id
             ]);
+
+            $attachments = [];
+            if($files != null && count($files) > 0) {
+                $path = "public/attachments/programs/" . $program_id. "/";
+                foreach($files as $file) {
+                    $fileName = $file->getClientOriginalName();
+                    $attachments[] = $fileName;
+                    Storage::putFileAs($path, $file, $fileName);
+                }
+                DB::table('programs')->where('id', $program_id)
+                    ->update([
+                        'attachments'=>$attachments,
+                    ])
+                    ;
+            }
+
             return response()->json('Success', 200);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 500);
@@ -72,18 +90,35 @@ class ProgramController extends Controller
     public function update()
     {
         try {
-            $data = request()->data;
-            extract($data);
-            $slug = Str::slug($title);
+            $form = json_decode(request()->form);
+            $files = request()->file('files');
+            // extract($data);
+            $slug = Str::slug($form->title);
 
             DB::table('programs')
-            ->where('id', $id)
+            ->where('id', $form->id)
             ->update([
-                'title'=>$title,
+                'title'=>$form->title,
                 'slug'=>$slug,
-                'description_short'=>$description_short,
-                'description_long'=>$description_long,
+                'description_short'=>$form->description_short,
+                'description_long'=>$form->description_long,
             ]);
+
+            $attachments = [];
+            if($files != null && count($files) > 0) {
+                $path = "public/attachments/programs/" . $form->id. "/";
+                foreach($files as $file) {
+                    $fileName = $file->getClientOriginalName();
+                    $attachments[] = $fileName;
+                    Storage::putFileAs($path, $file, $fileName);
+                }
+                DB::table('programs')->where('id', $form->id)
+                    ->update([
+                        'attachments'=>$attachments,
+                    ])
+                    ;
+            }
+
             return response()->json('Success', 200);
         } catch (\Throwable $th) {
             return response()->json($th->getMessage(), 500);

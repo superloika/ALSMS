@@ -2,7 +2,7 @@
     <div>
         <v-row>
             <v-col cols="12" md="4" lg="3">
-                <v-card color="info" dark>
+                <v-card color="success" dark>
                     <v-card-title>Active School Year</v-card-title>
                     <v-card-text>
                         <h1>{{ activeSchoolYear }}</h1>

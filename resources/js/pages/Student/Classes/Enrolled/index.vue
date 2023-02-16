@@ -7,8 +7,15 @@
                     SY {{ SyStore.state.activeSY.sy }}
                 </v-chip>
             </v-toolbar-title>
+
             <v-spacer></v-spacer>
-            <v-btn v-if="
+
+            <v-btn v-if="pendingClasses.length" color="error"
+                @click="cancelRequest"
+            >
+                Cancel enrollment application
+            </v-btn>
+            <v-btn v-else-if="
                     (!approvedClasses.length || pendingClasses.length) &&
                     (approvedClasses.length || !pendingClasses.length)
                 "
@@ -17,11 +24,7 @@
             >
                 Enroll
             </v-btn>
-            <v-btn v-if="pendingClasses.length" color="error"
-                @click="cancelRequest"
-            >
-                Cancel enrollment application
-            </v-btn>
+
         </v-toolbar>
         <v-card-text>
             <v-data-table :headers="tableHeaders" :items="approvedClasses">

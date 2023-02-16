@@ -5,9 +5,23 @@
                 Pending Enrollments
             </v-toolbar-title>
             <v-spacer></v-spacer>
+            <v-text-field
+                solo-inverted
+                rounded
+                v-model="search"
+                hide-details
+                placeholder="Search student here"
+                dense
+                flat
+                style="max-width:200px;"
+            >
+
+            </v-text-field>
         </v-toolbar>
         <v-card-text>
-            <v-data-table :headers="tableHeaders" :items="EnrollmentStore.state.enrollment_pending">
+            <v-data-table :headers="tableHeaders" :items="EnrollmentStore.state.enrollment_pending"
+                :search="search"
+            >
                 <template v-slot:[`item.actions`]="{item}">
                     <v-btn iconx text small color="primary" class="ml-2" title="Review Student Details"
                         @click.stop="user_id=item.user_id;enrollment_id=item.id;viewStudentDetailsDialog=true;"
@@ -77,6 +91,7 @@ export default {
             user_id: '',
             class_id: '',
             enrollment_id: '',
+            search: ''
         }
     },
 

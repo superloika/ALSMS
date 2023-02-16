@@ -82,7 +82,7 @@
 
         <!-- MAIN -->
         <v-main>
-            <v-container class="pt-4">
+            <v-container class="pt-4" fluid>
                 <router-view></router-view>
             </v-container>
         </v-main>

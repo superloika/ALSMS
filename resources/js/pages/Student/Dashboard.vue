@@ -2,7 +2,7 @@
     <div>
         <v-row>
             <v-col cols="12" md="4" lg="3">
-                <v-card color="info" dark>
+                <v-card color="success" dark>
                     <v-card-title>Active School Year</v-card-title>
                     <v-card-text>
                         <h1>{{ activeSchoolYear }}</h1>
@@ -33,7 +33,7 @@
                     </v-card-text>
                 </v-card>
             </v-col> -->
-            <v-col cols="12" md="4" lg="3" xl="2">
+            <!-- <v-col cols="12" md="4" lg="3" xl="2">
                 <v-card color="warning" dark>
                     <v-card-title>
                         Pending Application
@@ -44,7 +44,7 @@
                         </h1>
                     </v-card-text>
                 </v-card>
-            </v-col>
+            </v-col> -->
         </v-row>
     </div>
 </template>
@@ -71,15 +71,15 @@ export default {
                 return 0;
             }
         },
-        pendingApplicationsCount() {
-            try {
-                return this.StudentClassesStore.state.classes.filter((e)=>{
-                    return e.user_id==this.AuthUser.id && e.status=='Pending';
-                }).length;
-            } catch (error) {
-                return 0;
-            }
-        },
+        // pendingApplicationsCount() {
+        //     try {
+        //         return this.StudentClassesStore.state.classes.filter((e)=>{
+        //             return e.user_id==this.AuthUser.id && e.status=='Pending';
+        //         }).length;
+        //     } catch (error) {
+        //         return 0;
+        //     }
+        // },
 
     },
 
