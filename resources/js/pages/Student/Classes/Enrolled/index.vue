@@ -130,6 +130,7 @@ export default {
 
         view(selectedClass) {
             this.selectedClass = selectedClass;
+            this.AnnouncementStore.getAnnouncements(selectedClass.class_id);
             this.dlgViewClass = true;
         },
     },

@@ -143,6 +143,13 @@ class ClassController extends Controller
                 'program_id'=>$program_id,
                 'teacher_id'=>$teacher_id,
                 'clc_id'=>$clc_id,
+                'sched_sun'=>$sched_sun ?? '',
+                'sched_mon'=>$sched_mon ?? '',
+                'sched_tue'=>$sched_tue ?? '',
+                'sched_wed'=>$sched_wed ?? '',
+                'sched_thu'=>$sched_thu ?? '',
+                'sched_fri'=>$sched_fri ?? '',
+                'sched_sat'=>$sched_sat ?? '',
             ]);
 
             return response()->json('Success', 200);
@@ -164,6 +171,13 @@ class ClassController extends Controller
                 'program_id'=>$program_id,
                 'teacher_id'=>$teacher_id,
                 'clc_id'=>$clc_id,
+                'sched_sun'=>$sched_sun ?? '',
+                'sched_mon'=>$sched_mon ?? '',
+                'sched_tue'=>$sched_tue ?? '',
+                'sched_wed'=>$sched_wed ?? '',
+                'sched_thu'=>$sched_thu ?? '',
+                'sched_fri'=>$sched_fri ?? '',
+                'sched_sat'=>$sched_sat ?? '',
             ]);
 
             return response()->json('Success', 200);

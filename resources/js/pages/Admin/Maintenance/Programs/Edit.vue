@@ -9,6 +9,11 @@
         <v-card-text class="pt-4">
             <v-row>
                 <v-col cols="12">
+                    <v-file-input
+                        label="Cover Photo"
+                        v-model="cp"
+                        filled
+                    ></v-file-input>
                     <v-text-field filled label="Title"
                         v-model="ProgramsStore.state.editProgramObj.title"></v-text-field>
                     <v-textarea filled label="Short Description" auto-grow
@@ -59,6 +64,7 @@ export default {
             //     description_long: '',
             // },
             file: [],
+            cp: null,
         }
     },
 
@@ -94,6 +100,7 @@ export default {
                 frmData.append('files[' + i + ']', this.file[i]);
             }
             frmData.append('form', JSON.stringify(this.ProgramsStore.state.editProgramObj));
+            frmData.append('cp', this.cp);
 
             await axios.post(
                     url,
@@ -107,6 +114,7 @@ export default {
                     this.AppStore.toast(res.data, 2500,'success');
                     this.ProgramsStore.state.editProgramDlg = false;
                     this.file = [];
+                    this.cp=null;
                 }).catch(e=>{
                     if(e.response) {
                         console.log(e.response);

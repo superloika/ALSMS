@@ -55,6 +55,7 @@ class ProgramController extends Controller
         try {
             $form = json_decode(request()->form);
             $files = request()->file('files');
+            $cp = request()->file('cp');
             // extract($data);
             $slug = Str::slug($form->title);
 
@@ -65,6 +66,17 @@ class ProgramController extends Controller
                 'description_long'=>$form->description_long,
                 'created_by'=>Auth::user()->id
             ]);
+
+            if($cp!=null) {
+                $path = "public/attachments/cp/" . $program_id. "/";
+                    $fileName = $cp->getClientOriginalName();
+                    Storage::putFileAs($path, $cp, $fileName);
+                DB::table('programs')->where('id', $program_id)
+                    ->update([
+                        'cover_photo'=>$fileName,
+                    ])
+                    ;
+            }
 
             $attachments = [];
             if($files != null && count($files) > 0) {
@@ -92,6 +104,7 @@ class ProgramController extends Controller
         try {
             $form = json_decode(request()->form);
             $files = request()->file('files');
+            $cp = request()->file('cp');
             // extract($data);
             $slug = Str::slug($form->title);
 
@@ -103,6 +116,17 @@ class ProgramController extends Controller
                 'description_short'=>$form->description_short,
                 'description_long'=>$form->description_long,
             ]);
+
+            if($cp!=null) {
+                $path = "public/attachments/cp/" . $form->id. "/";
+                    $fileName = $cp->getClientOriginalName();
+                    Storage::putFileAs($path, $cp, $fileName);
+                DB::table('programs')->where('id', $form->id)
+                    ->update([
+                        'cover_photo'=>$fileName,
+                    ])
+                    ;
+            }
 
             $attachments = [];
             if($files != null && count($files) > 0) {

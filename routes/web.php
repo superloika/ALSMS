@@ -27,8 +27,8 @@ Route::get('/', 'HomeController@index')->name('home');
 // Route::get('/programs', 'ProgramController@index')->name('programs');
 Route::get('/programs/{slug}', 'ProgramController@view')->name('programs.view');
 // announcements
-Route::get('/announcements', 'AnnouncementController@index')->name('announcements');
-Route::get('/announcements/{slug}', 'AnnouncementController@view')->name('announcements.view');
+// Route::get('/announcements', 'AnnouncementController@index')->name('announcements');
+// Route::get('/announcements/{slug}', 'AnnouncementController@view')->name('announcements.view');
 // about
 Route::get('/about', 'AboutController@index')->name('about');
 // about
@@ -143,6 +143,22 @@ Route::group(['prefix'=>'teacher'], function(){
         Route::post('/getTeacherClasses','ClassController@getTeacherClasses');
         Route::post('/getClassStudents','ClassController@getClassStudents');
     });
+});
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+// announcements
+Route::group(['prefix'=>'announcements'], function(){
+    Route::get('/getAnnouncements','AnnouncementController@getAnnouncements');
+    Route::post('/saveAnnouncement','AnnouncementController@saveAnnouncement');
+    Route::post('/deleteAnnouncement','AnnouncementController@deleteAnnouncement');
+});
+//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////
+// reports
+Route::group(['prefix'=>'reports'], function(){
+    Route::get('/getStudents','ReportController@getStudents');
 });
 //////////////////////////////////////////////////////////////////////////////////
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-app-bar app class="elevation-0" dark color="primary">
+        <v-app-bar app class="elevation-0" dark color="primary" v-if="!AppStore.state.printMode">
             <v-toolbar-title class="ml-1 pr-12">
                 <div class="d-flex">
                     <a href="/">
@@ -32,6 +32,9 @@
                 </v-tab>
                 <v-tab to="/admin/maintenance" class="font-weight-bold">
                     Maintenance
+                </v-tab>
+                <v-tab to="/admin/reports" class="font-weight-bold">
+                    Reports
                 </v-tab>
             </v-tabs>
 

@@ -30,6 +30,8 @@ const state = Vue.observable({
         .toISOString()
         .substr(0, 10)],
     gLevels: ['K','G-1','G-2','G-3','G-4','G-5','G-6','G-7','G-8','G-9','G-10'],
+
+    printMode: false,
 });
 
 

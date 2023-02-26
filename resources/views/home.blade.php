@@ -19,18 +19,25 @@
         ></v-img>
     </div>
 
+    <v-sheet cols="12" class="d-flex justify-center primary pt-8 pb-4">
+        <p class="text-h4 white--text">Learning Programs</p>
+    </v-sheet>
     <v-container fluid class="d-flex justify-center  pa-8 pb-12">
         <v-row>
-            <v-col cols="12" class="d-flex justify-center">
-                <p class="text-h4 primary--text">Learning Programs</p>
-            </v-col>
+
             @foreach ($programs as $p)
                 <v-col cols="12" md="4">
                     <v-card>
-                        <v-img
+                        {{-- <v-img
                             height="200px"
                             lazy-src="img/study.png"
                             src="img/study.png"
+                        >
+                        </v-img> --}}
+                        <v-img
+                            height="200px"
+                            width="600"
+                            src="/storage/attachments/cp/{{ $p->id }}/{{ $p->cover_photo }}"
                         >
                         </v-img>
 

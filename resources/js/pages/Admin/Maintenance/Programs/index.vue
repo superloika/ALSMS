@@ -9,6 +9,16 @@
         </v-toolbar>
         <v-card-text>
             <v-data-table :headers="tableHeaders" :items="ProgramsStore.state.programs">
+                <template v-slot:[`item.cp`]="{item}">
+                    <div style="width:100px;">
+                        <v-img
+                            height="50"
+                            :src="'/storage/attachments/cp/' + item.id + '/' + item.cover_photo"
+                        >
+
+                        </v-img>
+                    </div>
+                </template>
                 <template v-slot:[`item.actions`]="{item}">
                     <div style="width:100px;">
                         <v-btn icon small color="error" @click="deleteProgram(item.id)">
@@ -41,6 +51,7 @@ export default {
     data() {
         return {
             tableHeaders: [
+                {text:"", value:"cp"},
                 {text:"Title", value:"title"},
                 {text:"Description", value:"description_short"},
                 {text:"Actions", value:"actions"},

@@ -28,6 +28,34 @@
                         <em class="font-weight-bold">{{ selectedClass.clc_address }}</em><br>
                     </v-col>
 
+                    <v-col cols="12">
+                        <v-divider></v-divider><br>
+                        <label>Class Schedules:</label><br>
+                        <v-container stylex="border:1px dotted lightgrey;">
+                            <v-chip small v-if="selectedClass.sched_sun!=''">
+                                Sunday: {{ selectedClass.sched_sun }}
+                            </v-chip>
+                            <v-chip small v-if="selectedClass.sched_mon!=''">
+                                Monday: {{ selectedClass.sched_mon }}
+                            </v-chip>
+                            <v-chip small v-if="selectedClass.sched_tue!=''">
+                                Tuesday: {{ selectedClass.sched_tue }}
+                            </v-chip>
+                            <v-chip small v-if="selectedClass.sched_wed!=''">
+                                Wednesday: {{ selectedClass.sched_wed }}
+                            </v-chip>
+                            <v-chip small v-if="selectedClass.sched_thu!=''">
+                                Thursday: {{ selectedClass.sched_thu }}
+                            </v-chip>
+                            <v-chip small v-if="selectedClass.sched_fri!=''">
+                                Friday: {{ selectedClass.sched_fri }}
+                            </v-chip>
+                            <v-chip small v-if="selectedClass.sched_sat!=''">
+                                Saturday: {{ selectedClass.sched_sat }}
+                            </v-chip>
+                        </v-container>
+                    </v-col>
+
                     <v-col md="12" sm="12">
                         <v-divider></v-divider><br>
                         <label>Attachments:</label><br>
@@ -43,6 +71,19 @@
                             </v-btn>
                         </v-container>
                     </v-col>
+
+                    <v-col md="12" sm="12">
+                        <v-divider></v-divider><br>
+                        <label>Class Announcements:</label><br>
+                        <v-container class="pt-6">
+                            <v-data-table :headers="tableHeaders" :items="AnnouncementStore.state.announcements"
+                                class="elevation-1">
+                            </v-data-table>
+                        </v-container>
+                    </v-col>
+
+
+
                 </v-row>
             </v-card-text>
         </v-card>
@@ -55,7 +96,10 @@ export default {
 
     data() {
         return {
-
+            tableHeaders: [
+                {text:"Announcement", value:"message"},
+                {text:"Date", value:"created_at"},
+            ],
         }
     },
 
@@ -63,6 +107,10 @@ export default {
         attachments() {
             return JSON.parse(this.selectedClass.attachments);
         }
+    },
+
+    created() {
+        console.log('selectedClass:', this.selectedClass);
     }
 }
 </script>

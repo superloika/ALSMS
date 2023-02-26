@@ -14,7 +14,7 @@
                             Learning Programs
                         </v-tab>
                         <v-tab class="text-caption font-weight-bold">
-                            CLC
+                            Learning Centers
                         </v-tab>
                         <v-tab class="text-caption font-weight-bold">
                             Classes

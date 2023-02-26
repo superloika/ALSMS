@@ -9,6 +9,11 @@
         <v-card-text class="pt-4">
             <v-row>
                 <v-col cols="12">
+                    <v-file-input
+                        label="Cover Photo"
+                        v-model="cp"
+                        filled
+                    ></v-file-input>
                     <v-text-field filled label="Title" v-model="form.title"></v-text-field>
                     <v-textarea filled label="Short Description" auto-grow
                         v-model="form.description_short"
@@ -55,6 +60,7 @@ export default {
                 description_long: '',
             },
             file:[],
+            cp: null,
         }
     },
 
@@ -67,6 +73,7 @@ export default {
                 frmData.append('files[' + i + ']', this.file[i]);
             }
             frmData.append('form', JSON.stringify(this.form));
+            frmData.append('cp', this.cp);
 
             await axios.post(
                     url,

@@ -48,6 +48,81 @@
                         </template>
                     </v-select>
                 </v-col>
+                <v-col cols="12">
+                    <label class="font-weight-bold">Class Schedules</label><br><br>
+                    <v-select
+                        label="Day"
+                        placeholder="Select day here"
+                        :items="[
+                            {text:'Sunday', value:'sched_sun'},
+                            {text:'Monday', value:'sched_mon'},
+                            {text:'Tuesday', value:'sched_tue'},
+                            {text:'Wednesday', value:'sched_wed'},
+                            {text:'Thursday', value:'sched_thu'},
+                            {text:'Friday', value:'sched_fri'},
+                            {text:'Saturday', value:'sched_sat'},
+                        ]"
+                        item-text="text"
+                        item-value="value"
+                        v-model="selectedDay"
+                    >
+                    </v-select>
+                    <div>
+                        <label>Time From:</label>
+                        <input type="time" v-model="timeFrom" :max="timeTo"/>
+                        &nbsp;
+                        <label>Time To:</label>
+                        <input type="time" v-model="timeTo" :min="timeFrom"/>
+                        <v-btn small dense rounded color="primary"
+                            :disabled="selectedDay=='' || timeFrom=='' || timeTo==''"
+                            @click="applySched">Apply</v-btn>
+                    </div>
+                    <br>
+                    <div style="border:1px dotted lightgrey;padding:3px;">
+                        <div>
+                            Sunday: {{ ClassesStore.state.editClassObj.sched_sun }}
+                            <v-btn icon small color="error" v-if="ClassesStore.state.editClassObj.sched_sun!=''"
+                                @click="ClassesStore.state.editClassObj.sched_sun=''"
+                            >x</v-btn>
+                        </div>
+                        <div>
+                            Monday: {{ ClassesStore.state.editClassObj.sched_mon }}
+                            <v-btn icon small color="error" v-if="ClassesStore.state.editClassObj.sched_mon!=''"
+                                @click="ClassesStore.state.editClassObj.sched_mon=''"
+                            >x</v-btn>
+                        </div>
+                        <div>
+                            Tuesday: {{ ClassesStore.state.editClassObj.sched_tue }}
+                            <v-btn icon small color="error" v-if="ClassesStore.state.editClassObj.sched_tue!=''"
+                                @click="ClassesStore.state.editClassObj.sched_tue=''"
+                            >x</v-btn>
+                        </div>
+                        <div>
+                            Wednesday: {{ ClassesStore.state.editClassObj.sched_wed }}
+                            <v-btn icon small color="error" v-if="ClassesStore.state.editClassObj.sched_wed!=''"
+                                @click="ClassesStore.state.editClassObj.sched_wed=''"
+                            >x</v-btn>
+                        </div>
+                        <div>
+                            Thursday: {{ ClassesStore.state.editClassObj.sched_thu }}
+                            <v-btn icon small color="error" v-if="ClassesStore.state.editClassObj.sched_thu!=''"
+                                @click="ClassesStore.state.editClassObj.sched_thu=''"
+                            >x</v-btn>
+                        </div>
+                        <div>
+                            Friday: {{ ClassesStore.state.editClassObj.sched_fri }}
+                            <v-btn icon small color="error" v-if="ClassesStore.state.editClassObj.sched_fri!=''"
+                                @click="ClassesStore.state.editClassObj.sched_fri=''"
+                            >x</v-btn>
+                        </div>
+                        <div>
+                            Saturday: {{ ClassesStore.state.editClassObj.sched_sat }}
+                            <v-btn icon small color="error" v-if="ClassesStore.state.editClassObj.sched_sat!=''"
+                                @click="ClassesStore.state.editClassObj.sched_sat=''"
+                            >x</v-btn>
+                        </div>
+                    </div>
+                </v-col>
             </v-row>
         </v-card-text>
         <v-card-actions class="pt-0 pb-6 d-flex justify-end">
@@ -68,7 +143,10 @@ export default {
             //     program_id: '',
             //     teacher_id: '',
             //     clc_id: '',
-            // }
+            // },
+            selectedDay: '',
+            timeFrom: '',
+            timeTo: '',
         }
     },
 
@@ -122,6 +200,9 @@ export default {
                 })
                 ;
         },
+        applySched() {
+            this.ClassesStore.state.editClassObj[this.selectedDay] = this.timeFrom + ' to ' + this.timeTo;
+        }
     },
 
 }

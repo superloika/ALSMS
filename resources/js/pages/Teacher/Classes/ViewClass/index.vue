@@ -13,8 +13,12 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn outlined rounded color="primary" link to="/teacher/classes">
+            <v-btn outlined rounded color="primary" link to="/teacher/classes" class="ml-2">
                 Back to Classes
+            </v-btn>
+            <v-btn outlined rounded color="primary"  class="ml-2"
+                @click.stop="viewAnnouncements">
+                Announcements
             </v-btn>
         </v-toolbar>
 
@@ -37,6 +41,10 @@
             <StudentProfile :key="user_id" :user_id="user_id"></StudentProfile>
         </v-dialog>
 
+        <v-dialog v-model="viewAnnouncementsDialog" max-width="900">
+            <Announcements></Announcements>
+        </v-dialog>
+
         <v-navigation-drawer v-model="drawer" app temporary right style="width:600px;">
             <!-- <Add></Add> -->
         </v-navigation-drawer>
@@ -46,7 +54,8 @@
 <script>
 export default {
     components: {
-        StudentProfile: ()=>import('../../../Student/Profile')
+        StudentProfile: ()=>import('../../../Student/Profile'),
+        Announcements: ()=>import('./Announcements.vue'),
     },
 
     data() {
@@ -60,16 +69,19 @@ export default {
             ],
             drawer: null,
             viewStudentDetailsDialog: null,
+            viewAnnouncementsDialog: null,
             user_id: '',
         }
     },
 
     methods: {
-
+        viewAnnouncements() {
+            this.AnnouncementStore.getAnnouncements(this.$route.params.id);
+            this.viewAnnouncementsDialog=true;
+        }
     },
 
     created() {
-        console.log('asdasdsadsad:', this.$route.params.id) ;
         this.ClassesStore.getClassStudents(this.$route.params.id);
     }
 }

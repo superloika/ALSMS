@@ -88,7 +88,7 @@
                     <v-btn color="transparent" depressed dark
                         href="/faq"
                         class="text-subtitle-2 font-weight-bold"
-                    >FAQs</v-btn>
+                    >FAQ<small>s</small></v-btn>
 
                     <v-btn color="transparent" depressed dark
                         href="/about"
