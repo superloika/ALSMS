@@ -1,2 +1,0 @@
-# ALSMS
-## ALS Management System
