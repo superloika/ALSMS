@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2023 at 08:34 PM
+-- Generation Time: Feb 26, 2023 at 11:25 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -223,6 +223,7 @@ CREATE TABLE `programs` (
   `description_short` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description_long` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `attachments` text COLLATE utf8mb4_unicode_ci DEFAULT '[]',
+  `cover_photo` text COLLATE utf8mb4_unicode_ci DEFAULT '',
   `status` tinyint(4) DEFAULT 1,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -233,10 +234,11 @@ CREATE TABLE `programs` (
 -- Dumping data for table `programs`
 --
 
-INSERT INTO `programs` (`id`, `title`, `slug`, `description_short`, `description_long`, `attachments`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
-(6, 'Basic Literacy Program (BLP)', 'basic-literacy-program-blp', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', '[\"317800370_883126322855416_9078613599775800946_n.jpg\"]', 1, '2023-01-18 04:31:17', '2023-02-23 01:29:46', 3),
-(7, 'Accreditation and Equivalency (A&E)', 'accreditation-and-equivalency-ae', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution.', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution. Through this program, school dropouts are able to complete elementary and high school education outside the formal school system.', '[]', 1, '2023-01-18 04:32:40', '2023-01-18 04:32:40', 3),
-(8, 'InFed', 'infed', 'Informal education', 'Informal education Informal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal education\n\nInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal education\n\n*Informal education\n*Informal education\n*Informal education\n*Informal education', '[]', 1, '2023-01-24 07:23:07', '2023-02-17 04:27:53', 3);
+INSERT INTO `programs` (`id`, `title`, `slug`, `description_short`, `description_long`, `attachments`, `cover_photo`, `status`, `created_at`, `updated_at`, `created_by`) VALUES
+(6, 'Basic Literacy Program (BLP)', 'basic-literacy-program-blp', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', 'The Basic Literacy Program (BLP) is a program component of ALS aimed at eradicating illiteracy among OSYA, and in extreme cases, school-aged children, by developing the basic literacy skills of reading, writing, and numeracy.', '[\"317800370_883126322855416_9078613599775800946_n.jpg\"]', 'subaru-impreza-22b-xq.jpg', 1, '2023-01-18 04:31:17', '2023-02-27 06:16:34', 3),
+(7, 'Accreditation and Equivalency (A&E)', 'accreditation-and-equivalency-ae', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution.', 'The Accreditation and Equivalency (A&E) Program is a program component of ALS aimed at providing an alternative pathway of learning for OSYA who have the basic literacy skills but have not completed the K to 12 basic education mandated by the Philippine Constitution. Through this program, school dropouts are able to complete elementary and high school education outside the formal school system.', '[]', 'wp1332.jpg', 1, '2023-01-18 04:32:40', '2023-02-27 06:13:32', 3),
+(8, 'InFed', 'infed', 'Informal education', 'Informal education Informal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal education\n\nInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal educationInformal education\n\n*Informal education\n*Informal education\n*Informal education\n*Informal education', '[]', 'wp1122.jpg', 1, '2023-01-24 07:23:07', '2023-02-27 06:10:08', 3),
+(14, 'test', 'test', 'test modifed', 'test', '[\"modeltest.jpg\",\"obs-1.jpg\",\"obs1516_7.jpg\",\"sims.png\"]', 'wp11212.jpg', 1, '2023-02-27 05:59:04', '2023-02-27 06:23:40', 3);
 
 -- --------------------------------------------------------
 
@@ -499,7 +501,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `sys`

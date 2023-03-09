@@ -14,7 +14,7 @@
                         label="First Name"
                         v-model="form.firstname"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
 
@@ -23,7 +23,7 @@
                         label="Middle Name"
                         v-model="form.middlename"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
 
@@ -32,7 +32,7 @@
                         label="Last Name"
                         v-model="form.lastname"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
 
@@ -41,13 +41,13 @@
                         label="Extension Name"
                         v-model="form.extname"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
 
                 <v-col cols="12" md="3">
                     <v-radio-group v-model="form.gender" row
-                    :readonly="!AppStore.isStudent()">
+                    :readonly="!AppStore.isStudent() || !allowStudentUpdate">
                         <template v-slot:label>
                             <div>Gender</div>
                         </template>
@@ -64,7 +64,7 @@
                         transition="scale-transition"
                         offset-y
                         min-width="auto"
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     >
                         <template v-slot:activator="{ on, attrs }">
                             <v-text-field
@@ -101,7 +101,7 @@
                         label="Place of Birth"
                         v-model="form.pob"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
 
@@ -110,7 +110,7 @@
                         label="Address"
                         v-model="form.address"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
 
@@ -119,7 +119,7 @@
                         label="Parent/Guardian"
                         v-model="form.guardian"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
 
@@ -128,7 +128,7 @@
                         label="Parent/Guardian Address"
                         v-model="form.guardian_address"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
 
@@ -137,7 +137,7 @@
                         label="Facebook Account"
                         v-model="form.fb_account"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -150,7 +150,7 @@
                 <v-col cols="12" md="12">
                     <v-radio-group v-model="form.gl_upon_registration"
                         label="Last grade level completed" row
-                        :readonly="!AppStore.isStudent()">
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate">
                         <v-radio
                             v-for="g in AppStore.state.gLevels"
                             :key="g"
@@ -167,14 +167,14 @@
                         label="Why did you drop-out of school? (For OSY only)"
                         v-model="form.drop_reason"
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                     ></v-text-field>
                 </v-col>
 
                 <v-col cols="12" md="12">
                     <v-radio-group v-model="form.attended_als"
                         label="Have you attended ALS learning sessions before?" row
-                        :readonly="!AppStore.isStudent()">
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate">
                         <v-radio
                             v-for="i in ['YES','NO']"
                             :key="i"
@@ -190,13 +190,13 @@
                                 label="Name of the Program"
                                 v-model="form.als_program"
                                 filled
-                                :readonly="!AppStore.isStudent()"
+                                :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                             ></v-text-field>
                         </v-col>
                         <v-col md="6">
                             <v-radio-group v-model="form.literacy_level"
                                 label="Literacy Level" row
-                                :readonly="!AppStore.isStudent()">
+                                :readonly="!AppStore.isStudent() || !allowStudentUpdate">
                                 <v-radio
                                     v-for="i in ['Basic','Elementary','Secondary','InfEd']"
                                     :key="i"
@@ -212,13 +212,13 @@
                                 label="Year Attended"
                                 v-model="form.program_year_attended"
                                 filled
-                                :readonly="!AppStore.isStudent()"
+                                :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                             ></v-text-field>
                         </v-col>
                         <v-col md="5">
                             <v-radio-group v-model="form.program_completed"
                                 label="Have you completed the program?" row
-                                :readonly="!AppStore.isStudent()">
+                                :readonly="!AppStore.isStudent() || !allowStudentUpdate">
                                 <v-radio
                                     v-for="i in ['YES','NO']"
                                     :key="i"
@@ -234,7 +234,7 @@
                                 label="If NO, state the reason"
                                 v-model="form.program_inc_reason"
                                 filled
-                                :readonly="!AppStore.isStudent()"
+                                :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                             ></v-text-field>
                         </v-col>
                     </v-row>
@@ -251,7 +251,7 @@
                             :value="i"
                             hide-details
                             :class="(index>0) ? 'pl-8':''"
-                            :readonly="!AppStore.isStudent()"
+                            :readonly="!AppStore.isStudent() || !allowStudentUpdate"
                         ></v-checkbox>
                     </v-container>
                 </v-col>
@@ -259,14 +259,14 @@
                 <v-col cols="12" md="12">
                     <label>Attachments</label>
                     <v-file-input
-                        v-if="isStudentView"
+                        v-if="isStudentView && allowStudentUpdate"
                         multiple
                         label="Select files to attach"
                         chips
                         v-model="file"
                         hide-details
                         filled
-                        :readonly="!AppStore.isStudent()"
+                        :readonlyx="!AppStore.isStudent() || !allowStudentUpdate"
                         dense
                     ></v-file-input>
                     <v-container class="pt-6">
@@ -283,7 +283,9 @@
             </v-row>
         </v-card-text>
 
-        <v-card-actions class="d-flex justify-end pt-0 pr-4 pb-4" v-if="isStudentView">
+        <v-card-actions class="d-flex justify-end pt-0 pr-4 pb-4"
+            v-if="isStudentView && allowStudentUpdate"
+        >
             <v-btn color="primary" @click="updateProfile()">Save</v-btn>
         </v-card-actions>
     </v-card>
@@ -341,7 +343,10 @@ export default {
         //     if(this.user_id==undefined) {
         //         return this.form.user_id
         //     }
-        // }
+        // },
+        allowStudentUpdate() {
+            return this.form.user_id=='' || this.form.user_id==null;
+        },
     },
 
     watch: {
@@ -396,7 +401,7 @@ export default {
             await axios.get(
                 `${this.AppStore.state.siteUrl}student/profile/getProfile?user_id=${this.user_id}`
             ).then(e=>{
-                console.log(e.data);
+                console.log('getProfile', e.data);
                 if(e.data.firstname!=undefined) {
                     this.form.user_id = e.data.user_id;
 
@@ -439,8 +444,8 @@ export default {
 
     created() {
         this.getProfile();
-        this.form.user_id = this.AuthUser.id;
-        console.log(this.form);
+        // this.form.user_id = this.AuthUser.id;
+        console.log('form',this.form);
     },
 
 };

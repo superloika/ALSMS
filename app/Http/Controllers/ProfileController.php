@@ -17,8 +17,10 @@ class ProfileController extends Controller
             // $modalities = (is_array($modalities)==1) ? implode($modalities) : $modalities;
             $modalities = json_encode($modalities);
 
-            if(DB::table('profiles')->where('user_id', $form->user_id)->exists()) {
-                DB::table('profiles')->where('user_id', $form->user_id)
+            $user_id = auth()->user()->id;
+
+            if(DB::table('profiles')->where('user_id', $user_id)->exists()) {
+                DB::table('profiles')->where('user_id', $user_id)
                     ->update([
                         'firstname'=>$form->firstname,
                         'middlename'=>$form->middlename,
@@ -44,7 +46,7 @@ class ProfileController extends Controller
                     ;
             } else {
                 DB::table('profiles')->insert([
-                    'user_id'=>$form->user_id,
+                    'user_id'=>$user_id,
                     'firstname'=>$form->firstname,
                     'middlename'=>$form->middlename,
                     'lastname'=>$form->lastname,
@@ -73,13 +75,13 @@ class ProfileController extends Controller
 
             $attachments = [];
             if($files != null && count($files) > 0) {
-                $path = "public/attachments/" . $form->user_id. "/";
+                $path = "public/attachments/" . $user_id. "/";
                 foreach($files as $file) {
                     $fileName = $file->getClientOriginalName();
                     $attachments[] = $fileName;
                     Storage::putFileAs($path, $file, $fileName);
                 }
-                DB::table('profiles')->where('user_id', $form->user_id)
+                DB::table('profiles')->where('user_id', $user_id)
                     ->update([
                         'attachments'=>$attachments,
                     ])
