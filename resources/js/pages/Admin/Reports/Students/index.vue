@@ -66,20 +66,24 @@
                 <div style="display:flex" class="justify-center">
                     <div class="pr-6">
                         <v-img
-                        max-height="100"
-                        max-width="100"
-                        src="/img/alsms-logo.png"
+                            max-height="100"
+                            max-width="100"
+                            src="/img/deped_seal.webp"
                         ></v-img>
                     </div>
-                    <div style="text-align:center" class="pr-16">
+                    <div style="text-align:center" class="">
                         <div>{{ program.title }}</div>
                         <div>{{ clc.name }}</div>
                         <div>{{ clc.address }}</div>
                         <div>{{ students[0].teacher_fullname }}</div>
                         <div class="pt-3 text-h6">List of Students</div>
                     </div>
-                    <div class="pr-16">
-                        &nbsp;
+                    <div class="pl-6">
+                        <v-img
+                            max-height="100"
+                            max-width="100"
+                            src="/img/alsms-logo.png"
+                        ></v-img>
                     </div>
                 </div>
                 <br>

@@ -30,9 +30,9 @@
                 <!-- <v-tab to="/student/programs" class="font-weight-bold">
                     Programs
                 </v-tab> -->
-                <!-- <v-tab to="/student/announcements" class="font-weight-bold">
+                <v-tab to="/student/announcements" class="font-weight-bold">
                     Announcements
-                </v-tab> -->
+                </v-tab>
             </v-tabs>
 
             <!-- <span class="text-caption mr-1 overflow-auto font-weight-bold">
@@ -103,6 +103,7 @@ export default {
 
     created() {
         // this.ClassesStore.getClasses(this.SyStore.state.activeSY.id);
+        this.StudentClassesStore.studentEnrollment(this.SyStore.state.activeSY.id);
     }
 }
 </script>

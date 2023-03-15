@@ -375,6 +375,9 @@ export default {
 
             frmData.append('form', JSON.stringify(this.form));
 
+            // if(confirm('If done reviewing your inputted information, press OK to proceed saving your profile otherwise press CANCEL to review.')){
+            //     return;
+            // }
             await axios.post(
                 `${this.AppStore.state.siteUrl}student/profile/updateProfile?user_id=${this.user_id}`,
                 frmData,
@@ -386,6 +389,7 @@ export default {
             ).then(e=>{
                 this.getProfile();
                 this.AppStore.toast(e.data,3000,'success');
+                this.$router.replace('/student/classes');
             }).catch(e=>{
                 if(e.response) {
                     // this.AppStore.toast(e.response.data,3000,'error');
@@ -437,6 +441,7 @@ export default {
                 }
             }).finally(()=>{
                 this.AppStore.state.topLoadingCtr--;
+
             })
             ;
         }

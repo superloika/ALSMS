@@ -20,7 +20,7 @@
     </div>
 
     <v-sheet cols="12" class="d-flex justify-center primary pt-8 pb-4">
-        <p class="text-h4 white--text">Learning Programs</p>
+        <p class="text-h2 white--text px-12 py-6" style="border:5px solid #fff">Learning Programs</p>
     </v-sheet>
     <v-container fluid class="d-flex justify-center  pa-8 pb-12">
         <v-row>
