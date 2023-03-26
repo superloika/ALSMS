@@ -134,6 +134,15 @@
 
                 <v-col cols="12" md="3">
                     <v-text-field
+                        label="Contact Number"
+                        v-model="form.contact_no"
+                        filled
+                        :readonly="!AppStore.isStudent() || !allowStudentUpdate"
+                    ></v-text-field>
+                </v-col>
+
+                <v-col cols="12" md="3">
+                    <v-text-field
                         label="Facebook Account"
                         v-model="form.fb_account"
                         filled
@@ -312,6 +321,7 @@ export default {
                 guardian: '',
                 guardian_address: '',
                 fb_account: '',
+                contact_no: '',
 
                 gl_upon_registration: '',
                 drop_reason: '',
@@ -345,7 +355,8 @@ export default {
         //     }
         // },
         allowStudentUpdate() {
-            return this.form.user_id=='' || this.form.user_id==null;
+            return true;
+            // return this.form.user_id=='' || this.form.user_id==null;
         },
     },
 
@@ -389,7 +400,8 @@ export default {
             ).then(e=>{
                 this.getProfile();
                 this.AppStore.toast(e.data,3000,'success');
-                this.$router.replace('/student/classes');
+                // this.$router.replace('/');
+                window.location.href = '/';
             }).catch(e=>{
                 if(e.response) {
                     // this.AppStore.toast(e.response.data,3000,'error');
@@ -421,6 +433,7 @@ export default {
                     this.form.guardian = e.data.guardian;
                     this.form.guardian_address = e.data.guardian_address;
                     this.form.fb_account = e.data.fb_account;
+                    this.form.contact_no = e.data.contact_no;
                     // educ info
                     this.form.gl_upon_registration = e.data.gl_upon_registration;
                     this.form.drop_reason = e.data.drop_reason;

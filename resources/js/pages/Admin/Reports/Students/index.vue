@@ -66,62 +66,105 @@
                 <div style="display:flex" class="justify-center">
                     <div class="pr-6">
                         <v-img
-                            max-height="100"
-                            max-width="100"
+                            max-height="60"
+                            max-width="60"
                             src="/img/deped_seal.webp"
                         ></v-img>
                     </div>
                     <div style="text-align:center" class="">
-                        <div>{{ program.title }}</div>
-                        <div>{{ clc.name }}</div>
-                        <div>{{ clc.address }}</div>
-                        <div>{{ students[0].teacher_fullname }}</div>
-                        <div class="pt-3 text-h6">List of Students</div>
+                        <div>Republic of the Philippines</div>
+                        <div>Department of Education</div>
+                        <div class="font-weight-bold">ALTERNATIVE LEARNING SYSTEM</div>
                     </div>
                     <div class="pl-6">
                         <v-img
-                            max-height="100"
-                            max-width="100"
+                            max-height="60"
+                            max-width="60"
                             src="/img/alsms-logo.png"
                         ></v-img>
                     </div>
                 </div>
                 <br>
                 <br>
+                <br>
                 <v-row>
-                    <v-col cols="6">
+                    <v-col cols="12">
+                        <div class="">
+                        </div>
+                        <v-row>
+                            <v-col cols="12" class="py-0">
+                                Program: {{ program.title }}
+                            </v-col>
+                            <v-col cols="6" class="py-0">
+                                Learning Center: {{ clc.name }} - {{ clc.address }}
+                            </v-col>
+                            <v-col cols="6" class="py-0">
+                                <span style="float:right">Date: _____________</span>
+                            </v-col>
+                        </v-row>
+                        <br>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>List of Enrollees</th>
+                                    <th>Address</th>
+                                    <th>Contact No.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(s,i) in students" :key="i">
+                                    <td>{{ s.fullname }}</td>
+                                    <td>{{ s.address }}</td>
+                                    <td>{{ s.contact_no }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </v-col>
+
+                    <!-- <v-col cols="6">
                         <div class="font-weight-bold">Male</div>
                         <table>
                             <thead>
                                 <tr>
                                     <th>Name</th>
                                     <th>Address</th>
+                                    <th>Contact No.</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(s,i) in students.filter(e=>e.gender=='Male')" :key="i">
                                     <td>{{ s.fullname }}</td>
                                     <td>{{ s.address }}</td>
+                                    <td>{{ s.contact_no }}</td>
                                 </tr>
                             </tbody>
                         </table>
-                    </v-col>
-                    <v-col cols="6">
+                    </v-col> -->
+                    <!-- <v-col cols="6">
                         <div class="font-weight-bold">Female</div>
                         <table>
                             <thead>
                                 <tr>
                                     <th>Name</th>
                                     <th>Address</th>
+                                    <th>Contact No.</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(s,i) in students.filter(e=>e.gender=='Female')" :key="i">
                                     <td>{{ s.fullname }}</td>
                                     <td>{{ s.address }}</td>
+                                    <td>{{ s.contact_no }}</td>
                                 </tr>
                             </tbody>
                         </table>
+                    </v-col> -->
+                </v-row>
+                <v-row>
+                    <v-col cols="12"><br>Prepared by</v-col>
+                    <v-col cols="6" style="text-align:center">
+                        <div class="font-weight-bold">{{ students[0].teacher_fullname }}</div>
+                        <em>Facilitator</em>
                     </v-col>
                 </v-row>
             </div>
