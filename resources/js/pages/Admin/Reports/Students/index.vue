@@ -201,6 +201,7 @@ export default {
 
         print() {
             this.AppStore.state.printMode=true;
+
             setTimeout(()=>{
                 window.print();
                 this.AppStore.state.printMode=false;

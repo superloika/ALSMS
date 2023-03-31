@@ -19,6 +19,7 @@ class ReportController extends Controller
                 'profiles.lastname',
                 'profiles.gender',
                 'profiles.address',
+                'profiles.contact_no',
                 DB::raw("CONCAT(profiles.lastname,', ',profiles.firstname,' ',profiles.middlename) as fullname"),
                 DB::raw("CONCAT(teachers.lastname,', ',teachers.firstname,' ',teachers.middlename) as teacher_fullname")
             )
