@@ -16,7 +16,9 @@
             width="100%"
             lazy-src="img/hpbg_1.jpg"
             src="img/hpbg_1.jpg"
-        ></v-img>
+            content-class="pa-4"
+        >
+        </v-img>
     </div>
 
     <v-sheet cols="12" class="d-flex justify-center primary pt-8 pb-4">
@@ -70,4 +72,19 @@
             @endforeach
         </v-row>
     </v-container>
+
+    @auth
+        @if (Auth::user()->user_type=='student')
+        <v-container fill-height fluid class="pb-10">
+            <v-row align="center" justify="center">
+                <v-col align="center">
+                    <v-btn color="primary" rounded x-large link href="/student/classes">
+                        Enroll Now
+                    </v-btn>
+                </v-col>
+            </v-row>
+        </v-container>
+        @endif
+    @endauth
+
 @endsection
