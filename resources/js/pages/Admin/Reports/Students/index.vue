@@ -160,11 +160,13 @@
                         </table>
                     </v-col> -->
                 </v-row>
-                <v-row class="pl-12">
-                    <v-col cols="12"><br>Prepared by:</v-col>
-                    <v-col cols="6">
+                <v-row>
+                    <v-col cols="12" style="text-align:center">
+                        <br><br>
+                        Prepared by:
+                        <br><br>
                         <div class="font-weight-bold">{{ students[0].teacher_fullname.toUpperCase() }}</div>
-                        <em style="padding-left:48px;">Facilitator</em>
+                        <em>Facilitator</em>
                     </v-col>
                 </v-row>
             </div>
